@@ -1,0 +1,52 @@
+<div class="header_section">
+    <div class="container-fluid">
+
+
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+                <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                <div class="logo"><a href="/"><img src="images/logo/imagine Interior-logo-2.png"></a></div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button> -->
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.php">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="services.php">Services</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="portfolio.php">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.php">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.php">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.php">Contact</a>
+                        </li>
+                        <li class="nav-item call_us">
+                            <a onmouseover="greenIcon(this)" onmouseout="whiteIcon(this)" class="nav-link"
+                                href="tel:7699753019"><img id="call_icon" class="call_icon"
+                                    src="images/icons/call-icon-white.png" alt=""> Call Us</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>

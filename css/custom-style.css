@@ -1,0 +1,82 @@
+.header_form{
+    border: 1px solid #aeaeed;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: #fff;
+    box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+}
+
+.custom_inp{
+    background-color: #ffffff8a !important;
+    color: rgb(27, 27, 27) !important;
+    outline: none;
+    border: 1px solid #b8b8ed !important;
+    height: 2.2rem;
+    border-radius: 0.15rem !important;
+    font-size: 15px !important;
+    width: 100%;
+    margin: 0.15rem 0;
+    padding: 0 0.4rem !important;
+    transition: ease all 0.5s !important;
+
+}
+.custom_inp:focus{
+    border: 1px solid #00f !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.m_frm_btn button{
+    width: 30%;
+    height: 40px;
+    background: #4747c7;
+    color: #fff;
+    border-radius: 0.15rem;
+    border: 2px solid #2a2aeb;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.m_frm_btn button:hover,
+.m_frm_btn button:active{
+    background: #7474d4;
+    border-color: #7474d4;
+    /* color: #4747c7; */
+}
+
+.number_card{
+    height: 17rem;
+    padding: 2rem;
+    box-shadow: rgb(0 0 0 / 6%) 0px 5px 20px;
+}
+
+.my_card{
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border-radius: 3rem;
+}
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { ... }
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .banner_left{
+        order: 2;
+    }
+    .banner_right{
+        order: 1;
+        margin-bottom: 2rem;
+    }
+    .banner_main_text {
+        font-size: 3rem;
+    }
+    .banner_dsc {
+        text-align: center;
+    }
+}
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) { ... }
+
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) { ... }

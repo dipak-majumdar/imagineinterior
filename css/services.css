@@ -1,0 +1,27 @@
+.services_section3{
+    width: 100%;
+    float: left;
+}
+.sub_headig{
+    text-align: center;
+    text-transform: uppercase;
+}
+.serv_dtls{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.serv_dtls img{
+    object-fit: cover;
+    width: 4rem;
+    height: 4rem;
+}
+.serv_dtls img:hover{
+    transform: scale(1.2); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+.serv_dtls p{
+    margin: 8px auto 20px;
+    text-transform: capitalize;
+}

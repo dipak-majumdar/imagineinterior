@@ -1,0 +1,44 @@
+.testimonial_sec{
+    background: #f5f5eb;
+    text-align: center;
+    border-radius: 1rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+.testimonial_img{
+    object-fit: cover;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+}
+.testimonial_heading{
+    padding-top: 1.3rem;
+}
+.testimonial_quote{
+    padding: 0.5rem 10rem 1rem;
+    margin: auto;
+
+}
+
+
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) { ... }
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+    .testimonial_quote {
+        padding: 0.5rem 1rem 1rem;
+    }
+
+    .carousel-control-next-icon, .carousel-control-prev-icon{
+        height: 30px;
+        width: 16px;
+    }
+}
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) { ... }
+
+/* // Large devices (desktops, less than 1200px) */
+@media (max-width: 1199.98px) { ... }
