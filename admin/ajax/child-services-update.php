@@ -27,8 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $image_name2   = $_FILES["feature-image"]["name"];
     $tempname2     = $_FILES["feature-image"]["tmp_name"];
     $target_image2 = $target_dir . basename($_FILES["feature-image"]["name"]);
-
-
     
 
     if ($tempname != null) {

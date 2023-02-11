@@ -1,5 +1,3 @@
-
-
 <?php
 
 
@@ -18,8 +16,8 @@ class Form extends DBConnection{
     function addQueryForm($name, $contactNo, $email, $designeFor, $budget){
         
         $sql = "INSERT INTO `query_form`
-                            (`name`, `contact_no`, `email`, `design_for`,	`budget`, `added_on`)
-                    VALUES ('$name', '$contactNo', '$email', '$designeFor',	'$budget', now())";
+                        (`name`, `contact_no`, `email`, `design_for`, `budget`, `added_on`)
+                VALUES ('$name', '$contactNo', '$email', '$designeFor', '$budget', now())";
         $res = $this->conn->query($sql);
         return $res;
 
@@ -36,7 +34,7 @@ class Form extends DBConnection{
         $data = array();
         $sql = "SELECT * FROM `query_form` ORDER BY added_on DESC";
         $res = $this->conn->query($sql);
-        while ($result = $res->fetch_array()) {
+        while ($result = $res->fetch_assoc()) {
             $data[] = $result;
         }
         return $data;
@@ -66,6 +64,21 @@ class Form extends DBConnection{
 
     }//eof
 
+
+    function showQueriesByStatus($status){
+
+        $data= array();
+        $sql = "SELECT * FROM `query_form` WHERE `status` = '$status'";
+        $res = $this->conn->query($sql);
+        $row = $res->num_rows;
+        if ($row > 0 ) {
+            while ($result = $res->fetch_array()) {
+                $data[] = $result;
+            }
+        }
+        return $data;
+
+    }//eof
 
 
 

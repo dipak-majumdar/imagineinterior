@@ -71,6 +71,28 @@
         </li>
 
         <!-- ============================================================= -->
+
+        <li class="nav-item">
+            <a class="nav-link <?php if (!str_contains($_SERVER['PHP_SELF'], 'forms')) { echo 'collapsed'; }?>" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#" <?php if (str_contains($_SERVER['PHP_SELF'], 'forms')) { echo 'class="active"'; }?>>
+            <i class="bi bi-bookmark-heart"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse <?php if (str_contains($_SERVER['PHP_SELF'], 'forms')) { echo 'show'; }?>" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="query-forms.php" <?php if (str_contains($_SERVER['PHP_SELF'], 'query-forms')) { echo 'class="active"'; }?>>
+                        <i class="bi bi-circle"></i><span>Query Form</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact-forms.php" <?php if (str_contains($_SERVER['PHP_SELF'], 'contact-forms')) { echo 'class="active"'; }?>>
+                        <i class="bi bi-circle"></i><span>Contact Form</span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+
+        <!-- ============================================================= -->
         
         <li class="nav-item">
             <a class="nav-link <?php if (!str_contains($_SERVER['PHP_SELF'], 'user')) { echo 'collapsed'; }?>" data-bs-target="#user-nav" data-bs-toggle="collapse" href="#" <?php if (str_contains($_SERVER['PHP_SELF'], 'user')) { echo 'class="active"'; }?>>

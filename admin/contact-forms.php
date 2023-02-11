@@ -82,8 +82,9 @@ $users   = $User->showUsers();
               <div class="card p-2">
                   <div class="card-header d-flex justify-content-between">
                       <span>Total Users is: <?php echo count($users)?> </span>
-                      <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#mainModal"
-                          onclick="addUser();" id="addUser">Add New</button>
+                  </div>
+                  <div class="card-body">
+                    
                   </div>
                   <div class="table-responsive">
                       <!-- Table with stripped rows -->
@@ -180,13 +181,6 @@ $users   = $User->showUsers();
       <script src="assets/js/main.js"></script>
 
       <script>
-      const addUser = () => {
-          document.getElementById('modalLabel').innerText = `Add New User`;
-          let url = 'ajax/user-add.php';
-          document.getElementById('modal-body').innerHTML =
-              `<iframe width="99%" height="300px" frameborder="0" allowtransparency="true" src="${url}"></iframe>`;
-      }
-
 
       const catView = (id) => {
           document.getElementById('modalLabel').innerText = `View & Edit User`;
