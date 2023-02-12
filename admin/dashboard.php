@@ -85,7 +85,7 @@ $projectLimit   = $Projects->projectsByLimit(5);
             <h1><?php echo ucfirst(str_replace('.php', '', basename($_SERVER['PHP_SELF']))); ?></h1>
             <nav>
                 <ol class="breadcrumb">
-                        <?php 
+                    <?php 
                             $repWords = array('\\', '\'', '*', '?', '"', '<', '>', '|', '+', '-', '.php');
                             $locs = explode('/', str_replace($repWords, ' ', ucfirst($page)));
                             foreach ($locs as $loc) {
@@ -191,7 +191,7 @@ $projectLimit   = $Projects->projectsByLimit(5);
                         </div><!-- End Revenue Card -->
 
                         <!-- Customers Card -->
-                        <div class="col-xxl-4 col-xl-12">
+                        <!-- <div class="col-xxl-4 col-xl-12">
 
                             <div class="card info-card customers-card">
 
@@ -228,10 +228,11 @@ $projectLimit   = $Projects->projectsByLimit(5);
                                 </div>
                             </div>
 
-                        </div><!-- End Customers Card -->
+                        </div> -->
+                        <!-- End Customers Card -->
 
                         <!-- Reports -->
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <div class="card">
 
                                 <div class="filter">
@@ -249,10 +250,10 @@ $projectLimit   = $Projects->projectsByLimit(5);
                                 </div>
 
                                 <div class="card-body">
-                                    <h5 class="card-title">Reports <span>/Today</span></h5>
+                                    <h5 class="card-title">Reports <span>/Today</span></h5> -->
 
-                                    <!-- Line Chart -->
-                                    <div id="reportsChart"></div>
+                        <!-- Line Chart -->
+                        <!-- <div id="reportsChart"></div>
 
                                     <script>
                                     document.addEventListener("DOMContentLoaded", () => {
@@ -312,16 +313,17 @@ $projectLimit   = $Projects->projectsByLimit(5);
                                             }
                                         }).render();
                                     });
-                                    </script>
-                                    <!-- End Line Chart -->
+                                    </script> -->
+                        <!-- End Line Chart -->
 
-                                </div>
+                        <!-- </div>
 
                             </div>
-                        </div><!-- End Reports -->
+                        </div> -->
+                        <!-- End Reports -->
 
                         <!-- Recent Sales -->
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <div class="card recent-sales overflow-auto">
 
                                 <div class="filter">
@@ -394,10 +396,11 @@ $projectLimit   = $Projects->projectsByLimit(5);
                                 </div>
 
                             </div>
-                        </div><!-- End Recent Sales -->
+                        </div> -->
+                        <!-- End Recent Sales -->
 
                         <!-- Top Selling -->
-                        <div class="col-12">
+                        <!-- <div class="col-12">
                             <div class="card top-selling overflow-auto">
 
                                 <div class="filter">
@@ -479,7 +482,8 @@ $projectLimit   = $Projects->projectsByLimit(5);
                                 </div>
 
                             </div>
-                        </div><!-- End Top Selling -->
+                        </div> -->
+                        <!-- End Top Selling -->
 
                     </div>
                 </div><!-- End Left side columns -->
@@ -526,7 +530,7 @@ $projectLimit   = $Projects->projectsByLimit(5);
                     </div><!-- End Recent Activity -->
 
                     <!-- Budget Report -->
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -602,10 +606,11 @@ $projectLimit   = $Projects->projectsByLimit(5);
                             </script>
 
                         </div>
-                    </div><!-- End Budget Report -->
+                    </div> -->
+                    <!-- End Budget Report -->
 
                     <!-- Website Traffic -->
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -680,10 +685,11 @@ $projectLimit   = $Projects->projectsByLimit(5);
                             </script>
 
                         </div>
-                    </div><!-- End Website Traffic -->
+                    </div> -->
+                    <!-- End Website Traffic -->
 
                     <!-- News & Updates Traffic -->
-                    <div class="card">
+                    <!-- <div class="card">
                         <div class="filter">
                             <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
@@ -735,10 +741,11 @@ $projectLimit   = $Projects->projectsByLimit(5);
                                         eius...</p>
                                 </div>
 
-                            </div><!-- End sidebar recent posts-->
+                            </div>
 
                         </div>
-                    </div><!-- End News & Updates -->
+                    </div> -->
+                    <!-- End News & Updates -->
 
                 </div><!-- End Right side columns -->
 
@@ -746,20 +753,6 @@ $projectLimit   = $Projects->projectsByLimit(5);
         </section>
 
     </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-        <div class="copyright">
-            &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
-            <!-- All the links in the footer should remain intact. -->
-            <!-- You can delete the links only if you purchased the pro version. -->
-            <!-- Licensing information: https://bootstrapmade.com/license/ -->
-            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-    </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>

@@ -8,9 +8,23 @@ if (session_start()) {
 }
 
 require_once '../_config/dbconnect.php';
-require_once '../classes/admin.class.php';
+require_once "../inc/constants.inc.php";
 
-$Admin  = new Admin();
+
+require_once '../classes/admin.class.php';
+require_once '../classes/services.class.php';
+require_once '../classes/user.class.php';
+require_once '../classes/site.class.php';
+
+
+$Admin      = new Admin();
+$Services   = new Services();
+$User       = new User();
+$SiteInfo   = new SiteInfo();
+
+$site = $SiteInfo->showSiteInfo();
+
+
 
 $errMsg = '';
 
