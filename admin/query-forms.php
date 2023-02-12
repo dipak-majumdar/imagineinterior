@@ -73,7 +73,7 @@ $queries = $Form->showQueryForms();
 
         <section class="section dashboard">
             <div class="card p-2">
-                <div class="card-header d-flex justify-content-between">
+                <div class="card-header border-0 d-flex justify-content-between">
                     <span>
                         <span>
                             Pending Query:
@@ -89,7 +89,7 @@ $queries = $Form->showQueryForms();
                         </span>
                     </span>
                 </div>
-                <div class="card-body">
+                <div class="card-body px-0">
                     <?php
                     foreach ($queries as $query) {
                         if ($query['status'] == 0) {
@@ -100,7 +100,7 @@ $queries = $Form->showQueryForms();
                             $statusBg = 'primary';
                         }
                     ?>
-                    <div class="chat_body border-bottom mt-2" data-bs-toggle="modal" data-bs-target="#chatDetailsModal"
+                    <div class="chat_body border-bottom bg-light rounded pt-2 px-2 my-1" data-bs-toggle="modal" data-bs-target="#chatDetailsModal"
                         onclick="viewContact('<?php echo $query['id']; ?>', '<?php echo $query['contact_no']; ?>', '<?php echo $query['email']; ?>',)">
                         <div class="row">
                             <div class="col-sm-9 order-2 order-sm-1">
