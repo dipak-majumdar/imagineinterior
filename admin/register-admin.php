@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                         <?php
                                         if ($msg == null) {
 
-                                            echo '<p class="text-center small">Enter your personal details to create account</p>';
+                                            echo '<p class="text-center small">Enter required details to create account</p>';
                                         }else{
                                             echo '<p class="text-center text-danger small">'.$msg.'</p>';
                                         }
@@ -171,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                 Matched!</div>
                                         </div>
 
-                                        <div class="col-12">
+                                        <!-- <div class="col-12">
                                             <div class="form-check">
                                                 <input class="form-check-input" name="terms" type="checkbox" value=""
                                                     id="acceptTerms" required>
@@ -179,15 +179,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                                     <a href="#">terms and conditions</a></label>
                                                 <div class="invalid-feedback">You must agree before submitting.</div>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="col-12">
-                                            <button class="btn btn-primary w-100" name="register" type="submit" id="btn"
-                                                onclick="show()">Create
-                                                Account</button>
-                                        </div>
-                                        <div class="col-12">
-                                            <p class="small mb-0">Already have an account? <a
-                                                    href="pages-login.html">Log in</a></p>
+                                            <button class="btn btn-primary w-100" name="register" type="submit" id="btn" onclick="show()">Create Account</button>
                                         </div>
                                     </form>
 
