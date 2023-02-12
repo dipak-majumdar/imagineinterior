@@ -62,18 +62,21 @@ $childServices = $Services->showChildServices();
 
             <!-- row start -->
             <div class="row">
-
                 <!-- Category column start -->
                 <div class="col-md-12 text-center mb-5">
+                    <?php
+                if (count($showServices) > 0) {
+                ?>
                     <button type="button" class="btn btn-outline-primary mt-2 filter mx_sm_gp"
                         data-rel="all">All</button>
                     <?php
-                    foreach ($showServices as $eachService) {
-                        // print_r($eachChild['name']);
-                        echo '
-                        <button type="button" class="btn btn-outline-primary mt-2 filter mx_sm_gp" data-rel="'.$eachService['id'].'">'.$eachService['name'].'</button>
-                        ';
-                    }
+                        foreach ($showServices as $eachService) {
+                            // print_r($eachChild['name']);
+                            echo '
+                            <button type="button" class="btn btn-outline-primary mt-2 filter mx_sm_gp" data-rel="'.$eachService['id'].'">'.$eachService['name'].'</button>
+                            ';
+                        }
+                }
                     ?>
                 </div>
                 <!-- Category column start -->
@@ -86,12 +89,16 @@ $childServices = $Services->showChildServices();
 
                 <?php
                     foreach ($childServices as $eachChild) {
-                        // print_r($eachChild['name']);
+                        // print_r($eachChild);
+                        $img = $eachChild['feature_image'];
+                        if ($img == null) {
+                            $img = $eachChild['icon'];
+                        }
                         echo '
                         <div class="mb-3 pics animation all '.$eachChild['parent_id'].'">
                     <a href="projects.php?cservice='.$eachChild['id'].'">
                         <img class="img-fluid"
-                            src="images/services/'.$eachChild['icon'].'"
+                            src="images/services/'.$img.'"
                             alt="Card image cap">
 
                         <section class="img_text">
@@ -102,7 +109,7 @@ $childServices = $Services->showChildServices();
                 </div>
                         ';
                     }
-                    ?>
+            ?>
 
             </div>
             <!-- Gallery end -->
