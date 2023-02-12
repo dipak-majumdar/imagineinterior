@@ -5,298 +5,210 @@ require_once "../_config/adminSession.php";
 require_once '../_config/dbconnect.php';
 require_once '../inc/constants.inc.php';
 
-// require_once '../classes/categories.class.php';
 require_once '../classes/user.class.php';
+require_once '../classes/form.class.php';
+require_once '../classes/date-utility.class.php';
 
-$page = 'user';
 
-$User   = new User();
-// $User       = new User();
+$User           = new User();
+$Form           = new Form();
+$DateUtility    = new DateUtility();
 
 $users   = $User->showUsers();
-// $users = $User->showUsers();
+$contacts = $Form->showContactForms();
+
 
 
 ?>
 
-  <!DOCTYPE html>
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-  <head>
-      <meta charset="utf-8">
-      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-      <title>Categories - <?php echo SITE_NAME?></title>
-      <meta content="" name="description">
-      <meta content="" name="keywords">
+    <title>Contact Form - <?php echo SITE_NAME?></title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
 
-      <!-- Favicons -->
-      <link href="assets/img/favicon.png" rel="icon">
-      <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-      <!-- Google Fonts -->
-      <link href="https://fonts.gstatic.com" rel="preconnect">
-      <link
-          href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-          rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
-      <!-- Vendor CSS Files -->
-      <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-      <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-      <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-      <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
-      <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
-      <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-      <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+    <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
 
-      <!-- Template Main CSS File -->
-      <link href="assets/css/style.css" rel="stylesheet">
-  </head>
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+    <style>
+    .small_text {
+        font-size: 12px;
+    }
+    </style>
+</head>
 
-  <body>
+<body>
 
-      <!-- ======= Header ======= -->
-      <?php require_once 'partials/top-bar.php';?>
-      <!-- End Header -->
+    <!-- ======= Header ======= -->
+    <?php require_once 'partials/top-bar.php';?>
+    <!-- End Header -->
 
-      <!-- ======= Sidebar ======= -->
-      <?php require_once 'partials/sidebar.php';?>
-      <!-- ====== End Sidebar ===== -->
+    <!-- ======= Sidebar ======= -->
+    <?php require_once 'partials/sidebar.php';?>
+    <!-- ====== End Sidebar ===== -->
 
-      <main id="main" class="main">
+    <main id="main" class="main">
 
-
-          <div class="pagetitle">
-              <h1><?php echo ucfirst($page); ?></h1>
-              <nav>
-                  <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                      <li class="breadcrumb-item active"><?php echo ucfirst($page); ?></li>
-                  </ol>
-              </nav>
-          </div>
-          <!-- End Page Title -->
-
-
-          <section class="section dashboard">
-              <div class="card p-2">
-                  <div class="card-header d-flex justify-content-between">
-                      <span>Total Users is: <?php echo count($users)?> </span>
-                  </div>
-                  <div class="card-body">
-                    
-                  </div>
-                  <div class="table-responsive">
-                      <!-- Table with stripped rows -->
-                      <table class="table datatable">
-                          <thead>
-                              <tr>
-                                  <th scope="col">SL</th>
-                                  <th scope="col">Name</th>
-                                  <th scope="col">Username</th>
-                                  <th scope="col">Email</th>
-                                  <th scope="col">Created</th>
-                                  <th scope="col">Action</th>
-                              </tr>
-                          </thead>
-                          <tbody>
-                              <?php
-
-                    $sl = 1; 
-                        foreach ($users as $user) { 
+        <section class="section dashboard">
+            <div class="card p-2">
+                <div class="card-header border-0 d-flex justify-content-between">
+                    <span>
+                        <span>
+                            Pending Contacts:
+                            <span class="badge bg-warning mb-2">
+                                <?php echo count($Form->showContactByStatus(0))?>
+                            </span>
+                        </span>
+                        <span>
+                            Solved Contacts:
+                            <span class="badge bg-primary mb-2">
+                                <?php echo count($Form->showContactByStatus(1))?>
+                            </span>
+                        </span>
+                    </span>
+                </div>
+                <div class="card-body px-0">
+                    <?php
+                    foreach ($contacts as $eachContact) {
+                        if ($eachContact['status'] == 0) {
+                            $status     = 'Pending';
+                            $statusBg   = 'warning';
+                            $bodyBg     = 'bg-light';
+                        }else {
+                            $status     = 'Checked';
+                            $statusBg   = 'primary';
+                            $bodyBg     = '';
+                        }
                     ?>
-                              <tr class="<?php if ($user['status'] == 0) {
-                                echo "bg-danger text-light";
-                            }?>">
-                                  <th scope="row"><?php echo $sl++;?></th>
-                                  <td><?php echo $user['fname'].' '.$user['lname'];?></td>
-                                  <td><?php echo $user['username'];?></td>
-                                  <td><?php echo $user['email'];?></td>
-                                  <td><?php echo date("d-m-Y", strtotime($user['reg_time']));?></td>
-                                  <td>
-                                      <a href="javascript:void();" class="btn btn-sm badge bg-success me-2"
-                                          data-bs-toggle="modal" data-bs-target="#mainModal"
-                                          onclick="catView('<?php echo $user['user_id'];?>')"><i class="bi bi-eye"></i>
-                                      </a>
-                                      <a href="javascript:void();"
-                                          class="btn btn-sm badge <?php if($user['status'] == 0){echo 'bg-primary'; }else{ echo 'bg-danger';}?> "
-                                          id="<?php echo $user['user_id']; ?>"
-                                          <?php if($user['status'] != 0){ echo 'onclick="cancelUser(this)"';}else { echo 'onclick="activeUser(this)"';}?>><i
-                                              class="bi <?php if($user['status'] == 0){echo 'bi-toggle2-off'; }else{ echo 'bi-toggle-on';}?>"></i>
-                                      </a>
-                                      <a href="javascript:void();" class="btn btn-sm badge bg-danger ms-2"
-                                          id="<?php echo $user['user_id'];?>" onclick="userDel(this)">
-                                          <i class="bi bi-trash2"></i>
-                                      </a>
-                                  </td>
-                              </tr>
+                    <div class="chat_body border-bottom rounded pt-2 px-2 my-1 <?php echo $bodyBg; ?>"
+                        data-bs-toggle="modal" data-bs-target="#chatDetailsModal"
+                        id="contact-body<?php echo $eachContact['id'];?>"
+                        onclick="viewContact('<?php echo $eachContact['id']; ?>', '<?php echo $eachContact['contact_no']; ?>', '<?php echo $eachContact['email']; ?>', '<?php echo $eachContact['message']; ?>')">
+                        <div class="row">
+                            <div class="col-sm-9 order-2 order-sm-1">
+                                <h4><?php echo $eachContact['name']; ?><span
+                                        class="ms-1 small_text"><?php echo $DateUtility->numDate($eachContact['added_on']); ?></span>
+                                </h4>
+                                <p>
+                                    <span class="me-3">Contact: <b><?php echo $eachContact['contact_no']; ?></b></span>
+                                    <span>Message: <?php echo substr($eachContact['message'], 0, 30); ?></span>
+                                </p>
+                            </div>
+                            <div class="col-sm-3 order-1 order-sm-3">
+                                <div class="text-end">
+                                    <span id="status<?php echo $eachContact['id']; ?>"
+                                        class="badge bg-<?php echo $statusBg;?> mb-2"><small><?php echo $status;?></small></span>
+                                    <div class="d-flex justify-content-end">
+                                        <button
+                                            class="btn btn-sm btn-outline-primary pt-0 pb-0 d-none d-sm-block">View</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                              <?php
-                            }
-                        ?>
-                          </tbody>
-                      </table>
-                      <!-- End Table with stripped rows -->
-                  </div>
-              </div>
-          </section>
+                    <?php
+                    }
+                    ?>
+                </div>
+            </div>
+        </section>
 
-      </main><!-- End #main -->
+    </main><!-- End #main -->
 
-      <!-- Modal -->
-      <div class="modal fade" id="mainModal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered modal-lg">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="modalLabel">Modal title</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body" id="modal-body">
-                      ...
-                  </div>
-                  <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div> -->
-              </div>
-          </div>
-      </div>
+    <!-- Modal -->
+    <div class="modal fade" id="chatDetailsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Message and Contact Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="ps-4" id="appendBody">
 
-      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-              class="bi bi-arrow-up-short"></i></a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-      <!-- Vendor JS Files -->
-      <!-- <script src="assets/vendor/apexcharts/apexcharts.min.js"></script> -->
-      <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-      <!-- <script src="assets/vendor/chart.js/chart.min.js"></script> -->
-      <!-- <script src="assets/vendor/echarts/echarts.min.js"></script> -->
-      <!-- <script src="assets/vendor/quill/quill.min.js"></script> -->
-      <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
-      <script src="assets/vendor/tinymce/tinymce.min.js"></script>
-      <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
-      <!-- <script src="../plugins/ajax.custom-lib.js"></script> -->
-      <script src="../plugins/jQuery/jquery-3.6.0.js"></script>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
 
-      <!-- Template Main JS File -->
-      <script src="assets/js/main.js"></script>
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+    <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
 
-      <script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
 
-      const catView = (id) => {
-          document.getElementById('modalLabel').innerText = `View & Edit User`;
-          let viewUrl = `ajax/user-edit-view.php?id=${id}`;
-          // alert(viewUrl);
-          document.getElementById('modal-body').innerHTML =
-              `<iframe width="99%" height="360px" frameborder="0" allowtransparency="true" src="${viewUrl}"></iframe>`;
-      }
+    <script>
+    // delete categories 
+    const viewContact = (id, mob, email, message) => {
 
+        let appendData = `<p>${message}</p>
 
+        <p class="d-md-flex justify-content-between">
+            <a href="tel:${mob}" class="query_mob d-block d-md-inline"><i class="bi bi-telephone-fill me-2"></i>${mob}</a>
+            <a href="mailto:${email}" class="query_mail d-block d-md-inline"><i
+            class="bi bi-envelope-fill me-2"></i>${email}</a>
+        </p>`;
 
-      const cancelUser = (t) => {
+        document.getElementById('appendBody').innerHTML = appendData;
 
-          if (confirm("Are You Sure?")) {
-              // apntID = $(this).data("id");
-              userId = t.id;
+        $.ajax({
+            url: "ajax/contact-form-update.ajax.php",
+            type: "POST",
+            data: {
+                update: 'checked',
+                id: id,
+            },
+            success: function(response) {
+                // alert(response);
+                if (response.includes('true')) {
+                    document.getElementById(`contact-body${id}`).classList.remove('bg-light');
+                    document.getElementById(`status${id}`).classList.remove('bg-warning');
+                    document.getElementById(`status${id}`).classList.add('bg-primary');
+                    document.getElementById(`status${id}`).innerText = 'Checked';
+                } else {
+                    alert('Soething is wrong!');
 
-              $.ajax({
-                  url: "ajax/user-cancel.php",
-                  type: "POST",
-                  data: {
-                      userId: userId,
-                      status: 0
-                  },
-                  success: function(data) {
-                      // alert(data);
-                      if (data == 1) {
-                          let aTag = document.getElementById(t.id);
-                          aTag.classList.remove('bg-danger');
-                          aTag.classList.add('bg-primary');
+                }
+            }
+        });
+    }
+    </script>
 
-                          aTag.setAttribute("onClick", "activeUser(this);");
+</body>
 
-                          let icon = aTag.childNodes[0].classList;
-
-                          icon.remove("bi-toggle-on");
-                          icon.add("bi-toggle2-off");
-
-                          let tr = aTag.parentElement.parentElement;
-                          tr.classList.add('bg-danger');
-                          tr.classList.add('text-light');
-
-                      } else {
-                          alert('Updation Failed!');
-                      }
-                  }
-              });
-          }
-      }
-
-
-      const activeUser = (t) => {
-
-          if (confirm("Are You Sure?")) {
-              // apntID = $(this).data("id");
-              userId = t.id;
-
-              $.ajax({
-                  url: "ajax/user-cancel.php",
-                  type: "POST",
-                  data: {
-                      userId: userId,
-                      status: 1
-                  },
-                  success: function(data) {
-                      if (data == 1) {
-                          let aTag = document.getElementById(t.id);
-                          aTag.classList.add('bg-danger');
-                          aTag.classList.remove('bg-primary');
-                          aTag.setAttribute("onClick", "cancelUser(this);");
-
-                          let icon = aTag.childNodes[0].classList;
-
-                          icon.add("bi-toggle-on");
-                          icon.remove("bi-toggle2-off");
-
-                          let tr = aTag.parentElement.parentElement;
-                          tr.classList.remove('bg-danger');
-                          tr.classList.remove('text-light');
-
-                      } else {
-                          alert('Updation Failed!');
-                      }
-                  }
-              });
-          }
-      }
-
-
-      // delete categories 
-      const userDel = (t) => {
-        userId = t.id;
-          if (confirm("Are You Sure Want to Delete?")) {
-
-              $.ajax({
-                  url: "ajax/user-delete.php",
-                  type: "POST",
-                  data: {
-                      userId: userId,
-                  },
-                  success: function(data) {
-
-                      if (data.includes('true')) {
-                          let aTag = document.getElementById(t.id);
-
-                          let tr = aTag.parentElement.parentElement;
-                          tr.style.display = 'none';
-                      } else {
-                          alert('Can Not Deleted!');
-                      }
-                  }
-              });
-          }
-      }
-      </script>
-
-  </body>
-
-  </html>
+</html>

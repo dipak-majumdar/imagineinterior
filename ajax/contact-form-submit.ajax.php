@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
     $email      = $_POST['email'];
     $message    = $_POST['msg'];
     
-    $submited = $Form->addContactForm($name, $contactNo, $email, $message);
+    $submited = $Form->addContactForm($name, $contactNo, $email, $message, 0);
     // var_dump($submited);
     if ($submited) {
         // header('Location: '.ABSPATH.'?action=1');

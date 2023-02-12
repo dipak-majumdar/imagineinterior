@@ -115,18 +115,18 @@ class Form extends DBConnection{
 
     #################################################################################
     #                                                                               #
-    #                                     Query Form                                #
+    #                                     Contact Form                              #
     #                                                                               #
     #################################################################################
     /**
      * inserting new user data into `user` table
      * @return boolean
      */
-    function addContactForm($name, $contactNo, $email, $message){
+    function addContactForm($name, $contactNo, $email, $message, $status){
         
         $sql = "INSERT INTO `contact_form`
-                            (`name`, `contact_no`, `email`,	`message`, `added_on`)
-                    VALUES ('$name', '$contactNo', '$email', '$message', now())";
+                            (`name`, `contact_no`, `email`,	`message`, `status`, `added_on`)
+                    VALUES ('$name', '$contactNo', '$email', '$message', '$status', now())";
                     // echo $sql.$this->conn->error;
         $res = $this->conn->query($sql);
         return $res;
@@ -174,6 +174,21 @@ class Form extends DBConnection{
 
     }//eof
 
+
+    function showContactByStatus($status){
+
+        $data= array();
+        $sql = "SELECT * FROM `contact_form` WHERE `status` = '$status'";
+        $res = $this->conn->query($sql);
+        $row = $res->num_rows;
+        if ($row > 0 ) {
+            while ($result = $res->fetch_array()) {
+                $data[] = $result;
+            }
+        }
+        return $data;
+
+    }//eof
 
 
 
