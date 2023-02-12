@@ -32,8 +32,8 @@ $queries = $Form->showQueryForms();
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<?php echo FAVICON_PATH;?>" rel="icon">
+    <link href="<?php echo APPL_FAV_PATH;?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">

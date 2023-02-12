@@ -1,6 +1,15 @@
 <?php
-$page = "profiile";
 session_start();
+
+require_once "../_config/adminSession.php";
+
+require_once '../_config/dbconnect.php';
+require_once '../inc/constants.inc.php';
+
+// require_once '../classes/categories.class.php';
+require_once '../classes/user.class.php';
+
+$page = "profiile";
 
 
 ?>
@@ -13,13 +22,13 @@ session_start();
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Users / Profile - NiceAdmin Bootstrap Template</title>
+  <title>Admin Name - <?php echo SITE_NAME?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="<?php echo FAVICON_PATH;?>" rel="icon">
+  <link href="<?php echo APPL_FAV_PATH;?>" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -37,12 +46,6 @@ session_start();
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin - v2.2.2
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>
 
 <body>

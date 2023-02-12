@@ -33,8 +33,8 @@ $allProjects   = $Projects->showProjects();
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<?php echo FAVICON_PATH;?>" rel="icon">
+    <link href="<?php echo APPL_FAV_PATH;?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -135,7 +135,8 @@ $allProjects   = $Projects->showProjects();
                                 echo "bg-danger text-light";
                             }?>">
                                 <td class="align-middle">
-                                    <img src="../images/projects/<?php echo $projectImg['image'];?>" alt="<?php echo $eachProject['name'];?>" class="td_thumnail">
+                                    <img src="../images/projects/<?php echo $projectImg['image'];?>"
+                                        alt="<?php echo $eachProject['name'];?>" class="td_thumnail">
                                 </td>
                                 <td class="align-middle"><?php echo $eachProject['name'];?></td>
                                 <td class="align-middle"><?php echo substr($eachProject['dsc'], 0, 20);?>..</td>
@@ -148,8 +149,11 @@ $allProjects   = $Projects->showProjects();
                                         class="btn btn-sm badge bg-success me-2"><i class="bi bi-eye"></i>
                                     </a>
 
-                                    <span class="btn btn-sm badge <?php if($eachProject['status'] == 0){echo 'bg-primary'; }else{ echo 'bg-danger';}?>" id="<?php echo $eachProject['id']; ?>" onclick="updateStatus(this)">
-                                        <i class="bi <?php if($eachProject['status'] == 0){echo 'bi-toggle2-off'; }else{ echo 'bi-toggle-on';}?>"></i>
+                                    <span
+                                        class="btn btn-sm badge <?php if($eachProject['status'] == 0){echo 'bg-primary'; }else{ echo 'bg-danger';}?>"
+                                        id="<?php echo $eachProject['id']; ?>" onclick="updateStatus(this)">
+                                        <i
+                                            class="bi <?php if($eachProject['status'] == 0){echo 'bi-toggle2-off'; }else{ echo 'bi-toggle-on';}?>"></i>
                                     </span>
 
                                     <a href="javascript:void();" class="btn btn-sm badge bg-danger ms-2"
@@ -200,7 +204,7 @@ $allProjects   = $Projects->showProjects();
 
         if (confirm("Are You Sure?")) {
             projectId = t.id;
-            
+
             $.ajax({
                 url: "ajax/project-status-update.ajax.php",
                 type: "POST",
@@ -224,7 +228,7 @@ $allProjects   = $Projects->showProjects();
                         tr.classList.add('bg-danger');
                         tr.classList.add('text-light');
 
-                    }else if (data == 'activated') {
+                    } else if (data == 'activated') {
 
                         let aTag = document.getElementById(t.id);
                         aTag.classList.add('bg-danger');
@@ -276,4 +280,5 @@ $allProjects   = $Projects->showProjects();
     }
     </script>
 </body>
+
 </html>
