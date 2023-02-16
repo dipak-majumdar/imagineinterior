@@ -1,24 +1,28 @@
 <?php
 session_start();
 
+require_once "../inc/constants.inc.php";
 
 require_once "../_config/adminSession.php";
 require_once '../_config/dbconnect.php';
 
-require_once "../inc/constants.inc.php";
+
+require_once '../classes/admin.class.php';
+require_once '../classes/form.class.php';
 
 
 require_once '../classes/services.class.php';
-require_once '../classes/user.class.php';
 require_once '../classes/site.class.php';
 
+$Admin      = new Admin();
+$Form       = new Form();
 
-$Services   = new Services();
-$User       = new User();
 $SiteInfo   = new SiteInfo();
+$Services   = new Services();
 
-$users = $User->showUsers();
-$site = $SiteInfo->showSiteInfo();
+$logedAdmin = $Admin->showAdminByEmail($_SESSION['email']);
+
+$site       = $SiteInfo->showSiteInfo();
 
 $defaultLogo    = '';
 if ($site['site_logo'] != null) {

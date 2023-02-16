@@ -4,24 +4,31 @@ session_start();
 $page = $_SERVER['PHP_SELF'];
 
 
+require_once "../inc/constants.inc.php";
 
 require_once "../_config/adminSession.php";
 require_once '../_config/dbconnect.php';
 
-require_once '../classes/user.class.php';
-require_once "../inc/constants.inc.php";
+require_once '../classes/admin.class.php';
+require_once '../classes/form.class.php';
+
 require_once '../classes/services.class.php';
 require_once '../classes/projects.class.php';
 require_once '../classes/date-utility.class.php';
 
 
-$User       = new User();
+
+
+$Admin      = new Admin();
+$Form       = new Form();
+
 $Services   = new Services();
 $Projects   = new Projects();
 $DateUtil   = new DateUtility();
 
 
-$users = $User->showUsers();
+$logedAdmin = $Admin->showAdminByEmail($_SESSION['email']);
+
 $allServices   = $Services->showServices();
 $activeServices   = $Services->activeServices();
 $allChildServices   = $Services->showChildServices();

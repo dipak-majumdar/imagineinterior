@@ -1,20 +1,25 @@
 <?php
 session_start();
-require_once "../_config/adminSession.php";
-
-require_once '../_config/dbconnect.php';
 require_once '../inc/constants.inc.php';
+
+require_once "../_config/adminSession.php";
+require_once '../_config/dbconnect.php';
+
+require_once '../classes/admin.class.php';
+require_once '../classes/form.class.php';
 
 require_once '../classes/services.class.php';
 require_once '../classes/projects.class.php';
 require_once '../classes/date-utility.class.php';
 
-$page = $_SERVER['PHP_SELF'];
+$Admin      = new Admin();
+$Form       = new Form();
 
 $Services       = new Services();
 $Projects       = new Projects();
 $DateUtility    = new DateUtility();
 
+$logedAdmin = $Admin->showAdminByEmail($_SESSION['email']);
 $childServices   = $Services->showChildServices();
 // $users = $User->showUsers();
 
@@ -66,24 +71,7 @@ $childServices   = $Services->showChildServices();
 
 
           <div class="pagetitle">
-              <h1><?php echo ucfirst(str_replace('.php', '', basename($page))); ?></h1>
-              <nav>
-                  <ol class="breadcrumb">
-                      <?php 
-                            $repWords = array('\\', '\'', '*', '?', '"', '<', '>', '|', '+', '-', '.php');
-                            $locs = explode('/', str_replace($repWords, ' ', ucfirst($page)));
-                            foreach ($locs as $loc) {
-                                if ($loc != null) {
-                                    echo '
-                                    <li class="breadcrumb-item">
-                                    '.ucfirst($loc).'
-                                    </li>
-                                    ';
-                                }
-                            }
-                        ?>
-                  </ol>
-              </nav>
+              <h1><?php echo ucfirst(str_replace('.php', '', basename($_SERVER['PHP_SELF']))); ?></h1>
           </div>
           <!-- End Page Title -->
 

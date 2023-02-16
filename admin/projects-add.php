@@ -1,19 +1,27 @@
 <?php
 session_start();
-require_once "../_config/adminSession.php";
-
-require_once '../_config/dbconnect.php';
 require_once '../inc/constants.inc.php';
+
+require_once "../_config/adminSession.php";
+require_once '../_config/dbconnect.php';
+
+require_once '../classes/admin.class.php';
+require_once '../classes/form.class.php';
 
 require_once '../classes/projects.class.php';
 require_once '../classes/services.class.php';
 require_once '../classes/date-utility.class.php';
 
-$page = $_SERVER['PHP_SELF'];
+$Admin              = new Admin();
+$Form               = new Form();
 
 $Projects           = new Projects();
 $Services           = new Services();
 $DateUtility        = new DateUtility();
+
+$page = $_SERVER['PHP_SELF'];
+
+$logedAdmin = $Admin->showAdminByEmail($_SESSION['email']);
 
 $activeService   = $Services->activeServices();
 // $users = $User->showUsers();
