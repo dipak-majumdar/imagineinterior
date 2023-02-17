@@ -110,23 +110,45 @@ $imgPath = "../../images/services/";
 
     <form class="row g-3" action="<?php echo $_SERVER['REQUEST_URI']?>" method="post" enctype="multipart/form-data">
 
-
         <div class="col-md-12 d-flex justify-content-center">
-            <div class="col-6 mb-3">
-                <input type="file" class="dropify" name="service-icon" data-default-file="<?php echo $imgPath.$childService['icon'];?>">
+            <div class="col-5 mb-3">
+                <input type="file" class="dropify feature-image" name="feature-image"
+                    data-default-file="<?php echo $imgPath.$childService['feature_image'];?>" data-allowed-file-extensions="png jpg jpeg gif">
             </div>
         </div>
 
-        <div class="col-md-12 d-flex justify-content-center">
-            <div class="col-6 mb-3">
-                <input type="file" class="dropify feature-image" name="feature-image" data-default-file="<?php echo $imgPath.$childService['feature_image'];?>">
+
+        <div class="col-md-12">
+            <div class="row  w-100 ms-0 ps-1 py-2" style="border: 1px solid #b8b8ed">
+                <div class="col-2">
+                    <input type="file" class="dropify" name="service-icon" id="service-icon"
+                        data-default-file="<?php echo $imgPath.$childService['icon'];?>" data-height="80"
+                        onchange="getUplodedData(this)" data-allowed-file-extensions="png jpg jpeg gif">
+                </div>
+
+                <div class="col-9" onclick="clickElement('service-icon')">
+                    <label class="opacity-50 ">Sub Service Icon</label>
+                    <p class="mb-0 iconName"><?php echo $childService['icon']; ?></p>
+                    <?php
+                      $rawSize =  filesize($imgPath.$childService['icon']);
+                      $fSExt = array('Bytes', 'KB', 'MB', 'GB');
+                      $i = 0;
+                      while ($rawSize > 900) {
+                        $rawSize /= 1024;
+                        $i++;
+                      }
+                      $exactSize = (round($rawSize * 100) / 100);
+                      $exactSize = $exactSize.' '.$fSExt[$i]
+                    ?>
+                    <p class="iconSize"><?php echo $exactSize; ?></p>
+                </div>
             </div>
         </div>
 
         <div class="col-md-12">
             <div class="form-floating">
                 <select class="form-select" id="floatingSelect" name="parentId"
-                    aria-label="Floating label select Parent service">
+                    aria-label="Floating label select Parent service" required>
                     <option selected disabled>Select Main Service</option>
                     <?php
                       foreach ($allServices as $eachSearvice) {
@@ -146,7 +168,7 @@ $imgPath = "../../images/services/";
         <div class="col-md-12">
             <div class="form-floating">
                 <input type="text" class="form-control" name="childServiceName" id="floatingName"
-                    placeholder="Service Name" required value="<?php echo $childService['name']; ?>">
+                    placeholder="Service Name" required value="<?php echo $childService['name']; ?>" required>
                 <label for="floatingName">Child Service Name</label>
             </div>
         </div>
@@ -155,7 +177,8 @@ $imgPath = "../../images/services/";
         <div class="col-12">
             <div class="form-floating">
                 <textarea class="form-control" name="childServiceDsc" placeholder="Service Description"
-                    id="floatingTextarea" style="height: 100px;" maxlength="80"><?php echo $childService['dsc']; ?></textarea>
+                    id="floatingTextarea" style="height: 100px;"
+                    maxlength="80"><?php echo $childService['dsc']; ?></textarea>
                 <label for="floatingTextarea">Description</label>
             </div>
         </div>
@@ -168,7 +191,7 @@ $imgPath = "../../images/services/";
     <script src="../../js/jquery.min.js"></script>
     <script src="../../vendors/dropify-master/dist/js/dropify.min.js"></script>
     <script>
-      $('.feature-image').dropify({
+    $('.feature-image').dropify({
         messages: {
             'default': 'Upload Featutre Image',
             'replace': 'Drag and drop or click to replace',
@@ -176,16 +199,36 @@ $imgPath = "../../images/services/";
             'error': 'Ooops, something wrong happended.'
         }
     });
-      $('.dropify').dropify({
+    $('.dropify').dropify({
         messages: {
-            'default': 'Upload Your Service Icon Here',
+            'default': '',
             'replace': 'Drag and drop or click to replace',
             'remove': 'Remove',
             'error': 'Ooops, something wrong happended.'
         }
     });
 
-    
+    const getUplodedData = (uploadedfile) => {
+        var file = uploadedfile.files[0];
+        var filename = file.name;
+        var filesize = file.size;
+
+
+        var fSExt = new Array('Bytes', 'KB', 'MB', 'GB'),
+            i = 0;
+        while (filesize > 900) {
+          filesize /= 1024;
+            i++;
+        }
+        var exactSize = (Math.round(filesize * 100) / 100) + ' ' + fSExt[i];
+
+        document.querySelector('.iconName').innerText = filename;
+        document.querySelector('.iconSize').innerText = exactSize;
+
+    }
+    const clickElement = (elemId) =>{
+      document.getElementById(elemId).click();
+    }
     </script>
     <script src="../../js/main-js/bootstrap.js"></script>
 </body>
