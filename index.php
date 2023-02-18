@@ -64,7 +64,7 @@ $childServices = $Services->showChildServices();
     <?php require_once "partials/nav-bar.php"; ?>
     <!-- header section end -->
 
-    
+
 
     <!-- banner section start -->
     <div class="banner_section layout_padding mt-5">
@@ -127,7 +127,7 @@ $childServices = $Services->showChildServices();
                             </div>
                         </div>
                         <div class="mb-2">
-                        <?php
+                            <?php
                         if (isset($_GET['qform'])) {
                             if ($_GET['qform'] == 1) {
                                 echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -370,6 +370,27 @@ $childServices = $Services->showChildServices();
 
     <!-- contact section end -->
 
+    <!-- Feedback Button Start -->
+    <!-- <style>
+    #mybutton {
+        position: fixed;
+        bottom: -4px;
+        right: 10px;
+    }
+
+    .feedback {
+        background-color: #31B0D5;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 4px;
+        border-color: #46b8da;
+    }
+    </style>
+    <div id="mybutton">
+        <button class="feedback">Feedback</button>
+    </div> -->
+    <!-- Feedback Button Start -->
+
     <!-- footer section start -->
     <?php require_once "partials/footer.php"; ?>
     <!--  footer section end -->
@@ -435,7 +456,7 @@ $childServices = $Services->showChildServices();
     }
     </script>
 
-<script>
+    <script>
     const reset = () => {
         // document.getElementById("myForm").;
         document.forms["contactForm"].reset();
