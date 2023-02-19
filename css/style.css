@@ -166,7 +166,14 @@ img {
 .paddind_bottom_0 {
      padding-bottom: 0 !important;
 }
-
+.small_para{
+    text-align: center;
+}
+@media (min-width: 575.98px) {
+    .small_para{
+        text-align: justify;
+    }
+}
 .btn-custom {
      margin-top: 20px;
      background-color: transparent !important;
@@ -225,6 +232,20 @@ button {
      padding: 0px;
 }
 
+.bg_dark_white{
+    background-color: aliceblue;
+}
+.bg_white{
+    background-color: #fff;
+}
+.page_heading_sec{
+    /* padding: 2rem; */
+    background-image: url('../images/about-us-main-bg.jpg');
+    background-color: #0ab90a;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .header_section{
     width: 100%;
     float: left;
@@ -243,9 +264,14 @@ button {
     width: 100%;
     float: left;   
 }
+
+.sub_headig {
+    text-align: center;
+    text-transform: uppercase;
+}
+
 .sec_heading{
     width: 100%;
-    float: left;
     font-size: 36px;
     font-weight: 600;
     color: #090808;
@@ -255,7 +281,6 @@ button {
 }
 .sec_heading_dsc{
     width: 100%;
-    float: left;
     font-size: 16px;
     color: #090808;
     text-align: center;
@@ -363,7 +388,24 @@ button {
 
 
 
+.mini_sec{
+    background-color: aliceblue;
+    padding: 1rem 1rem 0;
+    border-radius: 5px;
+    text-align: center;
+}
+.mini_sec img{
+    width: 4rem;
+    object-fit: cover;
+    height: 4rem;
+    margin-right: 1rem;
+}
 
+@media (min-width: 575.98px) {
+    .mini_sec{
+        text-align: left;
+    }
+}
 
 
 

@@ -66,6 +66,19 @@
     padding: 0;
     font-weight: 700;
 }
+
+.service_mini_sec{
+    background-color: aliceblue;
+    padding: 1rem 1rem 0;
+    border-radius: 5px;
+}
+.service_mini_sec img{
+    width: 4rem;
+    object-fit: cover;
+    height: 4rem;
+    margin-right: 1rem;
+}
+
 @media (max-width: 767.98px) {
     .gallery {
         -webkit-column-count: 2;
