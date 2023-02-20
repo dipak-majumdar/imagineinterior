@@ -66,7 +66,7 @@ $childServices = $Services->showChildServices();
     <div class="portfolio_section px-2 px-md-0 pb-4 pt-0">
         <div class="container">
 
-            <div class="new_section sub_layout_padding">
+            <!-- <div class="new_section sub_layout_padding">
                 <h3 class="text-center text-md-start fs-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
                 <p class="small_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae odio,
                     esse sunt, nisi impedit
@@ -81,22 +81,22 @@ $childServices = $Services->showChildServices();
                     ipsum voluptates ut iure odio nihil molestias! Soluta quae ullam ipsa aut voluptatibus
                     molestias, maiores illo magni provident aspernatur, sit minus ducimus recusandae! Ex,
                     laboriosam quisquam.</p>
-            </div>
+            </div> -->
 
             <!-- row start -->
             <div class="row">
                 <!-- Category column start -->
-                <div class="col-md-12 text-center mb-5">
+                <div class="col-md-12 text-center mb-5" id="btnsDiv">
                     <?php
                 if (count($showServices) > 0) {
                 ?>
-                    <button type="button" class="btn btn-outline-primary mt-2 filter mx_sm_gp"
+                    <button type="button" class="btn btn-outline-primary rounded-0 mt-2 filter mx_sm_gp"
                         data-rel="all">All</button>
                     <?php
                         foreach ($showServices as $eachService) {
                             // print_r($eachChild['name']);
                             echo '
-                            <button type="button" class="btn btn-outline-primary mt-2 filter mx_sm_gp" data-rel="'.$eachService['id'].'">'.$eachService['name'].'</button>
+                            <button type="button" class="btn btn-outline-primary rounded-0 mt-2 filter mx_sm_gp" data-rel="'.$eachService['id'].'">'.$eachService['name'].'</button>
                             ';
                         }
                 }
@@ -245,7 +245,7 @@ $childServices = $Services->showChildServices();
     <!-- <script src="js/owl.carousel.js"></script>
     <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> -->
 
-
+    <!-- btnsDiv -->
 
     <script>
     $(function() {

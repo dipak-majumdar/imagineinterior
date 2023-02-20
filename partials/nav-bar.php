@@ -17,26 +17,28 @@
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button> -->
-
+                <?php
+                $page =  $_SERVER['PHP_SELF'];
+                ?>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link active" href="index.php">Home</a>
+                            <a class="nav-link <?php if (str_contains($page, 'index')) { echo 'active'; }?>" href="<?php echo URL;?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="services.php">Services</a>
+                            <a class="nav-link <?php if (str_contains($page, 'services')) { echo 'active'; }?>" href="services.php">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="portfolio.php">Portfolio</a>
+                            <a class="nav-link <?php if (str_contains($page, 'portfolio')) { echo 'active'; }?>" href="portfolio.php">Portfolio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.php">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.php">Blog</a>
+                            <a class="nav-link <?php if (str_contains($page, 'blog')) { echo 'active'; }?>" href="blog.php">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.php">Contact</a>
+                            <a class="nav-link <?php if (str_contains($page, 'contact')) { echo 'active'; }?>" href="contact.php">Contact</a>
                         </li>
                         <li class="nav-item call_us">
                             <a onmouseover="greenIcon(this)" onmouseout="whiteIcon(this)" class="nav-link"

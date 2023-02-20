@@ -256,6 +256,20 @@ class Services extends DBConnection{
         return $data;
     }//eof
 
+    /**
+     * retriving categories data for all services from `categories` table
+     * @return array
+     */
+    function showChildServicesByLimit($limit){
+        $data = array();
+        $sql = "SELECT * FROM `child_services` ORDER BY `parent_id` ASC LIMIT $limit";
+        $res = $this->conn->query($sql);
+        while ($result = $res->fetch_assoc()) {
+            $data[] = $result;
+        }
+        return $data;
+    }//eof
+
 
     /**
      * retriving categories data for all services from `categories` table

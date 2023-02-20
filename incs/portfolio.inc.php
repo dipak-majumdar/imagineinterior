@@ -1,5 +1,5 @@
 <!-- portfolio section start  -->
-<div class="portfolio_section px-2 px-md-0 pb-4 mt-5">
+<div class="portfolio_section px-2 px-md-0 pb-4 mt-0">
     <div class="container">
 
         <!-- row start -->
@@ -9,12 +9,12 @@
                 <?php
                 if (count($showServices) > 0) {
                 ?>
-                    <button type="button" class="btn btn-outline-primary mt-2 filter mx_sm_gp" data-rel="all">All</button>
+                    <button type="button" class="btn btn-outline-primary rounded-0 mt-2 filter mx_sm_gp" data-rel="all">All</button>
                     <?php
                         foreach ($showServices as $eachService) {
                             // print_r($eachChild['name']);
                             echo '
-                            <button type="button" class="btn btn-outline-primary mt-2 filter mx_sm_gp" data-rel="'.$eachService['id'].'">'.$eachService['name'].'</button>
+                            <button type="button" class="btn btn-outline-primary rounded-0 mt-2 filter mx_sm_gp" data-rel="'.$eachService['id'].'">'.$eachService['name'].'</button>
                             ';
                         }
                 }

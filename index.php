@@ -9,7 +9,8 @@ $Services   = new Services();
 
 $allServices = $Services->activeServices();
 $showServices = $Services->showServices();
-$childServices = $Services->showChildServices();
+$childServices = $Services->showChildServicesByLimit(12);
+
 
 
 ?>
