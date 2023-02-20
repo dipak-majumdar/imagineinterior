@@ -108,7 +108,7 @@ $childServices = $Services->showChildServices();
                 ?>
                 <div class="services_section3 sub_layout_padding">
 
-                    <div class="new_section pt-0">
+                    <div class="new_section mb-4 pt-0">
                         <h3 class="fs-3 text-center text-md-start">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
                         <p class="small_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
                             odio,
@@ -132,6 +132,7 @@ $childServices = $Services->showChildServices();
                                             <div class="serv_dtls">
                                                 <img src="images/services/'.$eachChild['icon'].'" alt="">
                                             <p >'.$eachChild['name'].'</p>
+                                            <span class="viewbtn">View</span>
                                             </div>
                                         </a>
                                     </div>';
