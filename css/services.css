@@ -14,7 +14,7 @@
 
 
 .serv_dtls img{
-    object-fit: cover;
+    object-fit: contain;
     width: 4rem;
     height: 4rem;
 }
