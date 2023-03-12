@@ -40,5 +40,17 @@ class Utility{
     }//eof
 
 
+    function deleteFile($path){
+
+        if (file_exists($path)) {
+            $deleted = unlink($path);
+            if ($deleted) {
+                return true;
+            }
+        }else {
+            echo "File Not Exists";
+        }
+        
+    }
 }
 ?>

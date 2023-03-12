@@ -2,8 +2,13 @@
 require_once "../../inc/constants.inc.php";
 require_once ABSPATH . '_config/dbconnect.php';
 require_once ABSPATH . 'classes/services.class.php';
+require_once ABSPATH . 'classes/utility.class.php';
+require_once ABSPATH . 'classes/utilityImage.class.php';
 
-$Services   = new Services();
+$Services     = new Services();
+$Utility      = new Utility();
+$UtilityImage = new UtilityImage();
+
 
 $childServiceId   = $_GET['id'];
 $cServ            = $Services->childServiceById($childServiceId);
@@ -24,10 +29,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $tempname     = $_FILES["service-icon"]["tmp_name"];
     $target_image = $target_dir . basename($_FILES["service-icon"]["name"]);
 
-    $image_name2   = $_FILES["feature-image"]["name"];
-    $tempname2     = $_FILES["feature-image"]["tmp_name"];
-    $target_image2 = $target_dir . basename($_FILES["feature-image"]["name"]);
-    
 
     if ($tempname != null) {
       $check = getimagesize($tempname);
@@ -47,15 +48,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
 
-    if ($tempname2 != null) {
-      $check2 = getimagesize($tempname2);
+
+
+    $featureImageOrgName      = basename($_FILES["feature-image"]["name"]);
+    $featureImageTempName     = $_FILES["feature-image"]["tmp_name"];
+
+    $featureImgTargetDir      = $target_dir . $featureImageOrgName;
+
+    $featureImgName = pathinfo($featureImageOrgName, PATHINFO_FILENAME);
+    // $featureImgExt  = pathinfo($featureImageOrgName, PATHINFO_EXTENSION);
+    $featureImgWebpName = $featureImgName.'.webp';
+    $featureImgWebp = $target_dir . $featureImgWebpName;
+
+
+    if ($featureImageTempName != null) {
+      $check2 = getimagesize($featureImageTempName);
       if($check2 !== false) {
-        if(move_uploaded_file($tempname2, $target_image2)){
+
+        // Here we can resize or compress the image 
+        $compressedimgDest = $UtilityImage->imageCompress($featureImageTempName, $featureImgTargetDir, 50);
+
+        // convert image 
+        $UtilityImage->convert($compressedimgDest, $featureImgWebp, 5);
+
+        // delete old file after converted 
+        $Utility->deleteFile($compressedimgDest);
+
           // Newly inserted image name
-          $featureImage = $image_name2;
-        }else{
-          $errMsg = "Failed to update feature image.";
-        }
+          $featureImage = $featureImgWebpName;
+
       }else{
         $errMsg = "Feature image is not an valid image.";
       }
@@ -113,7 +134,7 @@ $imgPath = "../../images/services/";
         <div class="col-md-12 d-flex justify-content-center">
             <div class="col-5 mb-3">
                 <input type="file" class="dropify feature-image" name="feature-image"
-                    data-default-file="<?php echo $imgPath.$childService['feature_image'];?>" data-allowed-file-extensions="png jpg jpeg gif">
+                    data-default-file="<?php echo $imgPath.$childService['feature_image'];?>" data-allowed-file-extensions="png jpg jpeg gif webp">
             </div>
         </div>
 
