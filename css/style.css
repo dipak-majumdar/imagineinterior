@@ -29,7 +29,9 @@ src: url("../fonts/BalooChettan-Regular.ttf");
 @import url(nice-select.css);
 
 /*---------------------------------------- skeleton ----------------------------------------*/
-
+:root{
+    --custom-blue: #8f82ff;
+}
 * {
      box-sizing: border-box !important;
      transition: ease all 0.5s;
@@ -241,7 +243,7 @@ button {
 .page_heading_sec{
     /* padding: 2rem; */
     background-image: url('../images/about-us-main-bg.jpg');
-    background-color: #0ab90a;
+    background-color: var(--custom-blue);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

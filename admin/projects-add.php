@@ -2,15 +2,15 @@
 session_start();
 require_once '../inc/constants.inc.php';
 
-require_once "../_config/adminSession.php";
-require_once '../_config/dbconnect.php';
+require_once ABSPATH . "_config/adminSession.php";
+require_once ABSPATH . '_config/dbconnect.php';
 
-require_once '../classes/admin.class.php';
-require_once '../classes/form.class.php';
+require_once ABSPATH . 'classes/admin.class.php';
+require_once ABSPATH . 'classes/form.class.php';
 
-require_once '../classes/projects.class.php';
-require_once '../classes/services.class.php';
-require_once '../classes/date-utility.class.php';
+require_once ABSPATH . 'classes/projects.class.php';
+require_once ABSPATH . 'classes/services.class.php';
+require_once ABSPATH . 'classes/date-utility.class.php';
 
 $Admin              = new Admin();
 $Form               = new Form();
@@ -241,7 +241,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         url: "ajax/project-image-upload.php",
         parallelUploads: 30,
         uploadMultiple: true,
-        acceptedFiles: '.png,.jpg,.jpeg',
+        acceptedFiles: '.png,.jpg,.jpeg,.webp',
         autoProcessQueue: false,
         success: function(file, response) {
             //   console.log(response);
@@ -250,7 +250,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $('#content').append('<div class="message success">Images Uploaded Successfully.</div>');
                 location.reload();
             } else {
-                alert(response);
+                // alert(response);
+                // console.log(response);
                 $('#content').append('<div class="message error">Images Can\'t Uploaded.</div>');
             }
         }
@@ -305,8 +306,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             data: $('#data-form').serialize(),
             encode: true,
             success: function(response) {
-                alert(response);
-                console.log(response);
+                // alert(response);
+                // console.log(response);
                 let projectId = response.trim();
 
                 if (projectId > 0) {
