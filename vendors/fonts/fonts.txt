@@ -1,0 +1,16 @@
+font-family: 'Abel', sans-serif;
+font-family: 'Alkatra', cursive;
+font-family: 'Caveat', cursive;
+font-family: 'Courgette', cursive;
+font-family: 'Dancing Script', cursive;
+font-family: 'Edu NSW ACT Foundation', cursive;
+font-family: 'Farsan', cursive;
+font-family: 'Fasthand', cursive;
+font-family: 'Fugaz One', cursive;
+font-family: 'Great Vibes', cursive;
+font-family: 'Julius Sans One', sans-serif;
+font-family: 'Kalam', cursive;
+font-family: 'Koulen', cursive;
+font-family: 'Lobster', cursive;
+font-family: 'Pacifico', cursive;
+font-family: 'Satisfy', cursive;
