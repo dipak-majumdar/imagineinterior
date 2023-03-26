@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Abel&family=Alkatra:wght@400;500;600;700&family=Caveat:wght@400;500;600;700&family=Courgette&family=Dancing+Script:wght@400;500;600;700&family=Edu+NSW+ACT+Foundation:wght@400;500;600;700&family=Farsan&family=Fasthand&family=Fugaz+One&family=Great+Vibes&family=Julius+Sans+One&family=Kalam:wght@300;400;700&family=Koulen&family=Lobster&family=Pacifico&family=Satisfy&display=swap');
+
 .header_form{
     border: 1px solid #aeaeed;
     padding: 1rem;
@@ -56,7 +58,7 @@
 }
 
 /* // Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 575.98px) { ... }
+/* @media (max-width: 575.98px) { ... } */
 
 /* // Small devices (landscape phones, less than 768px) */
 @media (max-width: 767.98px) {
@@ -76,7 +78,7 @@
 }
 
 /* // Medium devices (tablets, less than 992px) */
-@media (max-width: 991.98px) { ... }
+/* @media (max-width: 991.98px) { ... } */
 
 /* // Large devices (desktops, less than 1200px) */
-@media (max-width: 1199.98px) { ... }
+/* @media (max-width: 1199.98px) { ... } */
