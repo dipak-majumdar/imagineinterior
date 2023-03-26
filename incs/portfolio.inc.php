@@ -37,17 +37,17 @@
                         }
                         echo '
                         <div class="mb-3 pics animation all '.$eachChild['parent_id'].'">
-                    <a href="projects.php?cservice='.$eachChild['id'].'">
-                        <img class="img-fluid"
-                            src="images/services/'.$img.'"
-                            alt="Card image cap">
+                        <a href="projects.php?cservice='.$eachChild['id'].'">
+                            <img class="img-fluid"
+                                src="images/services/'.$img.'"
+                                alt="Card image cap">
 
-                        <section class="img_text">
-                            <h3 class="text-light mt-auto">'.$eachChild['name'].'</h3>
-                            <small class="text-light ">12 Aug, 2022</small>
-                        </section>
-                    </a>
-                </div>
+                            <section class="img_text">
+                                <h3 class="text-light mt-auto">'.$eachChild['name'].'</h3>
+                                <small class="text-light ">12 Aug, 2022</small>
+                            </section>
+                        </a>
+                        </div>
                         ';
                     }
             ?>
