@@ -22,7 +22,7 @@
         ?>
         <div class="services_section3 sub_layout_padding">
             <h2 class="sub_headig">Lorem ipsum dolor sit amet</h2>
-            <div class="row mt-5">
+            <div class="row justify-content-center mt-5">
                 <?php
 
                 foreach ($childServices as $eachChild) {
