@@ -77,8 +77,9 @@ $childServices = $Services->showChildServices();
                         tempora sint necessitatibus, cupiditate, obcaecati expedita at ipsam rem laborum praesentium
                         nulla iusto! Eaque culpa odit assumenda perferendis accusantium, maxime perspiciatis
                         repellendus tempore eius modi magnam nisi vero ducimus cumque ad ratione officiis excepturi
-                        soluta velit nam vel quae. Ratione quisquam quidem dicta ea laudantium, totam eius sint
-                        voluptates assumenda soluta, ipsa officia, recusandae quas earum. Adipisci autem iste, fugit
+                        soluta.</p>
+
+                    <p class="small_para">
                         ipsum voluptates ut iure odio nihil molestias! Soluta quae ullam ipsa aut voluptatibus
                         molestias, maiores illo magni provident aspernatur, sit minus ducimus recusandae! Ex,
                         laboriosam quisquam. Debitis sit ea et, eos illum molestias animi odio! Ad similique fugiat

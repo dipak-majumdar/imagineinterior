@@ -32,7 +32,7 @@
                             <a class="nav-link <?php if (str_contains($page, 'portfolio')) { echo 'active'; }?>" href="portfolio.php">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.php">About</a>
+                            <a class="nav-link <?php if (str_contains($page, 'about')) { echo 'active'; }?>" href="about.php">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link <?php if (str_contains($page, 'blog')) { echo 'active'; }?>" href="blog.php">Blog</a>

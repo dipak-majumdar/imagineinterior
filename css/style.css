@@ -172,7 +172,7 @@ img {
      padding-bottom: 0 !important;
 }
 .small_para{
-    text-align: center;
+    text-align: left;
 }
 @media (min-width: 575.98px) {
     .small_para{
