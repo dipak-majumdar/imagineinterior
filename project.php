@@ -16,6 +16,9 @@ $showProject    = $Projects->showProjectById($projectId);
 $showImages     = $Projects->showProjectImageByPId($projectId);
 $featureImage   = $Projects->showProjectFeatureImage($projectId);
 
+$fetureNameOnly 		= pathinfo($featureImage['image'], PATHINFO_FILENAME);
+$fullFetureName         = $fetureNameOnly.'.webp';
+
 if (count($showProject) < 1) {
     header("Location: portfolio.php");
     exit;
@@ -120,7 +123,7 @@ if (count($showProject) < 1) {
     <div class="project_section mt-5">
         <div class="container">
             <div class="project-header"
-                style="background-image: url('images/projects/<?php echo $featureImage['image'];?>')">
+                style="background-image: url('images/projects/<?php echo $fullFetureName;?>')">
 
                 <div class="header-details">
                     <h1><?php echo $showProject['name'];?></h1>
@@ -133,12 +136,14 @@ if (count($showProject) < 1) {
             <div class="portfolio-item row">
                 <?php
                 foreach ($showImages as $eachImage) {
+                    $fileNameOnly 		= pathinfo($eachImage['image'], PATHINFO_FILENAME);
+                    $fullName           = $fileNameOnly.'.webp';
                     echo '
                     <div class="item selfie col-sm col-6 col-md-4 col-lg-3">
                         <a href="images/projects/'.$eachImage['image'].'"
                             class="fancylight popup-btn" data-fancybox-group="light">
                             <img class="img-fluid image_fit"
-                                src="images/projects/'.$eachImage['image'].'"
+                                src="images/projects/'.$fullName.'"
                                 alt="">
                         </a>
                     </div>

@@ -103,12 +103,13 @@ $showProjects = $Projects->showProjectByChildServiceId($childServiceId);
 
                     $featureImage   = $Projects->showProjectFeatureImage($eachProject['id']);
                     // print_r($featureImage);
-
+                    $fileNameOnly 		= pathinfo($featureImage['image'], PATHINFO_FILENAME);
+                    $fullName           = $fileNameOnly.'.webp';
                     echo '
                     <div class="col-6 col-md-4 col-lg-3 p-1">
                         <a href="project.php?pid='.$eachProject['id'].'">
                             <div class="projects_images"
-                                style="background-image: url(images/projects/'.$featureImage['image'].');">
+                                style="background-image: url(images/projects/'.$fullName.');">
                                 <div class="projects_txt_box">
                                     <section class="img_text">
                                         <h3 class="text-light mt-auto">'.$eachProject['name'].'</h3>

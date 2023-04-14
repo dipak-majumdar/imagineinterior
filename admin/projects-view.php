@@ -111,18 +111,38 @@ $childServices = $Services->activeChildServicesByParent($project['service_id']);
                 <div class="container">
                     <div class="row">
                         <?php
+                        // print_r(ACCEPTEXTENSION);
+                        
                         foreach ($projectImg as $eachImg) {
+                            
+                            // $imgname =  pathinfo($eachImg['image'],PATHINFO_FILENAME);
+                            // $fullPath = '../images/projects/Agatha_Study_Desk_0-39994920.jpg';
+                            // if (file_exists($fullPath)) {
+                            //             echo $fullPath;
+                            //             exit;
+                            //         }
+                            // foreach (ACCEPTEXTENSION as $ext) {
+                            //     // echo $imgname,$ext;
+                            //      $projImgsPath   = IMGURL."projects/{$imgname}{$ext}";
+                            //     // $projImgsPath   = "../images/projects/.{$imgname}{$ext}";
+                            //     echo '<img src="'.$projImgsPath.'" alt="">';
+
+                            //      echo '<br><br>';
+                            //     if (file_exists($projImgsPath)) {
+                            //         echo $projImgsPath;
+                            //         exit;
+                            //     }
+                            // }
+                            // <?php echo IMGURL; projects/
                         ?>
                         <div class="col-md-4">
                             <div class="p-3">
-                                <input type="file" class="dropify"
-                                    data-default-file="../images/projects/<?php echo $eachImg['image']; ?>">
+                                <input type="file" class="dropify" data-default-file="../images/projects/<?php echo $eachImg['image']; ?>">
                             </div>
                         </div>
                         <?php
                         }
                         ?>
-
                         <div class="col-md-12">
                             <div class="mt-4 mb-2">
                                 <label for="" class="form-label">Projet Name <span class="badge bg-danger mouse-pointer"

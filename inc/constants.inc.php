@@ -38,6 +38,10 @@
 		
 	
 	define("ABSPATH",			$_SERVER['DOCUMENT_ROOT'].'/imagine-interior/');		//location of the logo
+	define("IMGPATH",			ABSPATH.'images/');		//location of the logo
+	define("IMGURL",			URL.'images/');		//location of the logo
+
+	const ACCEPTEXTENSION		= array(".png", ".jpg", ".jpeg", ".gif");
 	
 	//define company logo
 	define("LOGO_PATH",			URL.'images/logo/imagine Interior-logo-2.png');		//location of the logo

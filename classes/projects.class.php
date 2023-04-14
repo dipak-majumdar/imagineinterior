@@ -175,6 +175,14 @@ class Projects extends DBConnection{
             foreach ($imageNames as $eachImage) {
                 $filePath = '../../images/projects/'.$eachImage['image'];
                 $unlinked = unlink($filePath);
+
+                
+                $nameOnly 		= pathinfo($eachImage['image'], PATHINFO_FILENAME);
+                $fullNameOnly   = $nameOnly.'.webp';
+                $filePath2 = '../../images/projects/'.$fullNameOnly;
+                $unlinked = unlink($filePath2);
+
+
             }
             if ($unlinked) {   
                 $sql = "DELETE FROM `project_images` WHERE `project_id` = '$projectId'";

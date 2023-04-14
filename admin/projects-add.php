@@ -241,7 +241,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         url: "ajax/project-image-upload.php",
         parallelUploads: 30,
         uploadMultiple: true,
-        acceptedFiles: '.png,.jpg,.jpeg,.webp',
+        acceptedFiles: '.png,.jpg,.jpeg,.gif',
+        // 'png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp'
         autoProcessQueue: false,
         success: function(file, response) {
             //   console.log(response);
@@ -250,7 +251,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $('#content').append('<div class="message success">Images Uploaded Successfully.</div>');
                 location.reload();
             } else {
-                // alert(response);
+                alert(response);
                 // console.log(response);
                 $('#content').append('<div class="message error">Images Can\'t Uploaded.</div>');
             }
@@ -315,7 +316,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     //   alert(projectId);
                     myDropzone.processQueue();
                 } else {
-                    alert("Something is wrong!");
+                    alert(response);
                 }
             }
         });

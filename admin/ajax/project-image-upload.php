@@ -35,7 +35,7 @@ if(isset($_POST['projectId'])){
 				$fileExtension 		= pathinfo($filename,PATHINFO_EXTENSION); //Get the Extension of uploded file
 
 				$new_name 			= $fileNameOnly.'-'.rand();
-				$new_full_name 		= $fileNameOnly.'-'.rand().'.'. $fileExtension;
+				$new_full_name 		= $new_name.'.'. $fileExtension;
 				$path 				= "../../images/projects/" . $new_full_name;
 
 				$fileWebpName 		= $new_name . '.webp';
@@ -55,27 +55,26 @@ if(isset($_POST['projectId'])){
 						$UtilityImage->convert($path, $fileWebpDir, 100);
 
 						// delte the jpg file 
-						$Utility->deleteFile($path);
+						// $Utility->deleteFile($path);
 
-						$imageAdded = $Projects->addProjectImage($projectId, $fileWebpName, 'admin');
+						$imageAdded = $Projects->addProjectImage($projectId, $new_full_name, 'admin');
 						// echo var_dump($imageAdded);
 						if ($imageAdded == true) {
 							$added = 'true';
 						}
+					}else {
+						echo 'can\'t upload image';
 					}
-
-					// $file_names .= $new_name . " , ";
 				}else{
 					echo 'false';
 				}
 			}
 			
-			
 		}else {
 			echo 'No image exists';
 		}
 
-		echo $added;
+		// echo $added;
 	}else {
 		echo 'Project Id not avilable';
 	}
