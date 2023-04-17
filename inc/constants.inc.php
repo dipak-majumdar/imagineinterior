@@ -1,44 +1,49 @@
 <?php 
+	date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
 	
-	if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on'){
-		$url = "https://";
-	}else{
-		$url = "http://";   
-		// Append the host(domain name, ip) to the URL.       
-	}  
+	function is_localhost() {
+		// set the array for testing the local environment
+		$whitelist = array( '127.0.0.1', '::1' );
+		
+		// check if the server is in the array
+		if ( in_array( $_SERVER['REMOTE_ADDR'], $whitelist ) ) {
+			
+			// this is a local environment
+			return true;
+		}
+	}
 
-	// Append the requested resource location to the URL   
-	// $url.= $_SERVER['REQUEST_URI'];    
- 
-	// echo $url;  
+	if (is_localhost())
+		define('LOCAL_DIR',			'imagine-interior/');
+	else
+		define('LOCAL_DIR',			'');
+
+	//URLS Details 
+	$protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
 
 
 	//company
 	define('SITE_NAME', 		'imagine Interior');							//company short name
 	// define('COMPANY_H', 		"Website ".HOME);								//company home
-	// define('COMPANY_A', 		"Admin ".HOME);									//admin home
-	// define('BLOG_ADMIN', 		"Blog Admin");									//admin home
     
     //website related
-	define('URL', 				$url.$_SERVER['HTTP_HOST'].'/imagine-interior/');				
-	define('URL_LOCAL', 		"http://localhost/imagine-interior/");
-	// define('PAGE',				$_SERVER['PHP_SELF']);
-	// define('ADM_PATH',  		URL.'admin/');		
-	// define('LOCALPATH',  		'marketing/leelija/');
+	define('URL', 				$protocol.$_SERVER['HTTP_HOST'].'/'.LOCAL_DIR);				
+	define('ADM_URL',  			URL.'admin/');		
+	define('PAGE',				$_SERVER['PHP_SELF']);
 	
 	define('SITE_EMAIL', 		"imagineinterior@gmail.com");	//
 	
-	define('CURRENCY',			'$');
 	define('START_YEAR',		'2022');
 	define('END_YEAR',  		date('Y') + 2); 
-	define('HOME',				'Home');
 	
 	// define('SITE_BILLING_EMAIL', "invoice@imagineinterior.com");	//
 	// define('SITE_BILLING_NAME',  "Imagine Interior");
 		
 	
-	define("ABSPATH",			$_SERVER['DOCUMENT_ROOT'].'/imagine-interior/');		//location of the logo
-	define("IMGPATH",			ABSPATH.'images/');		//location of the logo
+	define("ABSPATH",			$_SERVER['DOCUMENT_ROOT'].'/'.LOCAL_DIR);		//location of the logo
+	define("ADMPATH",			ABSPATH . 'admin/');							//location of the logo
+
+	define("IMGPATH",			ABSPATH.'images/');									//location of the logo
 	define("IMGURL",			URL.'images/');		//location of the logo
 
 	const ACCEPTEXTENSION		= array(".png", ".jpg", ".jpeg", ".gif");
@@ -66,10 +71,6 @@
 	
 	
 	//display style constant
-	define('NRSPAN',  			"<span class='blackLarge'>");					//normal span
-	define('ERSPAN',  			"<span class='orangeLetter'>");					//error span start
-	define('SUSPAN',  			"<span class='greenLetter'>");					//success span start
-	define('ENDSPAN', 			"</span>");										//end of span
 	define('ER', 				'Error: ');
 	define('SU', 				'Success !!! ');
 	
