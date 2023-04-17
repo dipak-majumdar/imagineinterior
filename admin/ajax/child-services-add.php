@@ -131,7 +131,7 @@ $allServices = $Services->showServices();
         <div class="col-12">
             <div class="form-floating">
                 <textarea class="form-control" name="childServiceDsc" placeholder="Service Description"
-                    id="floatingTextarea" style="height: 100px;" maxlength="80"></textarea>
+                    id="floatingTextarea" style="height: 100px;" maxlength="150"></textarea>
                 <label for="floatingTextarea">Description</label>
             </div>
         </div>
