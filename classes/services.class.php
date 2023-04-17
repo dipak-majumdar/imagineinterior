@@ -444,16 +444,18 @@ class Services extends DBConnection{
      * @return boolean
      */
     function childServiceDelete($id){
-        $sql = "DELETE FROM `child_services` WHERE `id` = '$id'";
+
+        $this->decrChildServiceProject($id);
+        $this->deleteChildImage($id, 'feature_image');
+        $this->deleteChildImage($id, 'icon');
+        
+            $sql = "DELETE FROM `child_services` WHERE `id` = '$id'";
         // echo $sql;
         $res = $this->conn->query($sql);
-        if ($res) {
-            $this->decrChildServiceProject($id);
-        }
         return $res;
     }//eof
 
-
+    
 
     function deleteChildImage($id, $colname){
         $deleteable = $this->childServiceById($id);
