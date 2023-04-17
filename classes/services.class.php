@@ -207,6 +207,9 @@ class Services extends DBConnection{
      * @return boolean
      */
     function serviceDelete($id){
+        
+        $this->deleteServiceImage($id, 'icon');
+
         $sql = "DELETE FROM `services` WHERE `id` = '$id'";
         // echo $sql;
         $res = $this->conn->query($sql);
@@ -214,7 +217,23 @@ class Services extends DBConnection{
     }//eof
 
 
+    function deleteServiceImage($id, $colname){
+        $deleteable = $this->showServiceById($id);
+        if (count($deleteable)>0) {
+            
+            $filePath = '../../images/services/'.$deleteable[$colname];
+            
+            $unlinked =  $this->deleteImage($filePath);
 
+            if ($unlinked) {
+                return true;
+            }else {
+                return false;
+            }
+        }else {
+            return true;
+        }
+    }//eof
 
     #############################################################################################
     #                                                                                           #
@@ -462,8 +481,9 @@ class Services extends DBConnection{
         if (count($deleteable)>0) {
             
             $filePath = '../../images/services/'.$deleteable[$colname];
-            $unlinked = unlink($filePath);
-            
+
+            $unlinked =  $this->deleteImage($filePath);
+
             if ($unlinked) {
                 return true;
             }else {
@@ -473,7 +493,25 @@ class Services extends DBConnection{
             return true;
         }
     }//eof
-}
+    
+    
+    #############################################################################
+    #############################################################################
 
+    function deleteImage($path){
+        $unlinked = unlink($path);
+            
+        if ($unlinked) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+
+
+
+
+}
 
 ?>
