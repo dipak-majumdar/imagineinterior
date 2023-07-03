@@ -128,14 +128,20 @@ class Projects extends DBConnection{
 
     function addProjectImage($projectId, $image, $added_by){	
 
-        $sql = "INSERT INTO `project_images`
+        try {
+
+            $sql = "INSERT INTO `project_images`
                             (`project_id`, `image`, `added_on`, `added_by`)
                             VALUES
                             ('$projectId', '$image', now(), '$added_by')";
-        // echo $sql.$this->conn->error;
-        $res = $this->conn->query($sql);
-        // $id =  $this->conn->insert_id;
-        return $res;
+            // echo $sql.$this->conn->error;
+            $res = $this->conn->query($sql);
+            // $id =  $this->conn->insert_id;
+            return $res;
+            
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
 
     }//eof
 
@@ -197,6 +203,40 @@ class Projects extends DBConnection{
     }//eof
 
     
+
+    /**
+     * deleting services data from `services` table
+     * @return boolean
+     */
+    function deleteProjectImageByOne($projectId, $imageName){
+        $imageNames = $this->showProjectImageByPId($projectId);
+        if (count($imageNames)>0) {
+            foreach ($imageNames as $eachImage) {
+                if ($eachImage['image'] == $imageName) {
+
+                    $filePath = '../../images/projects/'.$eachImage['image'];
+                    $unlinked = unlink($filePath);
+
+                    $nameOnly 		= pathinfo($eachImage['image'], PATHINFO_FILENAME);
+                    $fullNameOnly   = $nameOnly.'.webp';
+                    $filePath2 = '../../images/projects/'.$fullNameOnly;
+                    $unlinked = unlink($filePath2);
+
+
+                    if ($unlinked) {   
+                        $sql = "DELETE FROM `project_images` WHERE `image` = '$imageName'";
+                        $res = $this->conn->query($sql);
+                        return $res;
+                    }else {
+                        return 'Can not delete the image!';
+                    }
+                }
+
+            }
+        }else {
+            return 'Image Not Exist!';
+        }
+    }//eof
 
 
     // function addProjectImage($service_id, $child_service_id, $name, $dsc, $status, $added_by){	

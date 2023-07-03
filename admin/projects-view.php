@@ -33,6 +33,9 @@ $allServices = $Services->showServices();
 $childServices = $Services->activeChildServicesByParent($project['service_id']);
 // $users = $User->showUsers();
 
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    print_r($_REQUEST);exit;
+}
 
 ?>
 
@@ -48,8 +51,8 @@ $childServices = $Services->activeChildServicesByParent($project['service_id']);
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<?php echo FAVICON_PATH;?>" rel="icon">
+    <link href="<?php echo APPL_FAV_PATH;?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -70,7 +73,6 @@ $childServices = $Services->activeChildServicesByParent($project['service_id']);
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/sharp-solid.css">
 
     <link rel="stylesheet" href="../vendors/dropify-master/dist/css/dropify.css">
-
 
     <!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> -->
     <!-- <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script> -->
@@ -109,40 +111,37 @@ $childServices = $Services->activeChildServicesByParent($project['service_id']);
         <section class="section dashboard">
             <div class="card p-2">
                 <div class="container">
-                    <div class="row">
-                        <?php
-                        // print_r(ACCEPTEXTENSION);
-                        
-                        foreach ($projectImg as $eachImg) {
-                            
-                            // $imgname =  pathinfo($eachImg['image'],PATHINFO_FILENAME);
-                            // $fullPath = '../images/projects/Agatha_Study_Desk_0-39994920.jpg';
-                            // if (file_exists($fullPath)) {
-                            //             echo $fullPath;
-                            //             exit;
-                            //         }
-                            // foreach (ACCEPTEXTENSION as $ext) {
-                            //     // echo $imgname,$ext;
-                            //      $projImgsPath   = IMGURL."projects/{$imgname}{$ext}";
-                            //     // $projImgsPath   = "../images/projects/.{$imgname}{$ext}";
-                            //     echo '<img src="'.$projImgsPath.'" alt="">';
-
-                            //      echo '<br><br>';
-                            //     if (file_exists($projImgsPath)) {
-                            //         echo $projImgsPath;
-                            //         exit;
-                            //     }
-                            // }
-                            // <?php echo IMGURL; projects/
-                        ?>
-                        <div class="col-md-4">
-                            <div class="p-3">
-                                <input type="file" class="dropify" data-default-file="../images/projects/<?php echo $eachImg['image']; ?>">
+                    <div>
+                        <form class="row" action="" method="post">
+                            <?php
+                            $ig = 0;
+                            foreach ($projectImg as $eachImg) {
+                                // <?php echo IMGURL; projects/
+                            ?>
+                            <div class="col-md-4">
+                                <div class="p-3">
+                                    <input type="file" class="dropify"
+                                        data-default-file="../images/projects/<?= $eachImg['image']; ?>"
+                                        value="<?= $eachImg['image']; ?>" name="projectImage<?= $ig++ ?>">
+                                </div>
                             </div>
-                        </div>
-                        <?php
-                        }
-                        ?>
+                            <?php
+                            }
+                            ?>
+                            <div class="text-end">
+                                <button type="button" class="btn btn-sm btn-success"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#imageUpdateModal"
+                                    onclick="imageUpdateModal(<?= $projectId; ?>)">
+                                    Add More
+                                    <i class="fa-solid fa-plus"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="row">
+
                         <div class="col-md-12">
                             <div class="mt-4 mb-2">
                                 <label for="" class="form-label">Projet Name <span class="badge bg-danger mouse-pointer"
@@ -160,7 +159,7 @@ $childServices = $Services->activeChildServicesByParent($project['service_id']);
                                 <br>
                                 <select class="form-control border-0 fs-5" name="serviceName" id="serviceName"
                                     style="width:inherit !important;"
-                                    onchange="updateProject2(<?php echo $projectId; ?>, this)">
+                                    onchange="updateProject2(<?= $projectId; ?>, this)">
                                     <?php
                                     foreach ($allServices as $eachService) {
                                         $selected = '';
@@ -195,9 +194,9 @@ $childServices = $Services->activeChildServicesByParent($project['service_id']);
                             </div>
 
                             <div class="mb-2">
-                                <label for="" class="form-label">Projet Description <span class="badge bg-danger mouse-pointer"
-                                        data-bs-toggle="modal" data-bs-target="#editModal"
-                                        onclick="getModal('projectDsc')">Edit</span></label>
+                                <label for="" class="form-label">Projet Description <span
+                                        class="badge bg-danger mouse-pointer" data-bs-toggle="modal"
+                                        data-bs-target="#editModal" onclick="getModal('projectDsc')">Edit</span></label>
                                 <br>
                                 <h5 id="projectDsc" class="ms-3"><?php echo $project['dsc']; ?></h5>
                             </div>
@@ -212,6 +211,24 @@ $childServices = $Services->activeChildServicesByParent($project['service_id']);
         </section>
     </main>
     <!-- End #main -->
+
+
+    <!-- Image Update Modal Start-->
+    <div class="modal fade" id="imageUpdateModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="imageUpdateModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="imageUpdateModalLabel">Add More Images</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="imageUpdateModalBody">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Image Update Modal End -->
 
 
 
@@ -252,6 +269,7 @@ $childServices = $Services->activeChildServicesByParent($project['service_id']);
     <script src="../vendors/x-editable/core/x-editable.js"></script>
 
     <script src="../vendors/dropify-master/dist/js/dropify.min.js"></script>
+
     <script>
     // $('.dropify').dropify();
 
@@ -270,6 +288,19 @@ $childServices = $Services->activeChildServicesByParent($project['service_id']);
     })
     </script>
     <script>
+    const addMoreImage = () => {
+        let modalBody = document.getElementById('imageUpdateModalBody');
+        console.log(modalBody);
+    }
+    const imageUpdateModal = (id) => {
+        modal = document.getElementById('imageUpdateModalBody');
+        let viewUrl = `ajax/project-image-update.php?id=${id}`;
+        // alert(viewUrl);
+        modal.innerHTML =
+            `<iframe width="99%" height="250px" frameborder="0" allowtransparency="true" src="${viewUrl}"></iframe>`;
+    }
+
+
     const getModal = (id) => {
         modal = document.getElementById('modal-form');
         data = document.getElementById(id).innerText;
@@ -395,6 +426,33 @@ $childServices = $Services->activeChildServicesByParent($project['service_id']);
             });
         }
     }
+
+
+    var drEvent = $('.dropify').dropify();
+
+    drEvent.on('dropify.beforeClear', function(event, element) {
+        imgBox = this.parentElement.parentElement.parentElement;
+
+        let imgName = element.file.name;
+        let text = "Do you really want to delete \"" + imgName + "\" ?";
+        if (confirm(text) == true) {
+
+            $.ajax({
+                    url: "ajax/project-image-delete.ajax.php",
+                    type: "POST",
+                    data: {
+                        projectId: <?= $projectId ?>,
+                        imageName: imgName
+                    },
+                    success: function(response) {
+                        // console.log(response);
+                        if (response == 1) {
+                            imgBox.classList.add("d-none")
+                        }
+                    }
+                });
+        }
+    });
     </script>
 
 </body>

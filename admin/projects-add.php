@@ -246,7 +246,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         autoProcessQueue: false,
         success: function(file, response) {
             //   console.log(response);
-            if (response == 'true') {
+            if (response.includes('true')) {
                 $('#content .message').hide();
                 $('#content').append('<div class="message success">Images Uploaded Successfully.</div>');
                 location.reload();
