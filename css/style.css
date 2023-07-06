@@ -853,7 +853,7 @@ button {
     color: #fff;
     background-color: transparent;
     /* background-clip: padding-box; */
-    border-bottom: 1px solid #fff !important;
+    /* border-bottom: 1px solid #fff !important; */
     border-radius: 0px;
     /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
     border: 0px;
@@ -917,8 +917,11 @@ button {
     background-color: transparent;
     border: 0px;
     border-radius: 0px;
-    border-bottom: 1px solid #fff;
+    /* border-bottom: 1px solid #fff; */
     text-transform: uppercase;
+}
+.subscribe_sec{
+    border-bottom: 1px solid #fff;
 }
 .subscribe_sec input:focus, .subscribe_sec input:active{
     color: #fff;
@@ -951,7 +954,7 @@ button {
     width: 1%;
     margin-bottom: 0px;
     background: transparent !important;
-    border-bottom: 1px solid #ffff;
+    /* border-bottom: 1px solid #ffff; */
 }
 
 .copyright_text {
