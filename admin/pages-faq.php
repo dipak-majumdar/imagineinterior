@@ -1,6 +1,8 @@
 <?php
-$page = 'faq';
 session_start();
+require_once dirname(__DIR__) . '/inc/constants.inc.php';
+require_once ADMPATH . 'partials/common-admin-files.inc.php';
+$page = 'faq';
 
 
 ?>

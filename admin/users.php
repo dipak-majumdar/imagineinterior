@@ -1,20 +1,11 @@
 <?php
 session_start();
-require_once "../_config/adminSession.php";
+require_once dirname(__DIR__) . '/inc/constants.inc.php';
 
-require_once '../_config/dbconnect.php';
-require_once '../inc/constants.inc.php';
-
-// require_once '../classes/categories.class.php';
-require_once '../classes/user.class.php';
+require_once ADMPATH . 'partials/common-admin-files.inc.php';
 
 $page = 'user';
 
-$User   = new User();
-// $User       = new User();
-
-$users   = $User->showUsers();
-// $users = $User->showUsers();
 
 
 ?>
