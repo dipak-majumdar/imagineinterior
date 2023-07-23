@@ -61,11 +61,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
   ?>
 
-    <form class="row g-3" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
+    <form class="m-1" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
 
 
-        <div class="col-md-12 d-flex justify-content-center">
-            <div class="col-6 mb-3">
+        <div class="row mt-2">
+            <div class="col-4">
+                <input type="file" class="dropify" name="service-icon">
+            </div>
+            <div class="row col-8 pe-0">
+                <div class="col-12 pe-0">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" name="serviceName" id="floatingName"
+                            placeholder="Service Name" required>
+                        <label for="floatingName">Service Name</label>
+                    </div>
+                </div>
+                <div class="col-12 pe-0">
+                    <div class="form-floating">
+                        <textarea class="form-control" name="serviceDsc" placeholder="Service Description"
+                            id="floatingTextarea" style="height: 130px;" maxlength="80"></textarea>
+                        <label for="floatingTextarea">Service Description</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- <div class="col-md-12 d-flex justify-content-center">
+            <div class="col-4 mb-3">
                 <input type="file" class="dropify" name="service-icon">
             </div>
         </div>
@@ -83,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     style="height: 100px;" maxlength="80"></textarea>
                 <label for="floatingTextarea">Service Description</label>
             </div>
-        </div>
+        </div> -->
 
         <div class="text-end">
 
@@ -109,4 +133,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </script>
     <script src="../../js/main-js/bootstrap.js"></script>
 </body>
+
 </html>

@@ -102,11 +102,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
           </div>';
   }
   ?>
-    <form class="row g-3" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST" enctype="multipart/form-data">
+    <form class="m-1" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST" enctype="multipart/form-data">
 
-        <div class="col-md-12 d-flex justify-content-center">
-            <div class="col-6 mb-3">
-                <input type="file" class="dropify" name="service-icon" data-default-file="../../images/services/<?php echo $icon; ?>">
+        <div class="row mt-2">
+            <div class="col-4">
+                <input type="file" class="dropify" name="service-icon"
+                    data-default-file="../../images/services/<?php echo $icon; ?>">
+            </div>
+            <div class="row col-8 pe-0">
+                <div class="col-12 pe-0">
+                    <input type="hidden" name="cat-id" value="<?php echo $catId; ?>">
+                    <div class="form-floating">
+                        <input value="<?php echo $name; ?>" type="text" class="form-control" name="catName"
+                            id="floatingName" placeholder="Service Name" required>
+                        <label for="floatingName">Service Name</label>
+                    </div>
+                </div>
+                <div class="col-12 pe-0">
+                    <div class="form-floating">
+                        <textarea class="form-control" name="catDsc" placeholder="Service Description"
+                            id="floatingTextarea" style="height: 130px;"><?php echo $dsc; ?></textarea>
+                        <label for="floatingTextarea">Service Description</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- <div class="col-md-12 d-flex justify-content-center">
+            <div class="col-4 mb-3">
+                <input type="file" class="dropify" name="service-icon"
+                    data-default-file="../../images/services/<?php echo $icon; ?>">
             </div>
         </div>
 
@@ -126,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     style="height: 100px;"><?php echo $dsc; ?></textarea>
                 <label for="floatingTextarea">Service Description</label>
             </div>
-        </div>
+        </div> -->
 
         <div class="text-end">
             <button type="submit" name="updateBtn" class="btn btn-primary">Update</button>
