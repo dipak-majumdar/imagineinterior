@@ -45,6 +45,7 @@ $childServices = $Services->showChildServicesByLimit(12);
     <link rel="stylesheet" type="text/css" href="css/services.css">
     <link rel="stylesheet" type="text/css" href="css/portfolio.css">
     <link rel="stylesheet" type="text/css" href="css/testimonial.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.20/dist/sweetalert2.min.css">
 
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
@@ -52,6 +53,8 @@ $childServices = $Services->showChildServicesByLimit(12);
     <link rel="icon" href="images/fevicon.png" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <!-- Scrollbar Custom CSS -->
+    <!-- <link rel="stylesheet" href="vendors/sweetalert2/dist/sweetalert2.css"> -->
     <!-- Tweaks for older IEs-->
     <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"> -->
     <!-- owl stylesheets -->
@@ -513,6 +516,12 @@ $childServices = $Services->showChildServicesByLimit(12);
 
     <!--Bootstrap Css -->
     <script src="js/main-js/bootstrap.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="vendors/ajax.custom-lib.js"></script>
+    <!-- <script src="vendors/sweetalert2/dist/sweetalert2.css"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.20/dist/sweetalert2.all.min.js"></script>
+    <script src="js/script.js"></script>
 
 
     <!--======================================================================== -->
@@ -553,6 +562,7 @@ $childServices = $Services->showChildServicesByLimit(12);
             }, 300);
         });
     });
+
     </script>
 </body>
 

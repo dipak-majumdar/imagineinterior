@@ -186,6 +186,9 @@ img {
      padding: 12px 40px;
      font-size: 16px;
 }
+.cursor_pointer{
+    cursor: pointer;
+}
 
 .lead {
      font-size: 18px;
@@ -928,10 +931,6 @@ button {
     outline: none !important;
     border: none !important;
 }
-.input-group-text a{
-    color: #ffffff;
-}
-
 
 .subscribe_sec input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: rgba(214, 205, 205, 0.884);

@@ -73,10 +73,12 @@
             </div>
         </div>
         <div class="input-group mb-3 subscribe_sec">
-            <input type="text" class="form-control" placeholder="Enter your email" aria-label="Enter your email"
+            <input type="text" class="form-control" id="main-subscribe" placeholder="Enter your email" aria-label="Enter your email"
                 aria-describedby="basic-addon2">
             <div class="input-group-append">
-                <span class="input-group-text" id="basic-addon2"><a href="#">Subscribe</a></span>
+                <span class="input-group-text cursor_pointer" id="basic-addon2" onclick="subscribeMail()">
+                Subscribe
+                </span>
             </div>
         </div>
     </div>
@@ -84,7 +86,7 @@
     <div class="copyright_section">
         <div class="container py-3">
             <div class="d-flex ">
-                <p class="copyright_text col-md-6">2022 All Rights Reserved.
+                <p class="copyright_text col-md-6"><?= date('Y') ?> All Rights Reserved.
                     <!-- Design by <a href="https://html.design">Free html  Templates</a> -->
                 </p>
                 <div class="footer_social_icon col-md-6">
