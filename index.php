@@ -181,7 +181,7 @@ $childServices = $Services->showChildServicesByLimit(12);
             <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
                 similique ullam.</p>
             <div class="row sub_layout_padding">
-                <div class="col-6 col-md-3 p-2">
+                <div class="col-12 col-md-3 p-2">
 
                     <div class="text-center px-2 py-5 my_card">
                         <div class="planning_icon">
@@ -193,7 +193,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                     </div>
 
                 </div>
-                <div class="col-6 col-md-3 p-2">
+                <div class="col-12 col-md-3 p-2">
 
                     <div class="text-center px-2 py-5 my_card">
                         <div class="planning_icon">
@@ -205,7 +205,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                     </div>
 
                 </div>
-                <div class="col-6 col-md-3 p-2">
+                <div class="col-12 col-md-3 p-2">
 
                     <div class="text-center px-2 py-5 my_card">
                         <div class="planning_icon">
@@ -217,7 +217,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                     </div>
 
                 </div>
-                <div class="col-6 col-md-3 p-2">
+                <div class="col-12 col-md-3 p-2">
 
                     <div class="text-center px-2 py-5 my_card">
                         <div class="planning_icon">
@@ -245,9 +245,10 @@ $childServices = $Services->showChildServicesByLimit(12);
             <h1 class="sec_heading">Our Numbers</h1>
             <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
                 similique ullam.</p>
-            <div class="row sub_layout_padding counter_sec">
-                <div class="col-6 col-md-3 p-2">
 
+            <div class="row sub_layout_padding counter_sec">
+
+                <div class="col-12 col-md-3 p-2">
                     <div class="border text-center number_card"
                         style="border-radius: 25% 75% 44% 56% / 29% 30% 70% 71% ;">
                         <div class="counter_img">
@@ -256,10 +257,9 @@ $childServices = $Services->showChildServicesByLimit(12);
                         <h1 class="text-dark pt-3"><span id='years'>0</span>+</h1>
                         <h3 class="pb-0">Years of experience</h3>
                     </div>
-
                 </div>
-                <div class="col-6 col-md-3 p-2">
 
+                <div class="col-12 col-md-3 p-2">
                     <div class="border text-center number_card"
                         style="border-radius: 45% 75% 44% 61% / 61% 49% 72% 62%;">
                         <div class="counter_img">
@@ -267,12 +267,10 @@ $childServices = $Services->showChildServicesByLimit(12);
                         </div>
                         <h1 class="text-dark pt-3"><span id='projects'>0</span>+</h1>
                         <h3 class="pb-0">Completed Projects</h3>
-
                     </div>
-
                 </div>
-                <div class="col-6 col-md-3 p-2">
 
+                <div class="col-12 col-md-3 p-2">
                     <div class="border text-center number_card"
                         style="border-radius: 91% 39% 70% 56% / 56% 89% 44% 71%;">
                         <div class="counter_img">
@@ -280,12 +278,10 @@ $childServices = $Services->showChildServicesByLimit(12);
                         </div>
                         <h1 class="text-dark pt-3"> <span id='clients'>12</span>+</h1>
                         <h3 class="pb-0">Happy Clients</h3>
-
                     </div>
-
                 </div>
-                <div class="col-6 col-md-3 p-2">
 
+                <div class="col-12 col-md-3 p-2">
                     <div class="border text-center number_card"
                         style="border-radius: 75% 25% 44% 56% / 29% 30% 69% 71%;">
                         <div class="counter_img">
@@ -562,7 +558,6 @@ $childServices = $Services->showChildServicesByLimit(12);
             }, 300);
         });
     });
-
     </script>
 </body>
 
