@@ -180,8 +180,8 @@ $childServices = $Services->showChildServicesByLimit(12);
             <h1 class="sec_heading">How we deliver</h1>
             <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
                 similique ullam.</p>
-            <div class="row sub_layout_padding">
-                <div class="col-12 col-md-3 p-2">
+            <div class="row justify-content-center sub_layout_padding">
+                <div class="col-9 col-md-3 p-2">
 
                     <div class="text-center px-2 py-5 my_card">
                         <div class="planning_icon">
@@ -193,7 +193,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                     </div>
 
                 </div>
-                <div class="col-12 col-md-3 p-2">
+                <div class="col-9 col-md-3 p-2">
 
                     <div class="text-center px-2 py-5 my_card">
                         <div class="planning_icon">
@@ -205,7 +205,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                     </div>
 
                 </div>
-                <div class="col-12 col-md-3 p-2">
+                <div class="col-9 col-md-3 p-2">
 
                     <div class="text-center px-2 py-5 my_card">
                         <div class="planning_icon">
@@ -217,7 +217,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                     </div>
 
                 </div>
-                <div class="col-12 col-md-3 p-2">
+                <div class="col-9 col-md-3 p-2">
 
                     <div class="text-center px-2 py-5 my_card">
                         <div class="planning_icon">
@@ -243,12 +243,11 @@ $childServices = $Services->showChildServicesByLimit(12);
     <div class="new_section layout_padding">
         <div class="container">
             <h1 class="sec_heading">Our Numbers</h1>
-            <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
-                similique ullam.</p>
+            <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error similique ullam.</p>
 
-            <div class="row sub_layout_padding counter_sec">
+            <div class="row justify-content-center sub_layout_padding counter_sec">
 
-                <div class="col-12 col-md-3 p-2">
+                <div class="col-8 col-md-3 p-2">
                     <div class="border text-center number_card"
                         style="border-radius: 25% 75% 44% 56% / 29% 30% 70% 71% ;">
                         <div class="counter_img">
@@ -259,7 +258,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                     </div>
                 </div>
 
-                <div class="col-12 col-md-3 p-2">
+                <div class="col-8 col-md-3 p-2">
                     <div class="border text-center number_card"
                         style="border-radius: 45% 75% 44% 61% / 61% 49% 72% 62%;">
                         <div class="counter_img">
@@ -270,7 +269,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                     </div>
                 </div>
 
-                <div class="col-12 col-md-3 p-2">
+                <div class="col-8 col-md-3 p-2">
                     <div class="border text-center number_card"
                         style="border-radius: 91% 39% 70% 56% / 56% 89% 44% 71%;">
                         <div class="counter_img">
@@ -281,7 +280,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                     </div>
                 </div>
 
-                <div class="col-12 col-md-3 p-2">
+                <div class="col-8 col-md-3 p-2">
                     <div class="border text-center number_card"
                         style="border-radius: 75% 25% 44% 56% / 29% 30% 69% 71%;">
                         <div class="counter_img">
