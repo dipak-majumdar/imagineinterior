@@ -92,17 +92,52 @@ $allServices = $Services->showServices();
     <form class="row g-3" action="<?php echo $_SERVER['PHP_SELF']?>" method="post" enctype="multipart/form-data">
 
 
-        <div class="col-md-12 d-flex justify-content-center">
+        <!-- <div class="col-md-12 d-flex justify-content-center">
             <div class="col-6 mb-3">
                 <input type="file" class="dropify" name="service-icon">
             </div>
-        </div>
+        </div> -->
 
         <div class="col-md-12 d-flex justify-content-center">
             <div class="col-6 mb-3">
                 <input type="file" class="dropify feature-image" name="feature-image">
             </div>
         </div>
+
+        <!-- ==================================================== -->
+
+        <div class="col-md-12">
+            <div class="row  w-100 ms-0 ps-1 py-2" style="border: 1px solid #b8b8ed">
+                <div class="col-2">
+                    <!-- <input type="file" class="dropify" name="service-icon" id="service-icon"
+                        data-default-file="" data-height="80"
+                        onchange="getUplodedData(this)" data-allowed-file-extensions="png jpg jpeg gif"> -->
+                    <input type="file" class="dropify" data-height="80" name="service-icon">
+
+                </div>
+
+                <div class="col-9" onclick="clickElement('service-icon')">
+                    <label class="opacity-50">Sub Service Icon</label>
+                    <p class="mb-0 iconName dropify-filename-inner"></p>
+                    <!-- <p class="mb-0 iconName"><?php //echo $childService['icon']; ?></p> -->
+                    <?php
+                      // $rawSize =  filesize($imgPath.$childService['icon']);
+                      // $fSExt = array('Bytes', 'KB', 'MB', 'GB');
+                      // $i = 0;
+                      // while ($rawSize > 900) {
+                      //   $rawSize /= 1024;
+                      //   $i++;
+                      // }
+                      // $exactSize = (round($rawSize * 100) / 100);
+                      // $exactSize = $exactSize.' '.$fSExt[$i]
+                    ?>
+                    <!-- <p class="iconSize"><?php //echo $exactSize; ?></p> -->
+                    <p class="iconSize"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================================================== -->
 
         <div class="col-md-12">
             <div class="form-floating">
@@ -144,7 +179,7 @@ $allServices = $Services->showServices();
     <script src="../../js/jquery.min.js"></script>
     <script src="../../vendors/dropify-master/dist/js/dropify.min.js"></script>
     <script>
-      $('.feature-image').dropify({
+    $('.feature-image').dropify({
         messages: {
             'default': 'Upload Featutre Image',
             'replace': 'Drag and drop or click to replace',
@@ -152,16 +187,15 @@ $allServices = $Services->showServices();
             'error': 'Ooops, something wrong happended.'
         }
     });
-      $('.dropify').dropify({
+    $('.dropify').dropify({
         messages: {
-            'default': 'Upload Your Service Icon Here',
+            'default': 'Icon Here',
             'replace': 'Drag and drop or click to replace',
             'remove': 'Remove',
-            'error': 'Ooops, something wrong happended.'
+            'error': 'Ooops, something wrong happended.',
         }
     });
 
-    
     </script>
     <script src="../../js/main-js/bootstrap.js"></script>
 </body>
