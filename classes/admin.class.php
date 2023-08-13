@@ -6,8 +6,14 @@ class Admin extends DBConnection{
 
 
     function addAdmin($fname, $lname, $username, $email, $pass){
+        $fname      = addslashes($fname);
+        $lname      = addslashes($lname);
+        $username   = addslashes($username);
+        $email      = addslashes($email); 
+        $pass       = addslashes($pass);
 
         $sql = "INSERT INTO `admin` (`fname`, `lname`, `username`, `email`, `password`, `added_on`) VALUES ('$fname', '$lname', '$username', '$email', '$pass', now())";
+        // echo $sql.$this->conn->error;
         $res = $this->conn->query($sql);
         // return $res;
         $id  = $this->conn->insert_id;

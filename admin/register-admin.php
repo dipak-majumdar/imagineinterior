@@ -54,11 +54,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $v_pass   = $_POST['v-password'];
         
         if ($pass == $v_pass) {
+            $pass = password_hash($pass, PASSWORD_DEFAULT);
     
             $exist = $Admin->showAdminByEmail($email);
             if (count($exist) == 0) {
                 $added = $Admin->addAdmin($fname, $lname, $username, $email, $pass);
-                // var_dump($added);exit;
+                // var_dump($added);
                 if ($added != 0) {
                     session_start();
                     $_SESSION['logedin']    = true;

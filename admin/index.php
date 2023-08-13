@@ -43,8 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
       // var_dump($userData);
     }
     if ((count($userData) == 1 && count($userData) != 0)) {
-      $password = $userData[0]['password'];
-      if ($password == $pass) {
+      if (password_verify($pass, $userData[0]['password'])) {
         
         session_start();
         $_SESSION['logedin']    = true;
