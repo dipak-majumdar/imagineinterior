@@ -119,10 +119,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     </div>
                 </div>
                 <div class="col-12 pe-0">
-                    <div class="form-floating">
-                        <textarea class="form-control" name="catDsc" placeholder="Service Description"
-                            id="floatingTextarea" style="height: 130px;"><?php echo $dsc; ?></textarea>
-                        <label for="floatingTextarea">Service Description</label>
+                    <div class="form-group">
+                        <textarea class="form-control editor" name="catDsc" placeholder="Service Description" style="height: 130px;"><?php echo $dsc; ?></textarea>
                     </div>
                 </div>
             </div>
@@ -161,8 +159,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <script src="../../js/jquery.min.js"></script>
     <script src="../../vendors/dropify-master/dist/js/dropify.min.js"></script>
     <script src="../../js/bootstrap.js"></script>
+    <script src="../../vendors/ckeditor/build/ckeditor.js"></script>
     <script>
     $('.dropify').dropify();
+
+    // CKEDITOR.replace('serviceDsc');
+
+    ClassicEditor
+        .create(document.querySelector('.editor'), {
+
+            // Editor configuration.
+        })
+        .then(editor => {
+            window.editor = editor;
+        })
+        .catch(handleSampleError);
+
+    function handleSampleError(error) {
+        const issueUrl = 'https://github.com/ckeditor/ckeditor5/issues';
+
+        const message = [
+            'Oops, something went wrong!',
+            `Please, report the following error on ${ issueUrl } with the build id "3nxjkchnwx9x-dh6ivg4raa9r" and the error stack trace:`
+        ].join('\n');
+
+        console.error(message);
+        console.error(error);
+    }
     </script>
 </body>
 
