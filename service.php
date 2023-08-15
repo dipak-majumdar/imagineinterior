@@ -5,9 +5,27 @@ require_once "./classes/services.class.php";
 
 $Services   = new Services();
 
-$allServices = $Services->activeServices();
-$childServices = $Services->showChildServices();
+// echo '<pre>';
+// print_r($_GET);exit;
 
+if (isset($_GET['slug'])) {
+    $serviceSlug = $_GET['slug']; 
+}
+
+$service = $Services->showServiceBySlug($serviceSlug);
+$serviceId         = $service['id'];
+$serviceName       = $service['name'];
+$serviceSlug       = $service['slug'];
+$serviceDesc       = $service['descreption'];
+$child_services    = $service['child_services'];
+$projects_nos      = $service['projects_nos'];
+$serviceIcon       = $service['icon'];
+$serviceStatus     = $service['status'];
+$serviceEdited     = $service['edited'];
+$serviceCreated    = $service['created'];
+
+$childService = $Services->activeChildServicesByParent($serviceId);
+// print_r($service);
 
 ?>
 <!DOCTYPE html>
@@ -27,12 +45,12 @@ $childServices = $Services->showChildServices();
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/main-css/bootstrap.css">
+    <link rel="stylesheet" href="<?= URL?>css/main-css/bootstrap.css">
 
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/services.css">
-    <link rel="stylesheet" type="text/css" href="css/custom-style.css">
+    <link rel="stylesheet" type="text/css" href="<?= URL?>css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= URL?>css/services.css">
+    <link rel="stylesheet" type="text/css" href="<?= URL?>css/custom-style.css">
 
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
@@ -60,8 +78,8 @@ $childServices = $Services->showChildServices();
     <div class="mt-5">
         <?php // require_once "incs/our-services.php"; ?>
         <div class="page_heading_sec mt-2 mt-md-3 mb-3 p-5">
-            <h1 class="sec_heading">our services</h1>
-            <p class="sec_heading_dsc">There are many variations of passages of Lorem Ipsum </p>
+            <h1 class="sec_heading"><?= $serviceName ?></h1>
+            <p class="sec_heading_dsc"><?= $serviceDesc ?></p>
         </div>
         <div class="services_section layout_padding pt-0">
             <div class="container">
@@ -88,23 +106,6 @@ $childServices = $Services->showChildServices();
                         veritatis, illo sunt inventore aspernatur neque commodi ex soluta suscipit delectus dolorum
                         repudiandae exercitationem, eius accusantium sit doloribus reprehenderit voluptates
                         consequuntur officiis libero iusto eaque non unde? Illum!</p>
-                </div>
-                <div class="new_section sub_layout_padding">
-                    <div class="row justify-content-evenly">
-                        <?php
-                            foreach ($allServices as $eachSearvice) {
-                                echo '<div class="col-lg-3 col-sm-6">
-                                        <a href="service/'.$eachSearvice['slug'],'">
-                                            <div class="service_icon_bx">
-                                                <img src="images/services/'.$eachSearvice['icon'].'">
-                                            </div>
-                                            <h2 class="furnitures_text">'.$eachSearvice['name'].'</h2>
-                                            <p class="dummy_text">'.$eachSearvice['descreption'].'</p>
-                                        </a>
-                                    </div>';
-                            }
-                            ?>
-                    </div>
                 </div>
                 <?php
                 if (count($childServices) > 0) {
@@ -133,7 +134,7 @@ $childServices = $Services->showChildServices();
                                 echo '<div class="col-6 col-md-2">
                                         <a href="projects.php?cservice='.$eachChild['id'].'">
                                             <div class="serv_dtls">
-                                                <img src="images/services/'.$eachChild['icon'].'" alt="">
+                                                <img src="'.URL.'images/services/'.$eachChild['icon'].'" alt="">
                                             <p >'.$eachChild['name'].'</p>
                                             <span class="viewbtn">View</span>
                                             </div>
