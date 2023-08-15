@@ -74,6 +74,28 @@ class Services extends DBConnection{
 
 
 
+        /**
+     * retriving userdata from table `user` by `user_id`
+     * @param $id user_id
+     * @return array
+     */
+    function showServiceBySlug($alias){
+        $data= array();
+        $sql = "SELECT * FROM `services` WHERE `slug` = '$alias'";
+        $res = $this->conn->query($sql);
+        $row = $res->num_rows;
+        if ($row > 0 ) {
+            while ($result = $res->fetch_assoc()) {
+                $data = $result;
+            }
+        }
+        return $data;
+
+    }//eof
+
+
+
+
     /**
      * retriving userdata from table `user` by `user_id`
      * @param $id user_id
