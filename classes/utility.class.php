@@ -1,6 +1,6 @@
 <?php
 
-class Utility{
+class Utility extends DBConnection{
 
 
     function currentUrl(){
@@ -9,6 +9,41 @@ class Utility{
         return $currentUrl;
         
     }
+
+
+    /**
+     * Custome PHP function ti generate seo friendly url
+     * $string      = Required. The string which you want to convert to the SEO friendly URL.
+     * $wordLimit   = Optional. Restrict words limit on SEO URL, default is 0 (no limit).
+     */
+    function generateSeoURL($string, $wordLimit = 0){ 
+        $separator = '-'; 
+         
+        if($wordLimit != 0){ 
+            $wordArr = explode(' ', $string); 
+            $string = implode(' ', array_slice($wordArr, 0, $wordLimit)); 
+        } 
+     
+        $quoteSeparator = preg_quote($separator, '#'); 
+     
+        $trans = array( 
+            '&.+?;'                 => '', 
+            '[^\w\d _-]'            => '', 
+            '\s+'                   => $separator, 
+            '('.$quoteSeparator.')+'=> $separator 
+        ); 
+     
+        $string = strip_tags($string); 
+        foreach ($trans as $key => $val){ 
+            $string = preg_replace('#'.$key.'#iu', $val, $string); 
+        } 
+     
+        $string = strtolower($string); 
+     
+        return trim(trim($string, $separator)); 
+    }//eof
+
+
 
 
     /**
