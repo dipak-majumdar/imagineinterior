@@ -5,7 +5,7 @@
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-                <div class="logo"><a href="/"><img src="images/logo/imagine Interior-logo-2.png"></a></div>
+                <div class="logo"><a href="/"><img src="<?= URL?>images/logo/imagine Interior-logo-2.png"></a></div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,22 +23,22 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'index')) { echo 'active'; }?>" href="<?php echo URL;?>">Home</a>
+                            <a class="nav-link <?php if (str_contains($page, 'index')) { echo 'active'; }?>" href="<?php echo URL ?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'services')) { echo 'active'; }?>" href="services.php">Services</a>
+                            <a class="nav-link <?php if (str_contains($page, 'services')) { echo 'active'; }?>" href="<?php echo URL ?>services.php">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'portfolio')) { echo 'active'; }?>" href="portfolio.php">Portfolio</a>
+                            <a class="nav-link <?php if (str_contains($page, 'portfolio')) { echo 'active'; }?>" href="<?php echo URL ?>portfolio.php">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'about')) { echo 'active'; }?>" href="about.php">About</a>
+                            <a class="nav-link <?php if (str_contains($page, 'about')) { echo 'active'; }?>" href="<?php echo URL ?>about.php">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'blog')) { echo 'active'; }?>" href="blog.php">Blog</a>
+                            <a class="nav-link <?php if (str_contains($page, 'blog')) { echo 'active'; }?>" href="<?php echo URL ?>blog.php">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'contact')) { echo 'active'; }?>" href="contact.php">Contact</a>
+                            <a class="nav-link <?php if (str_contains($page, 'contact')) { echo 'active'; }?>" href="<?php echo URL ?>contact.php">Contact</a>
                         </li>
                         <li class="nav-item call_us">
                             <a onmouseover="greenIcon(this)" onmouseout="whiteIcon(this)" class="nav-link"
