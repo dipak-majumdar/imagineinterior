@@ -24,7 +24,7 @@ $serviceStatus     = $service['status'];
 $serviceEdited     = $service['edited'];
 $serviceCreated    = $service['created'];
 
-$childService = $Services->activeChildServicesByParent($serviceId);
+$childServices = $Services->activeChildServicesByParent($serviceId);
 // print_r($service);
 
 ?>
