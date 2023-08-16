@@ -141,7 +141,7 @@ if (count($showProject) < 1) {
                     $fullName           = $fileNameOnly.'.webp';
                     echo '
                     <div class="item selfie col-sm col-6 col-md-4 col-lg-3">
-                        <a href="images/projects/'.$eachImage['image'].'"
+                        <a href="'.IMGURL.'projects/'.$eachImage['image'].'"
                             class="fancylight popup-btn" data-fancybox-group="light">
                             <img class="img-fluid image_fit"
                                 src="'.IMGURL.'projects/'.$fullName.'"

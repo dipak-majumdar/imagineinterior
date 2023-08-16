@@ -26,19 +26,19 @@
                             <a class="nav-link <?php if (str_contains($page, 'index')) { echo 'active'; }?>" href="<?php echo URL ?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'services')) { echo 'active'; }?>" href="<?php echo URL ?>services.php">Services</a>
+                            <a class="nav-link <?php if (str_contains($page, 'services')) { echo 'active'; }?>" href="<?php echo URL ?>services">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'portfolio')) { echo 'active'; }?>" href="<?php echo URL ?>portfolio.php">Portfolio</a>
+                            <a class="nav-link <?php if (str_contains($page, 'portfolio')) { echo 'active'; }?>" href="<?php echo URL ?>portfolio">Portfolio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'about')) { echo 'active'; }?>" href="<?php echo URL ?>about.php">About</a>
+                            <a class="nav-link <?php if (str_contains($page, 'about')) { echo 'active'; }?>" href="<?php echo URL ?>about">About</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'blog')) { echo 'active'; }?>" href="<?php echo URL ?>blog.php">Blog</a>
+                            <a class="nav-link <?php if (str_contains($page, 'blog')) { echo 'active'; }?>" href="<?php echo URL ?>blog">Blog</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?php if (str_contains($page, 'contact')) { echo 'active'; }?>" href="<?php echo URL ?>contact.php">Contact</a>
+                            <a class="nav-link <?php if (str_contains($page, 'contact')) { echo 'active'; }?>" href="<?php echo URL ?>contact">Contact</a>
                         </li>
                         <li class="nav-item call_us">
                             <a onmouseover="greenIcon(this)" onmouseout="whiteIcon(this)" class="nav-link"

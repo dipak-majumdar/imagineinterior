@@ -119,7 +119,7 @@ $childServices = $Services->showChildServices();
                         }
                         echo '
                         <div class="mb-3 pics animation all '.$eachChild['parent_id'].'">
-                    <a href="projects.php?cservice='.$eachChild['id'].'">
+                    <a href="projects/'.$eachChild['slug'].'">
                         <img class="img-fluid"
                             src="images/services/'.$img.'"
                             alt="Card image cap">
