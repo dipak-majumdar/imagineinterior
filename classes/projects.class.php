@@ -64,6 +64,17 @@ class Projects extends DBConnection{
         return $data;
     }//eof
 
+
+    function showProjectBySlug($slug){
+        $data = array();
+        $sql = "SELECT * FROM `projects` WHERE `slug` = '$slug'";
+        $res = $this->conn->query($sql);
+        while ($result = $res->fetch_assoc()) {
+            $data = $result;
+        }
+        return $data;
+    }//eof
+
     	
     function showProjectByChildServiceId($childServiceId){
         $data = array();

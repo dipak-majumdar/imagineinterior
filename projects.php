@@ -17,7 +17,7 @@ if (isset($_GET['cservice'])) {
 }
 
 $childService = $Services->childServiceBySlug($childServiceSlug);
-// print_r($childService);
+// print_r($childService);exit;
 $childServiceId = $childService['id'];
 $showProjects = $Projects->showProjectByChildServiceId($childServiceId);
 // print_r($showProjects);exit;
@@ -114,7 +114,7 @@ $showProjects = $Projects->showProjectByChildServiceId($childServiceId);
                     $fullName           = $fileNameOnly.'.webp';
                     echo '
                     <div class="col-6 col-md-4 col-lg-3 p-1">
-                        <a href="'.URL.'project.php?pid='.$eachProject['id'].'">
+                        <a href="'.URL.'project/'.$eachProject['slug'].'">
                             <div class="projects_images"
                                 style="background-image: url('.IMGURL.'projects/'.$fullName.');">
                                 <div class="projects_txt_box">

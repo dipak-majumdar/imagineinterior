@@ -94,9 +94,9 @@ $childServices = $Services->showChildServices();
                         <?php
                             foreach ($allServices as $eachSearvice) {
                                 echo '<div class="col-lg-3 col-sm-6">
-                                        <a href="service/'.$eachSearvice['slug'],'">
+                                        <a href="'.URL.'service/'.$eachSearvice['slug'],'">
                                             <div class="service_icon_bx">
-                                                <img src="images/services/'.$eachSearvice['icon'].'">
+                                                <img src="'.IMGURL.'services/'.$eachSearvice['icon'].'">
                                             </div>
                                             <h2 class="furnitures_text">'.$eachSearvice['name'].'</h2>
                                             <p class="dummy_text">'.$eachSearvice['descreption'].'</p>
@@ -131,9 +131,9 @@ $childServices = $Services->showChildServices();
                         <?php
                             foreach ($childServices as $eachChild) {
                                 echo '<div class="col-6 col-md-2">
-                                        <a href="projects.php?cservice='.$eachChild['id'].'">
+                                        <a href="'.URL.'projects/'.$eachChild['slug'].'">
                                             <div class="serv_dtls">
-                                                <img src="images/services/'.$eachChild['icon'].'" alt="">
+                                                <img src="'.IMGURL.'services/'.$eachChild['icon'].'" alt="">
                                             <p >'.$eachChild['name'].'</p>
                                             <span class="viewbtn">View</span>
                                             </div>
