@@ -132,7 +132,7 @@ $childServices = $Services->activeChildServicesByParent($serviceId);
                         <?php
                             foreach ($childServices as $eachChild) {
                                 echo '<div class="col-6 col-md-2">
-                                        <a href="'.URL.'projects.php?cservice='.$eachChild['id'].'">
+                                        <a href="'.URL.'projects/'.$eachChild['slug'].'">
                                             <div class="serv_dtls">
                                                 <img src="'.URL.'images/services/'.$eachChild['icon'].'" alt="">
                                             <p >'.$eachChild['name'].'</p>

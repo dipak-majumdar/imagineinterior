@@ -2,16 +2,23 @@
 require_once "./inc/reqHeader.php";
 
 require_once "classes/projects.class.php";
+require_once "classes/services.class.php";
 
 $Projects   = new Projects();
+$Services   = new Services();
 
+// print_r($_GET);exit;
 
 if (isset($_GET['cservice'])) {
-    $childServiceId = $_GET['cservice'];
+    $childServiceSlug = $_GET['cservice'];
 }else {
     header("Location: portfolio.php");
     exit;
 }
+
+$childService = $Services->childServiceBySlug($childServiceSlug);
+// print_r($childService);
+$childServiceId = $childService['id'];
 $showProjects = $Projects->showProjectByChildServiceId($childServiceId);
 // print_r($showProjects);exit;
 ?>
@@ -34,16 +41,16 @@ $showProjects = $Projects->showProjectByChildServiceId($childServiceId);
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/main-css/bootstrap.css">
+    <link rel="stylesheet" href="<?= URL ?>css/main-css/bootstrap.css">
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/projects.css">
+    <link rel="stylesheet" type="text/css" href="<?= URL ?>css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= URL ?>css/projects.css">
     <!-- Responsive-->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="<?= URL ?>css/responsive.css">
     <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="<?= URL ?>images/fevicon.png" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="<?= URL ?>css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
     <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"> -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css">
@@ -107,9 +114,9 @@ $showProjects = $Projects->showProjectByChildServiceId($childServiceId);
                     $fullName           = $fileNameOnly.'.webp';
                     echo '
                     <div class="col-6 col-md-4 col-lg-3 p-1">
-                        <a href="project.php?pid='.$eachProject['id'].'">
+                        <a href="'.URL.'project.php?pid='.$eachProject['id'].'">
                             <div class="projects_images"
-                                style="background-image: url(images/projects/'.$fullName.');">
+                                style="background-image: url('.IMGURL.'projects/'.$fullName.');">
                                 <div class="projects_txt_box">
                                     <section class="img_text">
                                         <h3 class="text-light mt-auto">'.$eachProject['name'].'</h3>
@@ -146,8 +153,8 @@ $showProjects = $Projects->showProjectByChildServiceId($childServiceId);
     <!--  footer section end -->
 
     <!--Bootstrap Css -->
-    <script src="js/main-js/bootstrap.js"></script>
-    <script src="js/jquery.min.js"></script>
+    <script src="<?= URL ?>js/main-js/bootstrap.js"></script>
+    <script src="<?= URL ?>js/jquery.min.js"></script>
 
 </body>
 

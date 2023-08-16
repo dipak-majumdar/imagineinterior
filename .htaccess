@@ -38,3 +38,4 @@ RewriteRule ^([^/]+)/?$ $1.php [L]
 
 # Rewrite service/office to service.php?slug=office
 RewriteRule ^service/([^/]+)/?$ service.php?slug=$1 [L]
+RewriteRule ^projects/([^/]+)/?$ projects.php?cservice=$1 [L]

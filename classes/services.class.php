@@ -355,6 +355,20 @@ class Services extends DBConnection{
 
 
 
+    function childServiceBySlug($slug){
+        $data = array();
+        $sql = "SELECT * FROM `child_services` WHERE `slug` = '$slug'";
+        // echo $sql.$this->conn->error;
+        $res = $this->conn->query($sql);
+        // var_dump($res);
+        while ($result = $res->fetch_assoc()) {
+            $data = $result;
+        }
+        return $data;
+    }//eof
+
+
+
 
     /**
      * retriving categories data for all services from `categories` table
