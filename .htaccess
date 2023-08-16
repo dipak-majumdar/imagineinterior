@@ -24,18 +24,19 @@
 # Creating SEO Friendly Service URL 
 # RewriteRule ^service/([a-zA-Z0-9-/]+)$ service.php?slug=$1
 # RewriteRule ^service/([a-zA-Z-0-9-]+)/ service.php?slug=$1
-
+# ========================================
 RewriteEngine On
 
 # Forcefully remove .php extension from URLs
-RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
-RewriteRule ^ /%1 [NC,R,L]
+# RewriteCond %{THE_REQUEST} /([^.]+)\.php [NC]
+# RewriteRule ^ /%1 [NC,R,L]
 
 # Remove .php extension from URLs
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^([^/]+)/?$ $1.php [L]
 
+# ==============================================
 # Rewrite service/office to service.php?slug=office
 RewriteRule ^service/([^/]+)/?$ service.php?slug=$1 [L]
 RewriteRule ^projects/([^/]+)/?$ projects.php?cservice=$1 [L]
