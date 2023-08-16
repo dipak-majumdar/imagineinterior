@@ -2,30 +2,28 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-5 col-sm-12">
-                <div class="fooer_logo"><img src="images/logo/imagine-Interior-footer-logo-2.png"></div>
-                <p class="footer_dsc">There are many variat
-                    ions of passages of L
-                    orem Ipsum available
-                    , but the majority h
-                    ave suffered altera
-                    tion in some form, by
+                <div class="fooer_logo"><img src="<?= IMGURL ?>logo/imagine-Interior-footer-logo-2.png"></div>
+                <p class="footer_dsc">There are many variations of passages of L
+                    orem Ipsum available, but the majority have suffered alteration in some form, by
                 </p>
             </div>
             <div class="col-lg-4 col-sm-6">
                 <h1 class="customer_text">Address</h1>
                 <ul class="footer_dsc">
                     <li>
-                        <a href="tel:<?php echo $site['contact1']; ?>"><img class="footer_cont_icon" src="images\icons\call-icon-white.png" alt="">
+                        <a href="tel:<?php echo $site['contact1']; ?>">
+                            <img class="footer_cont_icon" src="<?= IMGURL ?>icons/call-icon-white.png" alt="">
                             <?php echo $site['contact1']; ?>
                         </a>
                     </li>
                     <li>
-                        <a href="mailto:<?php echo $site['email']; ?>"><img class="footer_cont_icon" src="images\icons\mail-icon-white.png" alt="">
+                        <a href="mailto:<?php echo $site['email']; ?>">
+                            <img class="footer_cont_icon" src="<?= IMGURL ?>/icons/mail-icon-white.png" alt="">
                             <?php echo $site['email']; ?>
                         </a>
                     </li>
                     <li>
-                        <a href=""><img class="footer_cont_icon" src="images\icons\location-icon-white.png" alt="">
+                        <a href=""><img class="footer_cont_icon" src="<?= IMGURL ?>icons/location-icon-white.png" alt="">
                                 <?php
                                     $comma = ', ';
                                     if ($site['address1'] == null) {
@@ -62,12 +60,12 @@
             <div class="col-lg-3 col-sm-6">
                 <h1 class="customer_text">INFORMATION</h1>
                 <ul class="footer_dsc">
-                    <li><a href="">Services</a></li>
-                    <li><a href="">Portfolio</a></li>
-                    <li><a href="">About Us</a></li>
-                    <li><a href="">Blog</a></li>
-                    <li><a href="">Contact</a></li>
-                    <li><a href="">Terms & Conditions</a></li>
+                    <li><a href="<?= URL ?>services">Services</a></li>
+                    <li><a href="<?= URL ?>portfolio">Portfolio</a></li>
+                    <li><a href="<?= URL ?>about">About Us</a></li>
+                    <li><a href="<?= URL ?>blog">Blog</a></li>
+                    <li><a href="<?= URL ?>contact">Contact</a></li>
+                    <li><a href="<?= URL ?>terms-and-conditions">Terms & Conditions</a></li>
 
                 </ul>
             </div>
@@ -91,10 +89,10 @@
                 </p>
                 <div class="footer_social_icon col-md-6">
                     <ul>
-                        <li><a href="#"><img src="images/social-media-icons/facebook2x.png"></a></li>
-                        <li><a href="#"><img src="images/social-media-icons/instagram2x.png"></a></li>
-                        <li><a href="#"><img src="images/social-media-icons/pinterest2x.png"></a></li>
-                        <li><a href="#"><img src="images/social-media-icons/twitter2x.png"></a></li>
+                        <li><a href="#"><img src="<?= IMGURL ?>social-media-icons/facebook2x.png"></a></li>
+                        <li><a href="#"><img src="<?= IMGURL ?>social-media-icons/instagram2x.png"></a></li>
+                        <li><a href="#"><img src="<?= IMGURL ?>social-media-icons/pinterest2x.png"></a></li>
+                        <li><a href="#"><img src="<?= IMGURL ?>social-media-icons/twitter2x.png"></a></li>
                     </ul>
                 </div>
             </div>
