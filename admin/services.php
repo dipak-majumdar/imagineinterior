@@ -125,9 +125,8 @@ $service   = $Services->showServices();
                                   <td class="align-middle"><?php echo count($projectsCount);?></td>
                                   <td class="align-middle"><?php echo $DateUtility->numDate($each['created']);?></td>
                                   <td class="align-middle">
-                                      <a href="javascript:void();" class="btn btn-sm badge bg-success me-2"
-                                          data-bs-toggle="modal" data-bs-target="#mainModal"
-                                          onclick="catView('<?php echo $each['id'];?>')"><i class="bi bi-eye"></i>
+                                      <a href="service-edit.php?id=<?= $each['id'];?>" class="btn btn-sm badge bg-success me-2" >
+                                      <i class="bi bi-eye"></i>
                                       </a>
                                       <a href="javascript:void();"
                                           class="btn btn-sm badge <?php if($each['status'] == 0){echo 'bg-primary'; }else{ echo 'bg-danger';}?> "
@@ -192,16 +191,6 @@ $service   = $Services->showServices();
           document.getElementById('modal-body').innerHTML =
               `<iframe width="99%" height="350px" frameborder="0" allowtransparency="true" src="${url}"></iframe>`;
       }
-
-
-      const catView = (id) => {
-          document.getElementById('modalLabel').innerText = `View Service`;
-          let viewUrl = `ajax/service-edit-view.php?id=${id}`;
-          // alert(viewUrl);
-          document.getElementById('modal-body').innerHTML =
-              `<iframe width="99%" height="300px" frameborder="0" allowtransparency="true" src="${viewUrl}"></iframe>`;
-      }
-
 
 
       const cancelCat = (t) => {
