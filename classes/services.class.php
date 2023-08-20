@@ -60,7 +60,7 @@ class Services extends DBConnection{
      */
     function showServiceById($id){
         $data= array();
-        $sql = "SELECT * FROM `services` WHERE `id` = '$id'";
+        $sql = "SELECT * FROM services, service_content WHERE service_content.id = services.id AND services.id = '$id'";
         $res = $this->conn->query($sql);
         $row = $res->num_rows;
         if ($row > 0 ) {
@@ -137,18 +137,18 @@ class Services extends DBConnection{
 
 
     
-    function updateService($id, $icon, $name, $dsc){
+    function updateService($id, $icon, $name, $dsc, $slug){
         $sql = "UPDATE `services`
                 SET
                 `icon`          = '$icon',
                 `name`          = '$name',
                 `descreption`   = '$dsc',
+                `slug`          = '$slug',
                 `edited`        = now()
                 WHERE
                 `id`  	        = '$id'";
                 // echo $sql;
         $res = $this->conn->query($sql);
-
         return $res;
 
     }//eof
@@ -166,7 +166,6 @@ class Services extends DBConnection{
                 `id`  	        = '$id'";
                 // echo $sql;
         $res = $this->conn->query($sql);
-
         return $res;
 
     }//eof
@@ -259,11 +258,36 @@ class Services extends DBConnection{
 
     #############################################################################################
     #                                                                                           #
-    #                                       Child Services                                      #
+    #                                       Services COntent                                    #
     #                                                                                           #
     #############################################################################################
 
+    function updateServiceContent($id, $content){
+        $content   = addslashes($content);
+        try {
+            $sql = "UPDATE `service_content`
+                    SET
+                    `content`       = '$content',
+                    `edited`        = now()
+                    WHERE
+                    `id`  	        = '$id'";
+            $res = $this->conn->query($sql);
+            if ($res == 1) {
+                return true;
+            }
+            return false;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
 
+    }//eof
+
+    
+    #############################################################################################
+    #                                                                                           #
+    #                                       Child Services                                      #
+    #                                                                                           #
+    #############################################################################################
     
     /**
      * inserting new user data into `child_services` table
