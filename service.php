@@ -24,7 +24,9 @@ $serviceStatus     = $service['status'];
 $serviceEdited     = $service['edited'];
 $serviceCreated    = $service['created'];
 
-$childServices = $Services->activeChildServicesByParent($serviceId);
+$content        = $Services->getServiceContent($serviceId);
+$fullContent    = $content['content'];
+$childServices  = $Services->activeChildServicesByParent($serviceId);
 // print_r($service);
 
 ?>
@@ -85,27 +87,7 @@ $childServices = $Services->activeChildServicesByParent($serviceId);
             <div class="container">
 
                 <div class="new_section sub_layout_padding">
-                    <h3 class="text-center text-md-start fs-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    </h3>
-                    <p class="small_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae odio,
-                        esse sunt, nisi impedit
-                        fugit veritatis dolorem totam dicta saepe autem repudiandae? Nobis eveniet sunt velit sit
-                        asperiores. Ab ex molestiae labore pariatur optio, tenetur quae doloribus eos odit vitae
-                        libero ipsum nostrum iste. Praesentium, sequi eveniet? Facilis nostrum, quaerat autem
-                        tempora sint necessitatibus, cupiditate, obcaecati expedita at ipsam rem laborum praesentium
-                        nulla iusto! Eaque culpa odit assumenda perferendis accusantium, maxime perspiciatis
-                        repellendus tempore eius modi magnam nisi vero ducimus cumque ad ratione officiis excepturi
-                        soluta.</p>
-
-                    <p class="small_para">
-                        ipsum voluptates ut iure odio nihil molestias! Soluta quae ullam ipsa aut voluptatibus
-                        molestias, maiores illo magni provident aspernatur, sit minus ducimus recusandae! Ex,
-                        laboriosam quisquam. Debitis sit ea et, eos illum molestias animi odio! Ad similique fugiat
-                        consequuntur recusandae rem quod reprehenderit architecto soluta, necessitatibus, cum, neque
-                        repudiandae ullam aperiam. Ratione totam sunt id magni rem reiciendis nihil omnis! Quae
-                        veritatis, illo sunt inventore aspernatur neque commodi ex soluta suscipit delectus dolorum
-                        repudiandae exercitationem, eius accusantium sit doloribus reprehenderit voluptates
-                        consequuntur officiis libero iusto eaque non unde? Illum!</p>
+                    <?= $fullContent; ?> 
                 </div>
                 <?php
                 if (count($childServices) > 0) {
@@ -168,11 +150,11 @@ $childServices = $Services->activeChildServicesByParent($serviceId);
 
                     <div class="col-12 col-md-5 m-2 mini_sec">
                         <div class="d-sm-none d-block">
-                            <img src="./images/services/bedroom.png" alt="">
+                            <img src="<?= IMGURL?>services/bedroom.png" alt="">
                         </div>
                         <h4 class="fs-4 text-center text-md-start">Lorem ipsum dolor sit.</h4>
                         <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="./images/services/bedroom.png" alt="">
+                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL?>services/bedroom.png" alt="">
                             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
                                 elit. Distinctio est numquam soluta
                                 odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
@@ -182,11 +164,11 @@ $childServices = $Services->activeChildServicesByParent($serviceId);
 
                     <div class="col-12 col-md-5 m-2 mini_sec">
                         <div class="d-sm-none d-block">
-                            <img src="./images/services/bedroom.png" alt="">
+                            <img src="<?= IMGURL?>services/bedroom.png" alt="">
                         </div>
                         <h4 class="fs-4">Lorem ipsum dolor sit.</h4>
                         <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="./images/services/bedroom.png" alt="">
+                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL?>services/bedroom.png" alt="">
                             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
                                 elit. Distinctio est numquam soluta
                                 odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
@@ -196,11 +178,11 @@ $childServices = $Services->activeChildServicesByParent($serviceId);
 
                     <div class="col-12 col-md-5 m-2 mini_sec">
                         <div class="d-sm-none d-block">
-                            <img src="./images/services/bedroom.png" alt="">
+                            <img src="<?= IMGURL?>services/bedroom.png" alt="">
                         </div>
                         <h4 class="fs-4">Lorem ipsum dolor sit.</h4>
                         <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="./images/services/bedroom.png" alt="">
+                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL?>services/bedroom.png" alt="">
                             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
                                 elit. Distinctio est numquam soluta
                                 odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
@@ -210,11 +192,11 @@ $childServices = $Services->activeChildServicesByParent($serviceId);
 
                     <div class="col-12 col-md-5 m-2 mini_sec">
                         <div class="d-sm-none d-block">
-                            <img src="./images/services/bedroom.png" alt="">
+                            <img src="<?= IMGURL?>services/bedroom.png" alt="">
                         </div>
                         <h4 class="fs-4">Lorem ipsum dolor sit.</h4>
                         <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="./images/services/bedroom.png" alt="">
+                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL?>services/bedroom.png" alt="">
                             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
                                 elit. Distinctio est numquam soluta
                                 odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora

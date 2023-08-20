@@ -262,6 +262,22 @@ class Services extends DBConnection{
     #                                                                                           #
     #############################################################################################
 
+
+    function getServiceContent($id){
+        try {
+            $sql = "SELECT * FROM service_content WHERE id = '$id'";
+            $res = $this->conn->query($sql);
+            if ($res->num_rows > 0) {
+                $data = $res->fetch_assoc();
+                return $data;
+            }
+            return array();
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+    }//eof
+
     function updateServiceContent($id, $content){
         $content   = addslashes($content);
         try {
