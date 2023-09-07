@@ -45,6 +45,14 @@ class Utility extends DBConnection{
 
 
 
+    function slugGenerator($rawURL){
+        $url = basename($rawURL);
+        $url = pathinfo($url, PATHINFO_FILENAME);
+        $url = str_replace(' ', '-', $url);
+        $slug = strtolower($url);
+        return $slug;
+    }
+
 
     /**
      * inserting new user data into `child_services` table

@@ -3,11 +3,13 @@ require_once dirname(__DIR__) . "/inc/constants.inc.php";
 require_once ABSPATH . "/_config/dbconnect.php";
 require_once ABSPATH . "classes/services.class.php";
 require_once ABSPATH . "classes/status.class.php";
+require_once ABSPATH . "classes/utility.class.php";
 require_once ABSPATH . "classes/date-utility.class.php";
 
 
 $Services   = new Services();
 $Status     = new Status();
+$Utility    = new Utility();
 $DateUtil   = new DateUtility();
 
 
@@ -18,11 +20,6 @@ $name       = '';
 $dsc        = '';
 $content    = '';
 $slug       = '';
-$childNos   = '';
-$projectNos = '';
-$created    = '';
-$edited     = '';
-$status     = '';
 
 
 if (isset($_POST['updateBtn'])) {
@@ -33,8 +30,11 @@ if (isset($_POST['updateBtn'])) {
   $dsc     = $_POST['catDsc'];
   $content = $_POST['content'];
   $slug    = $_POST['slug'];
-
-
+  
+  if (empty($slug)) {
+    $slug    = $Utility->slugGenerator($name);
+  }
+  
   $target_dir   = "../images/services/";
   $image_name   = $_FILES["service-icon"]["name"];
   $tempname     = $_FILES["service-icon"]["tmp_name"];
@@ -75,15 +75,6 @@ if (!empty($catId)) {
   $dsc         = $show['descreption'];
   $content     = $show['content'];;
   $slug        = $show['slug'];
-  $childNos    = $show['child_services'];
-  $projectNos  = $show['projects_nos'];
-  $status      = $show['status'];
-  $created     = $show['created'];
-  $edited      = $show['edited'];
-  
-  $created  = $DateUtil->numDate($created);
-  $edited  = $DateUtil->numDate($edited);
-  $status   = $Status->getStatusName($status);
 }
 ?>
 <!DOCTYPE html>
@@ -153,20 +144,6 @@ if (!empty($catId)) {
 
             <!-- sidebar section start -->
             <section class="col-3 card px-3 p-2">
-                <p class="text-secondary">
-                    <span class="fw-semibold">Status:</span>
-                    <span class="badge text-bg-primary"><?= $status ?></span>
-                </p>
-
-                <p class="text-secondary">
-                    <span class="fw-semibold">Child Services:</span>
-                    <span class="badge text-bg-secondary"><?= $childNos ?></span>
-                </p>
-
-                <p class="text-secondary">
-                    <span class="fw-semibold">Total Projects: </span>
-                    <span class="badge text-bg-secondary"><?= $projectNos ?></span>
-                </p>
 
                 <div class="d-flex mb-4">
                     <label for="slug" class="text-secondary fw-semibold mb-0">Slug: </label>
@@ -175,11 +152,8 @@ if (!empty($catId)) {
                         name="slug" value="<?= $slug ?>" style="height: 20px;">
                 </div>
                 <div class="mb-4">
-                    <input type="file" class="dropify" name="service-icon" <?= $icon; ?>>
+                    <input type="file" class="dropify" name="service-icon" <?= $icon; ?> accept="image/x-png,image/gif, image/jpeg, image/jpg">
                 </div>
-
-                <p class="text-secondary fw-semibold">Added On: <?= $created ?></p>
-                <p class="text-secondary fw-semibold">Last Update: <?= $edited ?></p>
 
             </section>
             <!-- sidebar section End -->
