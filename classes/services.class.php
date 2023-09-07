@@ -6,17 +6,25 @@ class Services extends DBConnection{
     
 
     /**
-     * inserting new user data into `user` table
-     * @return boolean
+     * inserting new user data into `service` table
+     * @return 
      */
-    function addService($name, $dsc, $icon, $childServices=0, $projectsNos=0){
+    function addService($name, $dsc, $content, $slug, $icon, $childServices=0, $projectsNos=0){
         
-        $sql = "INSERT INTO `services` (`name`, `descreption`, `icon`, `child_services`, `projects_nos`, `created`) VALUES ('$name', '$dsc', '$icon', '$childServices', '$projectsNos', now())";
+        $sql = "INSERT INTO `services` (`name`, `descreption`, `slug`, `icon`, `child_services`, `projects_nos`, `created`) VALUES ('$name', '$dsc', '$slug', '$icon', '$childServices', '$projectsNos', now())";
 
         // echo $sql.$this->conn->error;
         $res = $this->conn->query($sql);
         // echo $res;
-        return $res;
+        if ($res) {
+            $insertedId = $this->conn->insert_id;
+            $contentAdded = $this->addServiceContent($insertedId, $content);
+            if ($contentAdded) {
+                return $insertedId;
+            }
+            return;
+        }
+        return;
 
     }//eof
 
@@ -261,6 +269,20 @@ class Services extends DBConnection{
     #                                       Services COntent                                    #
     #                                                                                           #
     #############################################################################################
+
+
+    function addServiceContent($id, $content, $createdTime=0){
+        try {
+            $sql = "INSERT INTO service_content (`id`, `content`, `created`)
+                                                VALUES
+                                                ('$id', '$content', now())";
+            $res = $this->conn->query($sql);
+            return $res;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+
+    }//eof
 
 
     function getServiceContent($id){

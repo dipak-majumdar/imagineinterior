@@ -87,8 +87,9 @@ $service   = $Services->showServices();
                   <!-- Services  Section Start  -->
                   <div class="card-header d-flex justify-content-between">
                       <span>Total Services is: <?php echo count($service); ?></span>
-                      <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#mainModal"
-                          onclick="addService();" id="addService">Add New</button>
+                      <!-- <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#mainModal"
+                          onclick="addService();" id="addService">Add New</button> -->
+                          <a href="service-add.php" class="btn btn-sm btn-primary">Add New</a>
                   </div>
 
                   <!-- responsive table start -->
