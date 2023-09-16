@@ -9,24 +9,66 @@ class Services extends DBConnection{
      * inserting new user data into `service` table
      * @return 
      */
-    function addService($name, $dsc, $content, $slug, $icon, $childServices=0, $projectsNos=0){
-        
-        $sql = "INSERT INTO `services` (`name`, `descreption`, `slug`, `icon`, `child_services`, `projects_nos`, `created`) VALUES ('$name', '$dsc', '$slug', '$icon', '$childServices', '$projectsNos', now())";
+    // function addService($name, $dsc, $content, $slug, $icon, $childServices=0, $projectsNos=0){
 
-        // echo $sql.$this->conn->error;
-        $res = $this->conn->query($sql);
-        // echo $res;
-        if ($res) {
-            $insertedId = $this->conn->insert_id;
-            $contentAdded = $this->addServiceContent($insertedId, $content);
-            if ($contentAdded) {
-                return $insertedId;
+    //     $name       = addslashes(trim($name));
+    //     $dsc        = addslashes(trim($dsc));
+    //     $content    = addslashes(trim($content));
+    //     $slug       = addslashes(trim($slug));
+    //     $icon       = addslashes(trim($icon));
+
+    //     try {
+    //         $sql = "INSERT INTO `services` (`name`, `descreption`, `content`, `slug`, `icon`, `child_services`, `projects_nos`, `created`) VALUES ('$name', '$dsc', '$content', '$slug', '$icon', '$childServices', '$projectsNos', now())";
+
+    //         echo '<pre>'. $sql.$this->conn->error.'</pre>';
+    //         $res = $this->conn->query($sql);
+    //         echo $res;
+    //         if ($res) {
+    //             echo 'Service Id=>'.$insertedId = $this->conn->insert_id;
+    //             return $insertedId;
+    //         }
+    //         return;
+    //     } catch (Exception $e) {
+    //         echo $e->getMessage();
+    //     }
+
+    // }//eof
+
+    function addService($name, $dsc, $content, $slug, $icon, $childServices = 0, $projectsNos = 0, $time='0000-00-00 00:00:00') {
+        // Assuming $this->conn is your database connection object
+    
+        $name       = addslashes(trim($name));
+        $dsc        = addslashes(trim($dsc));
+        $content    = addslashes(trim($content));
+        $slug       = addslashes(trim($slug));
+        $icon       = addslashes(trim($icon));
+    
+        try {
+            $sql = "INSERT INTO `services` (`name`, `descreption`, `content`, `slug`, `icon`, `child_services`, `projects_nos`, `created`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    
+            $stmt = $this->conn->prepare($sql);
+    
+            if (!$stmt) {
+                throw new Exception("Error preparing statement: " . $this->conn->error);
             }
-            return;
+    
+            // Assuming $time is a DATETIME formatted string
+            $stmt->bind_param("sssssiis", $name, $dsc, $content, $slug, $icon, $childServices, $projectsNos, $time);
+    
+            if ($stmt->execute()) {
+                $insertedId = $stmt->insert_id;
+                return $insertedId;
+            } else {
+                throw new Exception("Error executing query: " . $stmt->error);
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
         }
-        return;
+    }
+    
 
-    }//eof
+    
+
 
 
 
@@ -68,7 +110,7 @@ class Services extends DBConnection{
      */
     function showServiceById($id){
         $data= array();
-        $sql = "SELECT * FROM services, service_content WHERE service_content.id = services.id AND services.id = '$id'";
+        $sql = "SELECT * FROM services WHERE id = '$id'";
         $res = $this->conn->query($sql);
         $row = $res->num_rows;
         if ($row > 0 ) {
@@ -262,62 +304,6 @@ class Services extends DBConnection{
         }else {
             return true;
         }
-    }//eof
-
-    #############################################################################################
-    #                                                                                           #
-    #                                       Services COntent                                    #
-    #                                                                                           #
-    #############################################################################################
-
-
-    function addServiceContent($id, $content, $createdTime=0){
-        try {
-            $sql = "INSERT INTO service_content (`id`, `content`, `created`)
-                                                VALUES
-                                                ('$id', '$content', now())";
-            $res = $this->conn->query($sql);
-            return $res;
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-
-    }//eof
-
-
-    function getServiceContent($id){
-        try {
-            $sql = "SELECT * FROM service_content WHERE id = '$id'";
-            $res = $this->conn->query($sql);
-            if ($res->num_rows > 0) {
-                $data = $res->fetch_assoc();
-                return $data;
-            }
-            return array();
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-
-    }//eof
-
-    function updateServiceContent($id, $content){
-        $content   = addslashes($content);
-        try {
-            $sql = "UPDATE `service_content`
-                    SET
-                    `content`       = '$content',
-                    `edited`        = now()
-                    WHERE
-                    `id`  	        = '$id'";
-            $res = $this->conn->query($sql);
-            if ($res == 1) {
-                return true;
-            }
-            return false;
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-
     }//eof
 
     

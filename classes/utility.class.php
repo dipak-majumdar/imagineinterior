@@ -11,6 +11,15 @@ class Utility extends DBConnection{
     }
 
 
+    /** This Function is created to check if the given value is containing only number or not
+     * $variable = this is the value which is going to check
+     * @return boolean
+    */
+    function isNumericId($variable) {
+        return preg_match('/^[0-9]+$/', $variable);
+    }
+
+
     /**
      * Custome PHP function ti generate seo friendly url
      * $string      = Required. The string which you want to convert to the SEO friendly URL.

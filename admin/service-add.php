@@ -45,7 +45,10 @@ if (isset($_POST['updateBtn'])) {
     if($check !== false) {
       if(move_uploaded_file($tempname, $target_image)){
         $catId  = $Services->addService($name, $dsc, $content, $slug, $image_name);
-        if ($catId) {
+        
+        $result = $Utility->isNumericId($catId);
+
+        if ($result) {
           $errMsg   = "Category Added!";
         }else {
           $errMsg   = "Insertion Failed!";
