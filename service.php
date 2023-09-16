@@ -17,6 +17,7 @@ $serviceId         = $service['id'];
 $serviceName       = $service['name'];
 $serviceSlug       = $service['slug'];
 $serviceDesc       = $service['descreption'];
+$fullContent       = $service['content'];
 $child_services    = $service['child_services'];
 $projects_nos      = $service['projects_nos'];
 $serviceIcon       = $service['icon'];
@@ -24,8 +25,6 @@ $serviceStatus     = $service['status'];
 $serviceEdited     = $service['edited'];
 $serviceCreated    = $service['created'];
 
-$content        = $Services->getServiceContent($serviceId);
-$fullContent    = $content['content'];
 $childServices  = $Services->activeChildServicesByParent($serviceId);
 // print_r($service);
 
