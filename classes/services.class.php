@@ -9,39 +9,14 @@ class Services extends DBConnection{
      * inserting new user data into `service` table
      * @return 
      */
-    // function addService($name, $dsc, $content, $slug, $icon, $childServices=0, $projectsNos=0){
-
-    //     $name       = addslashes(trim($name));
-    //     $dsc        = addslashes(trim($dsc));
-    //     $content    = addslashes(trim($content));
-    //     $slug       = addslashes(trim($slug));
-    //     $icon       = addslashes(trim($icon));
-
-    //     try {
-    //         $sql = "INSERT INTO `services` (`name`, `descreption`, `content`, `slug`, `icon`, `child_services`, `projects_nos`, `created`) VALUES ('$name', '$dsc', '$content', '$slug', '$icon', '$childServices', '$projectsNos', now())";
-
-    //         echo '<pre>'. $sql.$this->conn->error.'</pre>';
-    //         $res = $this->conn->query($sql);
-    //         echo $res;
-    //         if ($res) {
-    //             echo 'Service Id=>'.$insertedId = $this->conn->insert_id;
-    //             return $insertedId;
-    //         }
-    //         return;
-    //     } catch (Exception $e) {
-    //         echo $e->getMessage();
-    //     }
-
-    // }//eof
-
     function addService($name, $dsc, $content, $slug, $icon, $childServices = 0, $projectsNos = 0, $time='0000-00-00 00:00:00') {
         // Assuming $this->conn is your database connection object
     
-        $name       = addslashes(trim($name));
-        $dsc        = addslashes(trim($dsc));
-        $content    = addslashes(trim($content));
-        $slug       = addslashes(trim($slug));
-        $icon       = addslashes(trim($icon));
+        // $name       = addslashes(trim($name));
+        // $dsc        = addslashes(trim($dsc));
+        // $content    = addslashes(trim($content));
+        // $slug       = addslashes(trim($slug));
+        // $icon       = addslashes(trim($icon));
     
         try {
             $sql = "INSERT INTO `services` (`name`, `descreption`, `content`, `slug`, `icon`, `child_services`, `projects_nos`, `created`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -187,38 +162,79 @@ class Services extends DBConnection{
 
 
     
-    function updateService($id, $icon, $name, $dsc, $slug){
-        $sql = "UPDATE `services`
-                SET
-                `icon`          = '$icon',
-                `name`          = '$name',
-                `descreption`   = '$dsc',
-                `slug`          = '$slug',
-                `edited`        = now()
-                WHERE
-                `id`  	        = '$id'";
-                // echo $sql;
-        $res = $this->conn->query($sql);
-        return $res;
+    function updateService($id, $icon, $name, $dsc, $content, $slug, $time){
+        try {
+            $sql = "UPDATE `services`
+                    SET
+                    `icon`          = ?,
+                    `name`          = ?,
+                    `descreption`   = ?,
+                    `content`       = ?,
+                    `slug`          = ?,
+                    `edited`        = ?
+                    WHERE
+                    `id`  	        = '$id'";
+                    // echo $sql;
+            $stmt = $this->conn->prepare($sql);
+            if (!$stmt) {
+                throw new Exception("Error Processing Request". $stmt->error);
+            }
+
+            $stmt->bind("ssssssi", $icon, $name, $dsc, $content, $slug, $time, $id);
+            
+            if ($stmt->execute()) {
+                return true;
+            }else{
+                throw new Exception("Error query execution". $stmt->error);
+            }
+
+        } catch (Exception $e) {
+            echo "Error=>". $e->getMessage();
+        }
 
     }//eof
 
 
 
+    function updateServiceText($id, $name, $dsc, $content, $slug, $time) {
+        try {
+            // Prepare the SQL statement with placeholders
+            $sql = "UPDATE `services`
+                    SET
+                    `name`        = ?,
+                    `descreption` = ?,
+                    `content`     = ?,
+                    `slug`        = ?,  
+                    `edited`      = ?
+                    WHERE
+                    `id`          = ?";
+        
+            // Prepare the statement
+            $stmt = $this->conn->prepare($sql);
+        
+            if (!$stmt) {
+                // Handle the error appropriately, e.g., log it or return an error message
+                throw new Exception("Error in SQL statement preparation: " . $this->conn->error);
+            }
+        
+            // Bind the parameters to the placeholders
+            $stmt->bind_param("sssssi", $name, $dsc, $content, $slug, $time, $id);
+        
+            // Execute the statement
+            if ($stmt->execute()) {
+                // Return true if successful
+                return true;
+            } else {
+                // Handle the error appropriately, e.g., log it or return an error message
+                throw new Exception("Error in query execution: " . $stmt->error);
+            }
+        } catch (Exception $e) {
+            echo "Error: " . $e->getMessage();
+            return false; // You might want to return false here to indicate the operation failed.
+        }
+    }
 
-    function updateServiceText($id, $name, $dsc){
-        $sql = "UPDATE `services`
-                SET
-                `name`          = '$name',
-                `descreption`   = '$dsc',
-                `edited`        = now()
-                WHERE
-                `id`  	        = '$id'";
-                // echo $sql;
-        $res = $this->conn->query($sql);
-        return $res;
-
-    }//eof
+    
 
 
     function cancelService($id, $status){

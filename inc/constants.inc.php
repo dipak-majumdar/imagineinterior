@@ -1,5 +1,6 @@
 <?php 
 	date_default_timezone_set("Asia/Calcutta");   //India time (GMT+5:30)
+	define('TIME', 			 date("Y-m-d H:i:s"));
 	
 	function is_localhost() {
 		// set the array for testing the local environment
@@ -20,6 +21,7 @@
 
 	//URLS Details 
 	$protocol = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
+
 
 
 	//company

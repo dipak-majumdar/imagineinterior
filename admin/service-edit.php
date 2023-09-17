@@ -47,21 +47,22 @@ if (isset($_POST['updateBtn'])) {
     if ($check !== false) {
       if (move_uploaded_file($tempname, $target_image)) {
 
-        $update  = $Services->updateService($catId, $image_name, $name, $dsc, $slug);
-        $Services->updateServiceContent($catId, $content);
+        $update  = $Services->updateService($catId, $image_name, $name, $dsc, $content, $slug, TIME);
+
         if ($update == true) {
           $errMsg   = "Service Update!";
         } else {
           $errMsg   = "Updation Failed!";
         }
+
       }
     } else {
       $errMsg = "File is not an image.";
     }
   } else {
     // echo $content; exit;
-    $update  = $Services->updateServiceText($catId, $name, $dsc);
-    $Services->updateServiceContent($catId, $content);
+    $update  = $Services->updateServiceText($catId, $name, $dsc, $content, $slug, TIME);
+    // $Services->updateServiceContent($catId, $content);
     if ($update == true) {
       $errMsg   = "Service Update!";
     } else {
