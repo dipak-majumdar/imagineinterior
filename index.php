@@ -50,7 +50,7 @@ $childServices = $Services->showChildServicesByLimit(12);
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
     <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <!-- Scrollbar Custom CSS -->
@@ -178,8 +178,7 @@ $childServices = $Services->showChildServicesByLimit(12);
     <div class="new_section layout_padding">
         <div class="container">
             <h1 class="sec_heading">How we deliver</h1>
-            <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
-                similique ullam.</p>
+            <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error similique ullam.</p>
             <div class="row justify-content-center sub_layout_padding">
                 <div class="col-9 col-md-3 p-2">
 

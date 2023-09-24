@@ -50,7 +50,8 @@ if (count($showProject) < 1) {
     <!-- Responsive-->
     <link rel="stylesheet" href="<?= URL ?>css/responsive.css">
     <!-- fevicon -->
-    <link rel="icon" href="<?= IMGURL ?>images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
+    
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="<?= URL ?>css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->

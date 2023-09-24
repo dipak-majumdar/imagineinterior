@@ -7,6 +7,6 @@ require_once ABSPATH."classes/site.class.php";
 $SiteInfo   = new SiteInfo();
 
 $site = $SiteInfo->showSiteInfo();
-
+$favcon = $site['favicon'];
 
 ?>

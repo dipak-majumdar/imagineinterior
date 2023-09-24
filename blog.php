@@ -15,6 +15,9 @@ require_once "./inc/reqHeader.php";
     <!-- mobile metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- Favcon -->
+    <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
+
     <!-- site metas -->
     <title>Blogs | <?php echo SITE_NAME; ?></title>
     <meta name="keywords" content="">

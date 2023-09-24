@@ -21,6 +21,11 @@ $childServices = $Services->showChildServices();
     <!-- mobile metas -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- fevicon -->
+    <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
+    <!-- fevicon -->
+    <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
+    
     <!-- site metas -->
     <title>Services - <?php echo SITE_NAME; ?></title>
     <meta name="keywords" content="">
@@ -36,8 +41,7 @@ $childServices = $Services->showChildServices();
 
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
-    <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
