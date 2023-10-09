@@ -16,15 +16,11 @@ require_once '../classes/services.class.php';
 require_once '../classes/user.class.php';
 require_once '../classes/site.class.php';
 
+require_once ADMPATH . 'partials/common-admin-files.inc.php';
 
 $Admin      = new Admin();
 $Services   = new Services();
 $User       = new User();
-$SiteInfo   = new SiteInfo();
-
-$site = $SiteInfo->showSiteInfo();
-
-
 
 $errMsg = '';
 
@@ -78,8 +74,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?php echo FAVICON_PATH;?>" rel="icon">
-    <link href="<?php echo APPL_FAV_PATH;?>" rel="apple-touch-icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="apple-touch-icon">
     <!-- Google Fonts -->
     <link
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"

@@ -5,7 +5,7 @@
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-                <div class="logo"><a href="/"><img src="<?= URL?>images/logo/imagine Interior-logo-2.png"></a></div>
+                <div class="logo"><a href="/"><img src="<?= URL?>images/logo/<?= $logo ?>"></a></div>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">

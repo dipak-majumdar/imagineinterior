@@ -16,8 +16,7 @@ require_once '../classes/services.class.php';
 require_once '../classes/projects.class.php';
 require_once '../classes/date-utility.class.php';
 
-
-
+require_once ADMPATH . 'partials/common-admin-files.inc.php';
 
 $Admin      = new Admin();
 $Form       = new Form();
@@ -50,8 +49,8 @@ $projectLimit   = $Projects->projectsByLimit(5);
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?php echo FAVICON_PATH;?>" rel="icon">
-    <link href="<?php echo APPL_FAV_PATH;?>" rel="apple-touch-icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">

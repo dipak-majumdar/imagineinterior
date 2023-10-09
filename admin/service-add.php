@@ -5,6 +5,7 @@ require_once ABSPATH . "classes/services.class.php";
 require_once ABSPATH . "classes/status.class.php";
 require_once ABSPATH . "classes/utility.class.php";
 require_once ABSPATH . "classes/date-utility.class.php";
+require_once ADMPATH . 'partials/common-admin-files.inc.php';
 
 
 $Services   = new Services();
@@ -88,6 +89,10 @@ if (!empty($catId)) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- Favicons -->
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="apple-touch-icon">
+
 
     <link rel="stylesheet" href="<?= URL ?>vendors/dropify-master/dist/css/dropify.min.css">
     <link rel="stylesheet" href="<?= URL ?>css/main-css/bootstrap.css">
@@ -155,7 +160,8 @@ if (!empty($catId)) {
                         name="slug" value="<?= $slug ?>" style="height: 20px;">
                 </div>
                 <div class="mb-4">
-                    <input type="file" class="dropify" name="service-icon" <?= $icon; ?> accept="image/x-png,image/gif, image/jpeg, image/jpg">
+                    <input type="file" class="dropify" name="service-icon" <?= $icon; ?>
+                        accept="image/x-png,image/gif, image/jpeg, image/jpg">
                 </div>
 
             </section>

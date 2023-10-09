@@ -12,6 +12,8 @@ require_once ABSPATH . 'classes/projects.class.php';
 require_once ABSPATH . 'classes/services.class.php';
 require_once ABSPATH . 'classes/date-utility.class.php';
 
+require_once ADMPATH . 'partials/common-admin-files.inc.php';
+
 $Admin              = new Admin();
 $Form               = new Form();
 
@@ -62,8 +64,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?php echo FAVICON_PATH;?>" rel="icon">
-    <link href="<?php echo APPL_FAV_PATH;?>" rel="apple-touch-icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="apple-touch-icon">
 
 
     <!-- Google Fonts -->

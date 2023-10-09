@@ -8,5 +8,7 @@ $SiteInfo   = new SiteInfo();
 
 $site = $SiteInfo->showSiteInfo();
 $favcon = $site['favicon'];
+$logo   = $site['site_logo'];
+
 
 ?>

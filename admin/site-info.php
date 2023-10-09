@@ -20,18 +20,17 @@ $Form       = new Form();
 $SiteInfo   = new SiteInfo();
 $Services   = new Services();
 
+require_once "partials/common-admin-files.inc.php";
 $logedAdmin = $Admin->showAdminByEmail($_SESSION['email']);
 
-$site       = $SiteInfo->showSiteInfo();
-
 $defaultLogo    = '';
-if ($site['site_logo'] != null) {
-    $defaultLogo = 'data-default-file="../images/logo/'.$site['site_logo'].'"';;
+if ($LOGO != null) {
+    $defaultLogo = 'data-default-file="../images/logo/'.$LOGO.'"';;
 }
 
 $defaultFavicon    = '';
-if ($site['favicon'] != null) {
-    $defaultFavicon = 'data-default-file="../images/logo/'.$site['favicon'].'"';;
+if ($FAVICON != null) {
+    $defaultFavicon = 'data-default-file="../images/logo/'.$FAVICON.'"';;
 }
 
 
@@ -48,8 +47,8 @@ if ($site['favicon'] != null) {
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="<?php echo FAVICON_PATH;?>" rel="icon">
-    <link href="<?php echo APPL_FAV_PATH;?>" rel="apple-touch-icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -144,12 +143,12 @@ if ($site['favicon'] != null) {
                                     <div class="mb-3">
                                         <label for="site-title" class="form-label">Site Title</label>
                                         <input type="text" class="form-control" name="site-title"
-                                            value="<?php echo $site['site_title']; ?>">
+                                            value="<?php echo $Site['site_title']; ?>">
                                     </div>
                                     <div class="mb-3">
                                         <label for="site-tagline" class="form-label">Site Tagline</label>
                                         <input type="text" class="form-control" name="site-tagline"
-                                            value="<?php echo $site['site_tagline']; ?>">
+                                            value="<?php echo $Site['site_tagline']; ?>">
                                     </div>
                                     <div class="text-center">
                                         <button class="btn btn-sm btn-primary" name="update-names">Update</button>
@@ -175,12 +174,12 @@ if ($site['favicon'] != null) {
                                                 <div class="col-md-6 mb-3">
                                                     <label for="contact1" class="form-label">Contact 1</label>
                                                     <input type="number" class="form-control" name="contact1"
-                                                        value="<?php echo $site['contact1']; ?>">
+                                                        value="<?php echo $Site['contact1']; ?>">
                                                 </div>
                                                 <div class="col-md-6 mb-3">
                                                     <label for="contact2" class="form-label">Contact 2</label>
                                                     <input type="number" class="form-control" name="contact2"
-                                                        value="<?php echo $site['contact2']; ?>">
+                                                        value="<?php echo $Site['contact2']; ?>">
                                                 </div>
                                             </div>
                                         </div>
@@ -188,39 +187,39 @@ if ($site['favicon'] != null) {
                                         <div class="col-md-6 mb-3">
                                             <label for="email" class="form-label">Email</label>
                                             <input type="text" class="form-control" name="email"
-                                                value="<?php echo $site['email']; ?>">
+                                                value="<?php echo $Site['email']; ?>">
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label for="address1" class="form-label">Address Line 1</label>
                                             <input type="text" class="form-control" name="address1"
-                                                value="<?php echo $site['address1']; ?>">
+                                                value="<?php echo $Site['address1']; ?>">
                                         </div>
 
                                         <div class="col-md-6 mb-3">
                                             <label for="address2" class="form-label">Address Line 2</label>
                                             <input type="text" class="form-control" name="address2"
-                                                value="<?php echo $site['address2']; ?>">
+                                                value="<?php echo $Site['address2']; ?>">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="city" class="form-label">City</label>
                                             <input type="text" class="form-control" name="city"
-                                                value="<?php echo $site['city']; ?>">
+                                                value="<?php echo $Site['city']; ?>">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="state" class="form-label">State</label>
                                             <input type="text" class="form-control" name="state"
-                                                value="<?php echo $site['state']; ?>">
+                                                value="<?php echo $Site['state']; ?>">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="pin" class="form-label">PIN</label>
                                             <input type="text" class="form-control" name="pin"
-                                                value="<?php echo $site['pin']; ?>">
+                                                value="<?php echo $Site['pin']; ?>">
                                         </div>
                                         <div class="col-md-3 mb-3">
                                             <label for="country" class="form-label">Country</label>
                                             <input type="text" class="form-control" name="country"
-                                                value="<?php echo $site['country']; ?>">
+                                                value="<?php echo $Site['country']; ?>">
                                         </div>
                                     </div>
 

@@ -2,6 +2,8 @@
 require_once "../_config/dbconnect.php";
 require_once "../classes/admin.class.php";
 
+require_once ADMPATH . 'partials/common-admin-files.inc.php';
+
 $Admin     = new Admin();
 
 
@@ -19,8 +21,8 @@ $Admin     = new Admin();
     <meta content="" name="keywords">
 
     <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="icon">
+    <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
