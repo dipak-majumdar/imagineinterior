@@ -46,3 +46,14 @@
 .serv_dtls:hover .viewbtn{
     visibility: visible;
 }
+
+.furnitures_text{
+    font-weight: 500;
+}
+
+.service_content h2{
+    font-weight: 700;
+} 
+.service_content strong{
+    font-weight: 700;
+}

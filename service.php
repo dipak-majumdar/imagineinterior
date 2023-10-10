@@ -85,7 +85,7 @@ $childServices  = $Services->activeChildServicesByParent($serviceId);
         <div class="services_section layout_padding pt-0">
             <div class="container">
 
-                <div class="new_section sub_layout_padding">
+                <div class="new_section sub_layout_padding service_content">
                     <?= $fullContent; ?> 
                 </div>
                 <?php
