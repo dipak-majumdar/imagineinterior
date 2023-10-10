@@ -1,7 +1,7 @@
 <?php
 
 // $_SESSION['redUrl'] = $_SERVER['PHP_SELF'];
-// session_start();
+session_start();
 // if ($_SESSION['logedin'] != true) {
 //     header("Location: dashboard.php");
 // }

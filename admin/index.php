@@ -1,5 +1,4 @@
 <?php
-// session_start();
 if (session_start()) {
   if (isset($_SESSION['logedin'])) {
     header("Location: dashboard.php");
@@ -7,8 +6,22 @@ if (session_start()) {
   }
 }
 
-require_once '../_config/dbconnect.php';
 require_once "../inc/constants.inc.php";
+
+require_once ABSPATH . '_config/dbconnect.php';
+
+require_once ABSPATH . 'classes/site.class.php';
+require_once ABSPATH . 'classes/user.class.php';
+require_once ABSPATH . 'classes/admin.class.php';
+require_once ABSPATH . 'classes/form.class.php';
+
+
+$SiteInfo      = new SiteInfo();
+
+$Site           = $SiteInfo->showSiteInfo();
+
+$FAVICON    = $Site['favicon'];
+$LOGO       = $Site['site_logo'];
 
 
 require_once '../classes/admin.class.php';
@@ -16,7 +29,6 @@ require_once '../classes/services.class.php';
 require_once '../classes/user.class.php';
 require_once '../classes/site.class.php';
 
-require_once ADMPATH . 'partials/common-admin-files.inc.php';
 
 $Admin      = new Admin();
 $Services   = new Services();

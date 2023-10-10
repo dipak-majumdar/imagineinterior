@@ -1,11 +1,11 @@
 <?php
 require_once dirname(__DIR__) . "/inc/constants.inc.php";
-require_once ABSPATH . "/_config/dbconnect.php";
+require_once ADMPATH . 'partials/common-admin-files.inc.php';
+
 require_once ABSPATH . "classes/services.class.php";
 require_once ABSPATH . "classes/status.class.php";
 require_once ABSPATH . "classes/utility.class.php";
 require_once ABSPATH . "classes/date-utility.class.php";
-require_once ADMPATH . 'partials/common-admin-files.inc.php';
 
 
 $Services   = new Services();
