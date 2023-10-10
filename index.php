@@ -153,9 +153,8 @@ $childServices = $Services->showChildServicesByLimit(12);
             <div class="col-md-7 banner_right">
                 <div class="header_banner">
                     <div class="banner_text">
-                        <h2 class="banner_main_text">Lorem ipsum dolor</h2>
-                        <p class="banner_dsc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati,
-                            suscipit?</p>
+                        <h2 class="banner_main_text">Luxury in Every Detail</h2>
+                        <p class="banner_dsc">Unlock the potential of your space with our exceptional interior designs.</p>
                     </div>
 
                 </div>
@@ -178,7 +177,7 @@ $childServices = $Services->showChildServicesByLimit(12);
     <div class="new_section layout_padding">
         <div class="container">
             <h1 class="sec_heading">How we deliver</h1>
-            <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error similique ullam.</p>
+            <p class="sec_heading_dsc mb-0">We deliver exceptional interior design projects with precision, creativity, and unwavering attention to detail.</p>
             <div class="row justify-content-center sub_layout_padding">
                 <div class="col-9 col-md-3 p-2">
 
@@ -187,8 +186,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                             <img src="images/planning/planning.png" alt="" class="plan_sec_img">
                         </div>
                         <h3 class="mt-3 pb-0">Planning</h3>
-                        <span class="planning_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-                            aut!</span>
+                        <span class="planning_text">LDefine client's needs, budget, and timeline. Assess space requirements and constraints.</span>
                     </div>
 
                 </div>
@@ -199,8 +197,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                             <img src="images/planning/designing.png" alt="" class="plan_sec_img">
                         </div>
                         <h3 class="mt-3 pb-0">Designing</h3>
-                        <span class="planning_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-                            aut!</span>
+                        <span class="planning_text">Create concepts, layouts, and select materials, ensuring functionality and aesthetics align.</span>
                     </div>
 
                 </div>
@@ -211,8 +208,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                             <img src="images/planning/building.png" alt="" class="plan_sec_img">
                         </div>
                         <h3 class="mt-3 pb-0">Building</h3>
-                        <span class="planning_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-                            aut!</span>
+                        <span class="planning_text">Oversee construction, coordinate contractors, and implement design plans with quality assurance.</span>
                     </div>
 
                 </div>
@@ -223,8 +219,7 @@ $childServices = $Services->showChildServicesByLimit(12);
                             <img src="images/planning/delivery.png" alt="" class="plan_sec_img">
                         </div>
                         <h3 class="mt-3 pb-0">Delivery</h3>
-                        <span class="planning_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt,
-                            aut!</span>
+                        <span class="planning_text">Present the finished interior, address any adjustments, and ensure client satisfaction.</span>
                     </div>
 
                 </div>
@@ -356,9 +351,8 @@ $childServices = $Services->showChildServicesByLimit(12);
     <!-- contact section start -->
     <div class="new_section layout_padding">
         <div class="container">
-            <h1 class="sec_heading">Our Claient Says</h1>
-            <p class="sec_heading_dsc mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
-                similique ullam.</p>
+            <h1 class="sec_heading">Let's talk</h1>
+            <p class="sec_heading_dsc mb-4">Engage in design discussions. Your ideas, our expertise – let's create together.</p>
             <div class="sub_layout_padding">
                 <?php require_once "incs/contact-form.php"; ?>
             </div>

@@ -1,7 +1,7 @@
 <div class="services_section layout_padding">
     <div class="container">
         <h1 class="sec_heading">our services</h1>
-        <p class="sec_heading_dsc">There are many variations of passages of Lorem Ipsum </p>
+        <p class="sec_heading_dsc">Elevate spaces with our comprehensive interior design services, combining style and functionality seamlessly.</p>
         <div class="new_section sub_layout_padding">
             <div class="row justify-content-evenly">
                 <?php

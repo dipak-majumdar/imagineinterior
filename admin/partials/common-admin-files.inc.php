@@ -3,6 +3,7 @@
 require_once ABSPATH . "_config/adminSession.php";
 require_once ABSPATH . '_config/dbconnect.php';
 
+require_once ABSPATH . 'classes/site.class.php';
 require_once ABSPATH . 'classes/user.class.php';
 require_once ABSPATH . 'classes/admin.class.php';
 require_once ABSPATH . 'classes/form.class.php';
