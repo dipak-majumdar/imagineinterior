@@ -190,6 +190,14 @@ img {
     cursor: pointer;
 }
 
+main > .banner_section{
+    padding: 60px 15px 60px !important;
+}
+
+/* main > .container {
+    padding: 60px 15px 0;
+  } */
+
 .lead {
      font-size: 18px;
      line-height: 30px;
@@ -304,7 +312,7 @@ button {
 }
 
 .logo img{
-    max-width: 80%;
+    max-width: 50%;
 }
 .navbar-light .navbar-nav .nav-link {
     color: #111111;
@@ -366,11 +374,26 @@ button {
 }
 
 
+
+/* // X-Small devices (portrait phones, less than 576px) */
+@media (min-width: 991.99px) { 
+    main > .banner_section {
+        padding: 80px 15px 80px !important;
+    }
+ }
+ @media (min-width: 1399.99px) {
+    main > .banner_section {
+        padding: 260px 15px 200px !important;
+    }
+}
+
+
+
 /* // X-Small devices (portrait phones, less than 576px) */
 @media (max-width: 575.98px) { 
     .logo img{
-        max-width: 12rem;
-        margin-left: -1.8rem;
+        max-width: 10rem;
+        /* margin-left: -1.8rem; */
     }
  }
 
@@ -382,10 +405,19 @@ button {
 
 // Large devices (desktops, less than 1200px)
 @media (max-width: 1199.98px) { ... }
-
-// X-Large devices (large desktops, less than 1400px)
-@media (max-width: 1399.98px) { ... }
-
+*/
+/* // X-Large devices (large desktops, less than 1400px) */
+/* @media (max-width: 1399.98px) {
+    .logo img{
+        width: 55% !important;
+    }
+} */
+@media (min-width: 1399.98px) {
+    .logo img{
+        width: 55% !important;
+    }
+}
+/*
 // XX-Large devices (larger desktops)
 // No media query since the xxl breakpoint has no upper bound on its width */
 

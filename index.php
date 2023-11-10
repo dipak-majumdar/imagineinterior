@@ -63,75 +63,75 @@ $childServices = $Services->showChildServicesByLimit(12);
     <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"media="screen"> -->
 </head>
 
-<body onload="load()">
+<body onload="load()" class="d-flex flex-column" style="height: 100% !importent;">
     <!-- header section start -->
     <?php require_once "partials/nav-bar.php"; ?>
     <!-- header section end -->
 
-
-
-    <!-- banner section start -->
-    <div class="banner_section layout_padding mt-5">
-        <!-- d-flex -->
-        <div class="container row m-auto">
-            <div class="col-md-5 banner_left">
-                <div class="header_form">
-                    <div class="frm_heading">
-                        <h2 class="text-center">Talk to designer</h2>
-                    </div>
-                    <form action="ajax/query-form-submit.ajax.php" method="POST" class="g-3 needs-validation"
-                        novalidate>
-                        <div class="mb-2">
-                            <input type="text" class="custom_inp form-control" id="" placeholder="Name" name="name"
-                                required>
-                            <div class="invalid-feedback">
-                                Name can't be blank!
-                            </div>
-                            <div class="valid-feedback">
-                                Looks good!
-                            </div>
+    <main>
+        <!-- banner section start -->
+        <div class="banner_section layout_padding">
+            <!-- d-flex -->
+            <div class="container row m-auto mt-5">
+                <div class="col-md-5 banner_left">
+                    <div class="header_form">
+                        <div class="frm_heading">
+                            <h2 class="text-center">Talk to designer</h2>
                         </div>
-                        <div class="mb-2">
-                            <input type="text" class="custom_inp form-control" id="" name="contact"
-                                placeholder="Contact No" required>
-                            <div class="invalid-feedback">
-                                Contact no can't be blank!
+                        <form action="ajax/query-form-submit.ajax.php" method="POST" class="g-3 needs-validation"
+                            novalidate>
+                            <div class="mb-2">
+                                <input type="text" class="custom_inp form-control" id="" placeholder="Name" name="name"
+                                    required>
+                                <div class="invalid-feedback">
+                                    Name can't be blank!
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
                             </div>
-                            <div class="valid-feedback">
-                                Looks good!
+                            <div class="mb-2">
+                                <input type="text" class="custom_inp form-control" id="" name="contact"
+                                    placeholder="Contact No" required>
+                                <div class="invalid-feedback">
+                                    Contact no can't be blank!
+                                </div>
+                                <div class="valid-feedback">
+                                    Looks good!
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-2">
-                            <input type="email" class="custom_inp form-control" id="" name="email" placeholder="Email">
-                            <div class="valid-feedback">
-                                Email is optional!
+                            <div class="mb-2">
+                                <input type="email" class="custom_inp form-control" id="" name="email"
+                                    placeholder="Email">
+                                <div class="valid-feedback">
+                                    Email is optional!
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-2">
-                            <select class="custom_inp form-select" name="design-for" id="" required>
-                                <option selected disabled value="">Design for</option>
-                                <option value="Home">Home</option>
-                                <option value="office">Office</option>
-                                <option value="outdore">Outdore</option>
-                                <option value="others">Others</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please choose one.
+                            <div class="mb-2">
+                                <select class="custom_inp form-select" name="design-for" id="" required>
+                                    <option selected disabled value="">Design for</option>
+                                    <option value="Home">Home</option>
+                                    <option value="office">Office</option>
+                                    <option value="outdore">Outdore</option>
+                                    <option value="others">Others</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please choose one.
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-2">
-                            <select class="custom_inp form-select" name="budget" id="" required>
-                                <option selected disabled value="">Budget</option>
-                                <option value="1L">1L</option>
-                                <option value="2L">2L</option>
-                                <option value="Not Fixed">Not Fixed</option>
-                            </select>
-                            <div class="invalid-feedback">
-                                Please choose one.
+                            <div class="mb-2">
+                                <select class="custom_inp form-select" name="budget" id="" required>
+                                    <option selected disabled value="">Budget</option>
+                                    <option value="1L">1L</option>
+                                    <option value="2L">2L</option>
+                                    <option value="Not Fixed">Not Fixed</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please choose one.
+                                </div>
                             </div>
-                        </div>
-                        <div class="mb-2">
-                            <?php
+                            <div class="mb-2">
+                                <?php
                         if (isset($_GET['qform'])) {
                             if ($_GET['qform'] == 1) {
                                 echo '<div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -141,251 +141,261 @@ $childServices = $Services->showChildServicesByLimit(12);
                             }
                         }
                         ?>
-                        </div>
-                        <div class="m_frm_btn d-flex my-3">
-                            <button class="m-auto" type="submit">Submit</button>
-                        </div>
-                    </form>
+                            </div>
+                            <div class="m_frm_btn d-flex my-3">
+                                <button class="m-auto" type="submit">Submit</button>
+                            </div>
+                        </form>
 
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-7 banner_right">
-                <div class="header_banner">
-                    <div class="banner_text">
-                        <h2 class="banner_main_text">Luxury in Every Detail</h2>
-                        <p class="banner_dsc">Unlock the potential of your space with our exceptional interior designs.</p>
+                <div class="col-md-7 banner_right">
+                    <div class="header_banner">
+                        <div class="banner_text">
+                            <h2 class="banner_main_text">Luxury in Every Detail</h2>
+                            <p class="banner_dsc">Unlock the potential of your space with our exceptional interior
+                                designs.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- banner section end -->
+
+        <!-- portfolio section start  -->
+        <?php require_once 'incs/portfolio.inc.php'; ?>
+        <!-- portfolio section end  -->
+
+        <!-- services section start -->
+        <?php require_once "incs/our-services.php"; ?>
+        <!-- services section end -->
+
+        <!-- planning section start  -->
+        <div class="new_section layout_padding">
+            <div class="container">
+                <h1 class="sec_heading">How we deliver</h1>
+                <p class="sec_heading_dsc mb-0">We deliver exceptional interior design projects with precision,
+                    creativity, and unwavering attention to detail.</p>
+                <div class="row justify-content-center sub_layout_padding">
+                    <div class="col-9 col-md-3 p-2">
+
+                        <div class="text-center px-2 py-5 my_card">
+                            <div class="planning_icon">
+                                <img src="images/planning/planning.png" alt="" class="plan_sec_img">
+                            </div>
+                            <h3 class="mt-3 pb-0">Planning</h3>
+                            <span class="planning_text">LDefine client's needs, budget, and timeline. Assess space
+                                requirements and constraints.</span>
+                        </div>
+
+                    </div>
+                    <div class="col-9 col-md-3 p-2">
+
+                        <div class="text-center px-2 py-5 my_card">
+                            <div class="planning_icon">
+                                <img src="images/planning/designing.png" alt="" class="plan_sec_img">
+                            </div>
+                            <h3 class="mt-3 pb-0">Designing</h3>
+                            <span class="planning_text">Create concepts, layouts, and select materials, ensuring
+                                functionality and aesthetics align.</span>
+                        </div>
+
+                    </div>
+                    <div class="col-9 col-md-3 p-2">
+
+                        <div class="text-center px-2 py-5 my_card">
+                            <div class="planning_icon">
+                                <img src="images/planning/building.png" alt="" class="plan_sec_img">
+                            </div>
+                            <h3 class="mt-3 pb-0">Building</h3>
+                            <span class="planning_text">Oversee construction, coordinate contractors, and implement
+                                design plans with quality assurance.</span>
+                        </div>
+
+                    </div>
+                    <div class="col-9 col-md-3 p-2">
+
+                        <div class="text-center px-2 py-5 my_card">
+                            <div class="planning_icon">
+                                <img src="images/planning/delivery.png" alt="" class="plan_sec_img">
+                            </div>
+                            <h3 class="mt-3 pb-0">Delivery</h3>
+                            <span class="planning_text">Present the finished interior, address any adjustments, and
+                                ensure client satisfaction.</span>
+                        </div>
+
                     </div>
 
                 </div>
             </div>
 
         </div>
-    </div>
-    <!-- banner section end -->
-
-
-    <!-- portfolio section start  -->
-    <?php require_once 'incs/portfolio.inc.php'; ?>
-    <!-- portfolio section end  -->
-
-    <!-- services section start -->
-    <?php require_once "incs/our-services.php"; ?>
-    <!-- services section end -->
-
-    <!-- planning section start  -->
-    <div class="new_section layout_padding">
-        <div class="container">
-            <h1 class="sec_heading">How we deliver</h1>
-            <p class="sec_heading_dsc mb-0">We deliver exceptional interior design projects with precision, creativity, and unwavering attention to detail.</p>
-            <div class="row justify-content-center sub_layout_padding">
-                <div class="col-9 col-md-3 p-2">
-
-                    <div class="text-center px-2 py-5 my_card">
-                        <div class="planning_icon">
-                            <img src="images/planning/planning.png" alt="" class="plan_sec_img">
-                        </div>
-                        <h3 class="mt-3 pb-0">Planning</h3>
-                        <span class="planning_text">LDefine client's needs, budget, and timeline. Assess space requirements and constraints.</span>
-                    </div>
-
-                </div>
-                <div class="col-9 col-md-3 p-2">
-
-                    <div class="text-center px-2 py-5 my_card">
-                        <div class="planning_icon">
-                            <img src="images/planning/designing.png" alt="" class="plan_sec_img">
-                        </div>
-                        <h3 class="mt-3 pb-0">Designing</h3>
-                        <span class="planning_text">Create concepts, layouts, and select materials, ensuring functionality and aesthetics align.</span>
-                    </div>
-
-                </div>
-                <div class="col-9 col-md-3 p-2">
-
-                    <div class="text-center px-2 py-5 my_card">
-                        <div class="planning_icon">
-                            <img src="images/planning/building.png" alt="" class="plan_sec_img">
-                        </div>
-                        <h3 class="mt-3 pb-0">Building</h3>
-                        <span class="planning_text">Oversee construction, coordinate contractors, and implement design plans with quality assurance.</span>
-                    </div>
-
-                </div>
-                <div class="col-9 col-md-3 p-2">
-
-                    <div class="text-center px-2 py-5 my_card">
-                        <div class="planning_icon">
-                            <img src="images/planning/delivery.png" alt="" class="plan_sec_img">
-                        </div>
-                        <h3 class="mt-3 pb-0">Delivery</h3>
-                        <span class="planning_text">Present the finished interior, address any adjustments, and ensure client satisfaction.</span>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-
-    </div>
-    <!-- planning section end  -->
+        <!-- planning section end  -->
 
 
 
 
-    <!-- planning section start  -->
-    <div class="new_section layout_padding">
-        <div class="container">
-            <h1 class="sec_heading">Our Numbers</h1>
-            <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error similique ullam.</p>
+        <!-- planning section start  -->
+        <div class="new_section layout_padding">
+            <div class="container">
+                <h1 class="sec_heading">Our Numbers</h1>
+                <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
+                    similique ullam.</p>
 
-            <div class="row justify-content-center sub_layout_padding counter_sec">
+                <div class="row justify-content-center sub_layout_padding counter_sec">
 
-                <div class="col-8 col-md-3 p-2">
-                    <div class="border text-center number_card"
-                        style="border-radius: 25% 75% 44% 56% / 29% 30% 70% 71% ;">
-                        <div class="counter_img">
-                            <img src="images/icons/calender.png" alt="" class="plan_sec_img">
-                        </div>
-                        <h1 class="text-dark pt-3"><span id='years'>0</span>+</h1>
-                        <h3 class="pb-0">Years of experience</h3>
-                    </div>
-                </div>
-
-                <div class="col-8 col-md-3 p-2">
-                    <div class="border text-center number_card"
-                        style="border-radius: 45% 75% 44% 61% / 61% 49% 72% 62%;">
-                        <div class="counter_img">
-                            <img src="images/icons/projects.png" alt="" class="plan_sec_img">
-                        </div>
-                        <h1 class="text-dark pt-3"><span id='projects'>0</span>+</h1>
-                        <h3 class="pb-0">Completed Projects</h3>
-                    </div>
-                </div>
-
-                <div class="col-8 col-md-3 p-2">
-                    <div class="border text-center number_card"
-                        style="border-radius: 91% 39% 70% 56% / 56% 89% 44% 71%;">
-                        <div class="counter_img">
-                            <img src="images/icons/handshake.png" alt="" class="plan_sec_img">
-                        </div>
-                        <h1 class="text-dark pt-3"> <span id='clients'>12</span>+</h1>
-                        <h3 class="pb-0">Happy Clients</h3>
-                    </div>
-                </div>
-
-                <div class="col-8 col-md-3 p-2">
-                    <div class="border text-center number_card"
-                        style="border-radius: 75% 25% 44% 56% / 29% 30% 69% 71%;">
-                        <div class="counter_img">
-                            <img src="images/icons/team - 2.png" alt="" class="plan_sec_img">
-                        </div>
-                        <h1 class="text-dark pt-3"><span id='experts'>0</span>+</h1>
-                        <h3 class="pb-0">Desining experts</h3>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- planning section end  -->
-
-
-    <!-- client section start -->
-    <div class="new_section layout_padding">
-        <div class="container">
-            <h1 class="sec_heading">Our Claient Says</h1>
-            <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
-                similique ullam.</p>
-
-            <div class="row sub_layout_padding counter_sec">
-
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner testimonial_sec">
-                        <div class="carousel-item active">
-                            <img class="testimonial_img" src="images/img-8.png" alt="">
-                            <h2 class="testimonial_heading">Rahul Majumdar</h2>
-                            <blockquote class="testimonial_quote">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem odit consectetur
-                                aperiam eius ullam molestiae quis, quidem, animi reprehenderit tenetur iste
-                                distinctio autem. Ea unde consectetur, corrupti quas vel natus?
-                            </blockquote>
-                        </div>
-                        <div class="carousel-item">
-                            <img class="testimonial_img" src="images/img-8.png" alt="">
-                            <h2 class="testimonial_heading">Rahul Majumdar</h2>
-                            <blockquote class="testimonial_quote">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem odit consectetur
-                                aperiam eius ullam molestiae quis, quidem, animi reprehenderit tenetur iste
-                                distinctio autem. Ea unde consectetur, corrupti quas vel natus?
-                            </blockquote>
-                        </div>
-                        <div class="carousel-item">
-                            <img class="testimonial_img" src="images/img-8.png" alt="">
-                            <h2 class="testimonial_heading">Rahul Majumdar</h2>
-                            <blockquote class="testimonial_quote">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem odit consectetur
-                                aperiam eius ullam molestiae quis, quidem, animi reprehenderit tenetur iste
-                                distinctio autem. Ea unde consectetur, corrupti quas vel natus?
-                            </blockquote>
+                    <div class="col-8 col-md-3 p-2">
+                        <div class="border text-center number_card"
+                            style="border-radius: 25% 75% 44% 56% / 29% 30% 70% 71% ;">
+                            <div class="counter_img">
+                                <img src="images/icons/calender.png" alt="" class="plan_sec_img">
+                            </div>
+                            <h1 class="text-dark pt-3"><span id='years'>0</span>+</h1>
+                            <h3 class="pb-0">Years of experience</h3>
                         </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
+
+                    <div class="col-8 col-md-3 p-2">
+                        <div class="border text-center number_card"
+                            style="border-radius: 45% 75% 44% 61% / 61% 49% 72% 62%;">
+                            <div class="counter_img">
+                                <img src="images/icons/projects.png" alt="" class="plan_sec_img">
+                            </div>
+                            <h1 class="text-dark pt-3"><span id='projects'>0</span>+</h1>
+                            <h3 class="pb-0">Completed Projects</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-8 col-md-3 p-2">
+                        <div class="border text-center number_card"
+                            style="border-radius: 91% 39% 70% 56% / 56% 89% 44% 71%;">
+                            <div class="counter_img">
+                                <img src="images/icons/handshake.png" alt="" class="plan_sec_img">
+                            </div>
+                            <h1 class="text-dark pt-3"> <span id='clients'>12</span>+</h1>
+                            <h3 class="pb-0">Happy Clients</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-8 col-md-3 p-2">
+                        <div class="border text-center number_card"
+                            style="border-radius: 75% 25% 44% 56% / 29% 30% 69% 71%;">
+                            <div class="counter_img">
+                                <img src="images/icons/team - 2.png" alt="" class="plan_sec_img">
+                            </div>
+                            <h1 class="text-dark pt-3"><span id='experts'>0</span>+</h1>
+                            <h3 class="pb-0">Desining experts</h3>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
-    <!-- client section end -->
+        <!-- planning section end  -->
 
 
-    <!-- contact section start -->
-    <div class="new_section layout_padding">
-        <div class="container">
-            <h1 class="sec_heading">Let's talk</h1>
-            <p class="sec_heading_dsc mb-4">Engage in design discussions. Your ideas, our expertise – let's create together.</p>
-            <div class="sub_layout_padding">
-                <?php require_once "incs/contact-form.php"; ?>
+        <!-- client section start -->
+        <div class="new_section layout_padding">
+            <div class="container">
+                <h1 class="sec_heading">Our Claient Says</h1>
+                <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
+                    similique ullam.</p>
+
+                <div class="row sub_layout_padding counter_sec">
+
+                    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner testimonial_sec">
+                            <div class="carousel-item active">
+                                <img class="testimonial_img" src="images/img-8.png" alt="">
+                                <h2 class="testimonial_heading">Rahul Majumdar</h2>
+                                <blockquote class="testimonial_quote">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem odit consectetur
+                                    aperiam eius ullam molestiae quis, quidem, animi reprehenderit tenetur iste
+                                    distinctio autem. Ea unde consectetur, corrupti quas vel natus?
+                                </blockquote>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="testimonial_img" src="images/img-8.png" alt="">
+                                <h2 class="testimonial_heading">Rahul Majumdar</h2>
+                                <blockquote class="testimonial_quote">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem odit consectetur
+                                    aperiam eius ullam molestiae quis, quidem, animi reprehenderit tenetur iste
+                                    distinctio autem. Ea unde consectetur, corrupti quas vel natus?
+                                </blockquote>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="testimonial_img" src="images/img-8.png" alt="">
+                                <h2 class="testimonial_heading">Rahul Majumdar</h2>
+                                <blockquote class="testimonial_quote">
+                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem odit consectetur
+                                    aperiam eius ullam molestiae quis, quidem, animi reprehenderit tenetur iste
+                                    distinctio autem. Ea unde consectetur, corrupti quas vel natus?
+                                </blockquote>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+        <!-- client section end -->
 
-    <!-- contact section end -->
 
-    <!-- Feedback Button Start -->
-    <!-- <style>
-    #mybutton {
-        position: fixed;
-        bottom: -4px;
-        right: 10px;
-    }
+        <!-- contact section start -->
+        <div class="new_section layout_padding">
+            <div class="container">
+                <h1 class="sec_heading">Let's talk</h1>
+                <p class="sec_heading_dsc mb-4">Engage in design discussions. Your ideas, our expertise – let's create
+                    together.</p>
+                <div class="sub_layout_padding">
+                    <?php require_once "incs/contact-form.php"; ?>
+                </div>
+            </div>
+        </div>
 
-    .feedback {
-        background-color: #31B0D5;
-        color: white;
-        padding: 10px 20px;
-        border-radius: 4px;
-        border-color: #46b8da;
-    }
-    </style>
-    <div id="mybutton">
-        <button class="feedback">Feedback</button>
-    </div> -->
-    <!-- Feedback Button Start -->
+        <!-- contact section end -->
 
-    <!-- footer section start -->
-    <?php require_once "partials/footer.php"; ?>
-    <!--  footer section end -->
+        <!-- Feedback Button Start -->
+        <style>
+        #mybutton {
+            position: fixed;
+            bottom: 50px;
+            right: -35px;
+            rotate: -90deg;
+        }
 
+        .feedback {
+            background-color: #31B0D5;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            border-color: #46b8da;
+        }
+        </style>
+        <div id="mybutton">
+            <button class="feedback">Feedback</button>
+        </div>
+        <!-- Feedback Button Start -->
+
+        <!-- footer section start -->
+        <?php require_once "partials/footer.php"; ?>
+        <!--  footer section end -->
+
+    </main>
     <script src="js/jquery.min.js"></script>
 
     <script>
