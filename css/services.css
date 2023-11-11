@@ -1,3 +1,11 @@
+.page_heading_sec{
+    /* padding: 2rem; */
+    background-image: url('../images/about-us-main-bg.jpg');
+    background-color: var(--custom-blue);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 .services_section3{
     width: 100%;
     float: left;
@@ -40,9 +48,6 @@
     box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
 }
 
-.serv_dtls:hover p{
-    /* margin-bottom: 10px; */
-}
 .serv_dtls:hover .viewbtn{
     visibility: visible;
 }
@@ -56,4 +61,16 @@
 } 
 .service_content strong{
     font-weight: 700;
+}
+/* 
+@media (min-width: 768px){
+    .page_heading_sec{
+        margin-top: 1rem !important;
+    }
+}
+*/
+@media (min-width: 1399.98px){
+    .page_heading_sec{
+        margin-top: 3.5rem !important;
+    }
 }

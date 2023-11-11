@@ -254,14 +254,7 @@ button {
 .bg_white{
     background-color: #fff;
 }
-.page_heading_sec{
-    /* padding: 2rem; */
-    background-image: url('../images/about-us-main-bg.jpg');
-    background-color: var(--custom-blue);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
+
 .header_section{
     width: 100%;
     float: left;

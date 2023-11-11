@@ -63,7 +63,7 @@ $childServices = $Services->showChildServices();
     <!-- services section start -->
     <div class="mt-5">
         <?php // require_once "incs/our-services.php"; ?>
-        <div class="page_heading_sec mt-2 mt-md-3 mb-3 p-5">
+        <div class="page_heading_sec mb-3 p-5">
             <h1 class="sec_heading">our services</h1>
             <p class="sec_heading_dsc">There are many variations of passages of Lorem Ipsum </p>
         </div>
