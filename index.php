@@ -177,9 +177,15 @@ $childServices = $Services->showChildServicesByLimit(12);
         <!-- planning section start  -->
         <div class="new_section layout_padding">
             <div class="container">
-                <h1 class="sec_heading">How we deliver</h1>
-                <p class="sec_heading_dsc mb-0">We deliver exceptional interior design projects with precision,
-                    creativity, and unwavering attention to detail.</p>
+                <h1 class="sec_heading mb-1">How we deliver</h1>
+                <p class="sec_heading_dsc mb-0">We are thankful to you for choosing our services, this small approach of
+                    yours will make a
+                    big difference. Under the guiding principle of &quot; <b>How We Deliver</b> &quot;, we&#39;ve
+                    divided our process
+                    into four simple ways <b>Planning,</b> <b>Designing,</b> <b>Building,</b> and <b>Delivering</b>.
+                    Each step is
+                    executed with perfection and moxie, ensuring that every design we take over is met with the
+                    utmost care and attention to detail.</p>
                 <div class="row justify-content-center sub_layout_padding">
                     <div class="col-9 col-md-3 p-2">
 
@@ -187,9 +193,12 @@ $childServices = $Services->showChildServicesByLimit(12);
                             <div class="planning_icon">
                                 <img src="images/planning/planning.png" alt="" class="plan_sec_img">
                             </div>
-                            <h3 class="mt-3 pb-0">Planning</h3>
-                            <span class="planning_text">LDefine client's needs, budget, and timeline. Assess space
-                                requirements and constraints.</span>
+                            <h3 class="mt-3 pb-2">Planning</h3>
+                            <span class="planning_text">Our trip to get a new dream home design begins with thorough
+                                planning, where we strictly
+                                dissect every aspect of the design. From defining objects to assessing coffers and
+                                timelines,
+                                we leave no gravestone unturned to ensure a solid foundation for success.</span>
                         </div>
 
                     </div>
@@ -199,9 +208,12 @@ $childServices = $Services->showChildServicesByLimit(12);
                             <div class="planning_icon">
                                 <img src="images/planning/designing.png" alt="" class="plan_sec_img">
                             </div>
-                            <h3 class="mt-3 pb-0">Designing</h3>
-                            <span class="planning_text">Create concepts, layouts, and select materials, ensuring
-                                functionality and aesthetics align.</span>
+                            <h3 class="mt-3 pb-2">Designing</h3>
+                            <span class="planning_text">With a creative vision in mind, our talented platoon of
+                                contrivers brings generalities to life.
+                                Through innovative ideas and careful consideration of functionality, we draft designs
+                                that not
+                                only meet your conditions but also exceed your prospects.</span>
                         </div>
 
                     </div>
@@ -211,9 +223,12 @@ $childServices = $Services->showChildServicesByLimit(12);
                             <div class="planning_icon">
                                 <img src="images/planning/building.png" alt="" class="plan_sec_img">
                             </div>
-                            <h3 class="mt-3 pb-0">Building</h3>
-                            <span class="planning_text">Oversee construction, coordinate contractors, and implement
-                                design plans with quality assurance.</span>
+                            <h3 class="mt-3 pb-2">Building</h3>
+                            <span class="planning_text">The prosecution stage is where the magic happens. Our professed
+                                tradesmen and
+                                construction experts work diligently to turn plans into reality. Quality is our top
+                                precedence,
+                                and we take pride in delivering systems that stand the test of time.</span>
                         </div>
 
                     </div>
@@ -223,9 +238,12 @@ $childServices = $Services->showChildServicesByLimit(12);
                             <div class="planning_icon">
                                 <img src="images/planning/delivery.png" alt="" class="plan_sec_img">
                             </div>
-                            <h3 class="mt-3 pb-0">Delivery</h3>
-                            <span class="planning_text">Present the finished interior, address any adjustments, and
-                                ensure client satisfaction.</span>
+                            <h3 class="mt-3 pb-2">Delivery</h3>
+                            <span class="planning_text">As the design nears completion, we conduct rigorous quality
+                                checks to ensure that every
+                                detail meets our exacting norms. Our commitment to on-time delivery means that you can
+                                count on us to hand over a finished product that exceeds your vision and
+                                conditions.</span>
                         </div>
 
                     </div>

@@ -285,7 +285,7 @@ button {
     font-weight: 600;
     color: #090808;
     text-align: center;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     padding-bottom: 0;
 }
 .sec_heading_dsc{
