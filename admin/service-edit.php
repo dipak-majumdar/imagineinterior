@@ -1,11 +1,11 @@
 <?php
+session_start();
 require_once dirname(__DIR__) . "/inc/constants.inc.php";
 require_once ABSPATH . "/_config/dbconnect.php";
 require_once ABSPATH . "classes/services.class.php";
 require_once ABSPATH . "classes/status.class.php";
 require_once ABSPATH . "classes/date-utility.class.php";
 require_once ADMPATH . 'partials/common-admin-files.inc.php';
-
 $Services   = new Services();
 $Status     = new Status();
 $DateUtil   = new DateUtility();
@@ -97,7 +97,7 @@ $status   = $Status->getStatusName($status);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><?= $name ?> Service - Edit</title>
 
     <!-- Favicons -->
     <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="icon">
@@ -111,16 +111,16 @@ $status   = $Status->getStatusName($status);
     <form class="m-1" action="<?php echo $_SERVER['REQUEST_URI']; ?>" method="POST" enctype="multipart/form-data">
 
 
-        <div class="row px-4 mb-2">
+        <div class="row px-4 mb-2 d-none d-lg-flex">
             <div class="col-2">
                 <a href="<?= ADM_URL.'services.php'?>" class="btn btn-secondary">Back</a>
             </div>
             <div class="col-7">
                 <?php
-        if ($errMsg != null) {
-          echo '<div class="text-center text-primary bg-warning border-start border-primary border-4 mb-4 py-1 fw-semibold">' . $errMsg . '</div>';
-        }
-        ?>
+                if ($errMsg != null) {
+                echo '<div class="text-center text-primary bg-warning border-start border-primary border-4 mb-4 py-1 fw-semibold">' . $errMsg . '</div>';
+                }
+                ?>
             </div>
             <div class="col-3 text-end">
                 <button type="submit" name="updateBtn" class="btn btn-primary">Update</button>
@@ -130,21 +130,16 @@ $status   = $Status->getStatusName($status);
         <!-- Row Start  -->
         <div class="row px-4">
             <!-- main section start -->
-            <section class="row col-9 p-4 m-0">
-                <div class="mb-2">
-                    <input type="hidden" name="cat-id" value="<?= $catId; ?>">
-                    <div class="form-group">
-                        <label for="service-name">Service Name</label>
-                        <input value="<?php echo $name; ?>" type="text"
-                            class="form-control shadow-none border-top-0 border-end-0" name="catName" id="service-name"
-                            placeholder="Service Name" required>
-                    </div>
-                </div>
+            <section class="col-12 col-lg-9 p-0 p-lg-4 m-0 mb-3 mb-lg-0">
+
+                <input type="hidden" name="cat-id" value="<?= $catId; ?>">
+                <input value="<?= $name; ?>" type="text" class="form-control shadow-none border-0 fw-bolder fs-3 mb-2"
+                    name="catName" id="service-name" placeholder="Service Name" required>
 
                 <div class="">
                     <div class="form-group">
-                        <label for="service-desc">Service Name</label>
-                        <textarea id="service-desc" class="form-control shadow-none border-top-0 border-end-0"
+                        <!-- <label for="service-desc">Service Name</label> -->
+                        <textarea id="service-desc" class="form-control shadow-none border-0 fs-5"
                             name="catDsc" placeholder="Service Description" style="min-height: 100px;"
                             maxlength="300"><?= $dsc; ?></textarea>
                     </div>
@@ -161,7 +156,7 @@ $status   = $Status->getStatusName($status);
 
 
             <!-- sidebar section start -->
-            <section class="col-3 card px-3 p-2">
+            <section class="col-12 col-lg-3 card px-3 p-2">
                 <p class="text-secondary">
                     <span class="fw-semibold">Status:</span>
                     <span class="badge text-bg-primary"><?= $status ?></span>
@@ -200,6 +195,23 @@ $status   = $Status->getStatusName($status);
         <!-- <div class="text-end">
             <button type="submit" name="updateBtn" class="btn btn-primary">Update</button>
         </div> -->
+
+        <div class="row px-2 my-4 d-lg-none">
+            <div class="col-2">
+                <a href="<?= ADM_URL.'services.php'?>" class="btn btn-secondary">Back</a>
+            </div>
+            <div class="col-7">
+                <?php
+                if ($errMsg != null) {
+                echo '<div class="text-center text-primary bg-warning border-start border-primary border-4 mb-4 py-1 fw-semibold">' . $errMsg . '</div>';
+                }
+                ?>
+            </div>
+            <div class="col-3 text-end">
+                <button type="submit" name="updateBtn" class="btn btn-primary">Update</button>
+            </div>
+        </div>
+
     </form>
     <script src="<?= URL ?>js/jquery.min.js"></script>
     <script src="<?= URL ?>vendors/dropify-master/dist/js/dropify.min.js"></script>
