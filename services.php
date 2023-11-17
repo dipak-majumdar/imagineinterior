@@ -2,12 +2,14 @@
 require_once "./inc/reqHeader.php";
 
 require_once "./classes/services.class.php";
+require_once "./classes/projects.class.php";
+
 
 $Services   = new Services();
+$Projects   = new Projects;
 
-$allServices = $Services->activeServices();
-$childServices = $Services->showChildServices();
-
+$allServices    = $Services->activeServices();
+$images         = $Projects->showRandomImages();
 
 ?>
 <!DOCTYPE html>
@@ -22,10 +24,10 @@ $childServices = $Services->showChildServices();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- fevicon -->
-    <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
+    <link rel="icon" href="<?= URL ?>logo/<?= $favcon ?>" type="image/gif" />
     <!-- fevicon -->
-    <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
-    
+    <link rel="icon" href="<?= URL ?>logo/<?= $favcon ?>" type="image/gif" />
+
     <!-- site metas -->
     <title>Services - <?php echo SITE_NAME; ?></title>
     <meta name="keywords" content="">
@@ -35,13 +37,14 @@ $childServices = $Services->showChildServices();
     <link rel="stylesheet" href="css/main-css/bootstrap.css">
 
     <!-- style css -->
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/services.css">
-    <link rel="stylesheet" type="text/css" href="css/custom-style.css">
+    <link rel="stylesheet" type="text/css" href="<?= URL ?>css/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= URL ?>css/services.css">
+    <link rel="stylesheet" type="text/css" href="<?= URL ?>css/custom-style.css">
+    <link rel="stylesheet" type="text/css" href="<?= URL ?>css/portfolio.css">
 
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
-    
+
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
@@ -110,13 +113,12 @@ $childServices = $Services->showChildServices();
                             ?>
                     </div>
                 </div>
-                <?php
-                if (count($childServices) > 0) {
-                ?>
+
                 <div class="services_section3 sub_layout_padding">
 
                     <div class="new_section mb-4 pt-0">
-                        <h3 class="fs-3 text-center text-md-start">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                        <h3 class="fs-3 text-center text-md-start">Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit.</h3>
                         <p class="small_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
                             odio,
                             esse sunt, nisi impedit
@@ -131,25 +133,25 @@ $childServices = $Services->showChildServices();
                             consequuntur officiis libero iusto eaque non unde? Illum!</p>
                     </div>
 
-                    <div class="row mt-5">
+                    <div class="portfolio-item row">
                         <?php
-                            foreach ($childServices as $eachChild) {
-                                echo '<div class="col-6 col-md-2">
-                                        <a href="'.URL.'projects/'.$eachChild['slug'].'">
-                                            <div class="serv_dtls">
-                                                <img src="'.IMGURL.'services/'.$eachChild['icon'].'" alt="">
-                                            <p >'.$eachChild['name'].'</p>
-                                            <span class="viewbtn">View</span>
-                                            </div>
-                                        </a>
-                                    </div>';
-                            }
+                        foreach ($images as $eachImage) {
+                            $altName 		= pathinfo($eachImage, PATHINFO_FILENAME);
+                            echo '
+                            <div class="item selfie col-sm col-6 col-md-4 col-lg-3">
+                                <a href="'.IMGURL.'projects/'.$eachImage.'"
+                                    class="fancylight popup-btn" data-fancybox-group="light">
+                                    <img class="img-fluid image_fit"
+                                        src="'.IMGURL.'projects/'.$eachImage.'"
+                                        alt="'.$altName.'">
+                                </a>
+                            </div>
+                            ';
+                        }
                         ?>
                     </div>
+
                 </div>
-                <?php
-                }
-                ?>
             </div>
         </div>
 

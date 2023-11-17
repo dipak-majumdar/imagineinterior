@@ -96,21 +96,6 @@ if (count($showProject) < 1) {
         color: #000;
         padding: 1rem;
     }
-
-    .portfolio-item {
-        /*width:100%;*/
-    }
-
-    .portfolio-item .item {
-        float: left;
-        margin-bottom: 15px;
-    }
-
-    .image_fit {
-        object-fit: cover;
-        width: 100%;
-        height: 250px;
-    }
     </style>
 
 </head>

@@ -214,6 +214,34 @@ class Projects extends DBConnection{
     }//eof
 
     
+    function showRandomImages() {
+        try {
+            $data = array();
+            $sql = "SELECT image FROM `project_images` ORDER BY RAND() LIMIT 30";
+            $stmt = $this->conn->prepare($sql);
+    
+            if ($stmt === false) {
+                throw new Exception("Error preparing query: " . $this->conn->error);
+            }
+    
+            $stmt->execute();
+    
+            $stmt->bind_result($image);
+    
+            while ($stmt->fetch()) {
+                $data[] = $image;
+            }
+    
+            $stmt->close();
+    
+            return $data;
+        } catch (Exception $e) {
+            // You can log or handle the error in an appropriate way for your application
+            // For now, we'll just re-throw the exception
+            throw $e;
+        }
+    }
+
 
     /**
      * deleting services data from `services` table
