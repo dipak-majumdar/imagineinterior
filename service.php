@@ -30,6 +30,8 @@ if (empty($serviceTitle)) {
     $serviceTitle = $serviceName;
 }
 
+$serviceMetaDsc    = $service['meta_dsc'];
+
 $childServices  = $Services->activeChildServicesByParent($serviceId);
 // print_r($service);
 
@@ -48,8 +50,8 @@ $childServices  = $Services->activeChildServicesByParent($serviceId);
     <!-- site metas -->
     <title><?= $serviceTitle ?> - <?= SITE_NAME; ?></title>
     <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="description" content="<?= $serviceMetaDsc ?>">
+
     <!-- bootstrap css -->
     <link rel="stylesheet" href="<?= URL?>css/main-css/bootstrap.css">
 

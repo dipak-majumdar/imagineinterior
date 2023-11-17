@@ -35,6 +35,8 @@ if (isset($_POST['updateBtn'])) {
   $content      = $_POST['content'];
   $slug         = $_POST['slug'];
   $metaTitle    = $_POST['meta-title'];
+  $metaDsc      = $_POST['meta-dsc'];
+
 
   //Image Upload
   $image_name   = $_FILES["service-icon"]["name"];
@@ -48,7 +50,7 @@ if (isset($_POST['updateBtn'])) {
     if ($check !== false) {
       if (move_uploaded_file($tempname, $target_image)) {
 
-        $update  = $Services->updateService($catId, $image_name, $name, $dsc, $content, $slug, $metaTitle, TIME);
+        $update  = $Services->updateService($catId, $image_name, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, TIME);
 
         if ($update == true) {
           $errMsg   = "Service Update!";
@@ -62,7 +64,7 @@ if (isset($_POST['updateBtn'])) {
     }
   } else {
     // echo $content; exit;
-    $update  = $Services->updateServiceText($catId, $name, $dsc, $content, $slug, $metaTitle, TIME);
+    $update  = $Services->updateServiceText($catId, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, TIME);
     // $Services->updateServiceContent($catId, $content);
     if ($update == true) {
       $errMsg   = "Service Update!";
@@ -82,6 +84,7 @@ $dsc         = $show['descreption'];
 $content     = $show['content'];;
 $slug        = $show['slug'];
 $metaTitle   = $show['meta_title'];
+$metaDsc     = $show['meta_dsc'];
 $status      = $show['status'];
 $childNos    = $show['child_services'];
 $projectNos  = $show['projects_nos'];
@@ -199,7 +202,7 @@ $status   = $Status->getStatusName($status);
                         <div id="slug-collapse" class="accordion-collapse collapse show" aria-labelledby="slug-heading"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                            <input type="text" id="slug" class="form-control text-primary shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0" 
+                            <input type="text" id="slug" class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0" 
                             name="slug" value="<?= $slug ?>" style="height: 20px;">
                             </div>
                         </div>
@@ -214,30 +217,25 @@ $status   = $Status->getStatusName($status);
                         <div id="meta-title-collapse" class="accordion-collapse collapse show" aria-labelledby="meta-title-heading"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <input type="text" class="form-control text-primary shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0" 
+                                <input type="text" class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0" 
                                 maxlength="155" name="meta-title" value="<?= $metaTitle; ?>">
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="accordion-item">
-                        <h2 class="accordion-header" id="meta-description-heading">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="meta-dsc-heading">
                             <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#meta-description-collapse" aria-expanded="true" aria-controls="meta-description-collapse">
+                                data-bs-target="#meta-dsc-collapse" aria-expanded="true" aria-controls="meta-dsc-collapse">
                                 Meta Description
                             </button>
                         </h2>
-                        <div id="meta-description-collapse" class="accordion-collapse collapse show" aria-labelledby="meta-description-heading"
+                        <div id="meta-dsc-collapse" class="accordion-collapse collapse show" aria-labelledby="meta-dsc-heading"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default,
-                                until the collapse plugin adds the appropriate classes that we use to style each
-                                element. These classes control the overall appearance, as well as the showing and hiding
-                                via CSS transitions. You can modify any of this with custom CSS or overriding our
-                                default variables. It's also worth noting that just about any HTML can go within the
-                                <code>.accordion-body</code>, though the transition does limit overflow.
+                                <textarea class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0" name="meta-dsc"rows="15" maxlength="355" style="height: 12rem !important"><?= $metaDsc; ?></textarea>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
 
             </section>

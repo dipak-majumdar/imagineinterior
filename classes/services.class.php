@@ -162,7 +162,7 @@ class Services extends DBConnection{
 
 
     
-    function updateService($id, $icon, $name, $dsc, $content, $slug, $metaTitle, $time){
+    function updateService($id, $icon, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, $time){
         try {
             $sql = "UPDATE `services`
                     SET
@@ -172,6 +172,7 @@ class Services extends DBConnection{
                     `content`       = ?,
                     `slug`          = ?,
                     `meta_title`    = ?,
+                    `meta_dsc`    = ?,
                     `edited`        = ?
                     WHERE
                     `id`  	        = '$id'";
@@ -181,7 +182,7 @@ class Services extends DBConnection{
                 throw new Exception("Error Processing Request". $stmt->error);
             }
 
-            $stmt->bind("sssssssi", $icon, $name, $dsc, $content, $slug, $metaTitle, $time, $id);
+            $stmt->bind("ssssssssi", $icon, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, $time, $id);
             
             if ($stmt->execute()) {
                 return true;
@@ -197,7 +198,7 @@ class Services extends DBConnection{
 
 
 
-    function updateServiceText($id, $name, $dsc, $content, $slug, $metaTitle, $time) {
+    function updateServiceText($id, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, $time) {
         try {
             // Prepare the SQL statement with placeholders
             $sql = "UPDATE `services`
@@ -207,6 +208,7 @@ class Services extends DBConnection{
                     `content`     = ?,
                     `slug`        = ?,
                     `meta_title`  = ?,
+                    `meta_dsc`    = ?,
                     `edited`      = ?
                     WHERE
                     `id`          = ?";
@@ -220,7 +222,7 @@ class Services extends DBConnection{
             }
         
             // Bind the parameters to the placeholders
-            $stmt->bind_param("ssssssi", $name, $dsc, $content, $slug, $metaTitle, $time, $id);
+            $stmt->bind_param("sssssssi", $name, $dsc, $content, $slug, $metaTitle, $metaDsc, $time, $id);
         
             // Execute the statement
             if ($stmt->execute()) {
