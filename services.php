@@ -173,11 +173,11 @@ $images         = $Projects->showRandomImages();
 
                     <div class="col-12 col-md-5 m-2 mini_sec">
                         <div class="d-sm-none d-block">
-                            <img src="./images/services/bedroom.png" alt="">
+                            <img src="<?= IMGURL ?>services/bedroom.png" alt="">
                         </div>
                         <h4 class="fs-4 text-center text-md-start">Lorem ipsum dolor sit.</h4>
                         <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="./images/services/bedroom.png" alt="">
+                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL ?>services/bedroom.png" alt="">
                             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
                                 elit. Distinctio est numquam soluta
                                 odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
@@ -187,11 +187,11 @@ $images         = $Projects->showRandomImages();
 
                     <div class="col-12 col-md-5 m-2 mini_sec">
                         <div class="d-sm-none d-block">
-                            <img src="./images/services/bedroom.png" alt="">
+                            <img src="<?= IMGURL ?>services/bedroom.png" alt="">
                         </div>
                         <h4 class="fs-4">Lorem ipsum dolor sit.</h4>
                         <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="./images/services/bedroom.png" alt="">
+                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL ?>services/bedroom.png" alt="">
                             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
                                 elit. Distinctio est numquam soluta
                                 odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
@@ -201,11 +201,11 @@ $images         = $Projects->showRandomImages();
 
                     <div class="col-12 col-md-5 m-2 mini_sec">
                         <div class="d-sm-none d-block">
-                            <img src="./images/services/bedroom.png" alt="">
+                            <img src="<?= IMGURL ?>services/bedroom.png" alt="">
                         </div>
                         <h4 class="fs-4">Lorem ipsum dolor sit.</h4>
                         <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="./images/services/bedroom.png" alt="">
+                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL ?>services/bedroom.png" alt="">
                             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
                                 elit. Distinctio est numquam soluta
                                 odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
@@ -215,11 +215,11 @@ $images         = $Projects->showRandomImages();
 
                     <div class="col-12 col-md-5 m-2 mini_sec">
                         <div class="d-sm-none d-block">
-                            <img src="./images/services/bedroom.png" alt="">
+                            <img src="<?= IMGURL ?>services/bedroom.png" alt="">
                         </div>
                         <h4 class="fs-4">Lorem ipsum dolor sit.</h4>
                         <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="./images/services/bedroom.png" alt="">
+                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL ?>services/bedroom.png" alt="">
                             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
                                 elit. Distinctio est numquam soluta
                                 odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
