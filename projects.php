@@ -48,7 +48,8 @@ $showProjects = $Projects->showProjectByChildServiceId($childServiceId);
     <!-- Responsive-->
     <link rel="stylesheet" href="<?= URL ?>css/responsive.css">
     <!-- fevicon -->
-    <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
+    <link rel="icon" href="<?= IMGURL ?>/logo/<?= $favcon ?>" type="image/gif" />
+    
 
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="<?= URL ?>css/jquery.mCustomScrollbar.min.css">

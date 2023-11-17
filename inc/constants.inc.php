@@ -38,9 +38,6 @@
 	define('START_YEAR',		'2022');
 	define('END_YEAR',  		date('Y') + 2); 
 	
-	// define('SITE_BILLING_EMAIL', "invoice@imagineinterior.com");	//
-	// define('SITE_BILLING_NAME',  "Imagine Interior");
-		
 	
 	define("ABSPATH",			$_SERVER['DOCUMENT_ROOT'].'/'.LOCAL_DIR);		//location of the logo
 	define("ADMPATH",			ABSPATH . 'admin/');							//location of the logo

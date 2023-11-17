@@ -25,6 +25,11 @@ $serviceStatus     = $service['status'];
 $serviceEdited     = $service['edited'];
 $serviceCreated    = $service['created'];
 
+$serviceTitle      = $service['meta_title'];
+if (empty($serviceTitle)) {
+    $serviceTitle = $serviceName;
+}
+
 $childServices  = $Services->activeChildServicesByParent($serviceId);
 // print_r($service);
 
@@ -41,7 +46,7 @@ $childServices  = $Services->activeChildServicesByParent($serviceId);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Services - <?php echo SITE_NAME; ?></title>
+    <title><?= $serviceTitle ?> - <?= SITE_NAME; ?></title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -56,7 +61,7 @@ $childServices  = $Services->activeChildServicesByParent($serviceId);
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
     <!-- fevicon -->
-    <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
+    <link rel="icon" href="<?= IMGURL ?>/logo/<?= $favcon ?>" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
