@@ -34,10 +34,15 @@ if (isset($_POST['updateBtn'])) {
   $metaTitle    = $_POST['meta-title'];
   $metaDsc      = $_POST['meta-dsc'];
 
-  
-  if (empty($slug)) {
+
+  if (!empty($slug)) {
+    $slug    = $Utility->slugGenerator($slug);
+  }elseif (!empty($metaTitle)){
+    $slug    = $Utility->slugGenerator($metaTitle);
+  }else {
     $slug    = $Utility->slugGenerator($name);
   }
+
   
   $target_dir   = "../images/services/";
   $image_name   = $_FILES["service-icon"]["name"];
