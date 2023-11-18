@@ -576,12 +576,11 @@ button {
 }
 
 /* ================== header banner section end ================== */
-.furnitures_text {
+.service_name {
     width: 100%;
     float: left;
     font-size: 24px;
     color: #090808;
-    text-transform: uppercase;
     text-align: center;
     padding-top: 20px;
 }
@@ -592,7 +591,6 @@ button {
     color: #090808;
     text-align: center;
     margin-left: 0px;
-    margin-top: 10px;
     /* font-family: 'Edu NSW ACT Foundation', sans-serif;
     font-weight: 500; */
 }

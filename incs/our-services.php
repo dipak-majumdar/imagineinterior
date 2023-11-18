@@ -11,8 +11,8 @@
                             <div class="service_icon_bx">
                                 <img src="images/services/'.$eachSearvice['icon'].'">
                             </div>
-                            <h2 class="furnitures_text">'.$eachSearvice['name'].'</h2>
-                            <p class="dummy_text">'.$eachSearvice['descreption'].'</p>
+                            <h2 class="service_name">'.$eachSearvice['name'].'</h2>
+                            <p class="service_dsc">'.$eachSearvice['descreption'].'</p>
                         </a>
                     </div>';
             }
