@@ -16,7 +16,7 @@ class Utility extends DBConnection{
      * @return boolean
     */
     function isNumericId($variable) {
-        return preg_match('/^[0-9]+$/', $variable);
+        return is_numeric($variable);
     }
 
 
