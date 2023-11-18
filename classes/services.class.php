@@ -9,17 +9,10 @@ class Services extends DBConnection{
      * inserting new user data into `service` table
      * @return 
      */
-    function addService($name, $dsc, $content, $slug, $icon, $childServices = 0, $projectsNos = 0, $time='0000-00-00 00:00:00') {
-        // Assuming $this->conn is your database connection object
-    
-        // $name       = addslashes(trim($name));
-        // $dsc        = addslashes(trim($dsc));
-        // $content    = addslashes(trim($content));
-        // $slug       = addslashes(trim($slug));
-        // $icon       = addslashes(trim($icon));
+    function addService($name, $dsc, $content, $slug, $metaTitle, $metaDsc, $icon, $childServices = 0, $projectsNos = 0, $time='0000-00-00 00:00:00') {
     
         try {
-            $sql = "INSERT INTO `services` (`name`, `descreption`, `content`, `slug`, `icon`, `child_services`, `projects_nos`, `created`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO `services` (`name`, `descreption`, `content`, `slug`, `meta_title`, `meta_dsc`, `icon`, `child_services`, `projects_nos`, `created`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
             $stmt = $this->conn->prepare($sql);
     
@@ -28,7 +21,7 @@ class Services extends DBConnection{
             }
     
             // Assuming $time is a DATETIME formatted string
-            $stmt->bind_param("sssssiis", $name, $dsc, $content, $slug, $icon, $childServices, $projectsNos, $time);
+            $stmt->bind_param("sssssssiis", $name, $dsc, $content, $slug, $metaTitle, $metaDsc, $icon, $childServices, $projectsNos, $time);
     
             if ($stmt->execute()) {
                 $insertedId = $stmt->insert_id;

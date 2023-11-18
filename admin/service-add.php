@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once dirname(__DIR__) . "/inc/constants.inc.php";
 require_once ADMPATH . 'partials/common-admin-files.inc.php';
 
@@ -21,16 +22,18 @@ $name       = '';
 $dsc        = '';
 $content    = '';
 $slug       = '';
-
+$metaTitle  = '';
+$metaDsc    = '';
 
 if (isset($_POST['updateBtn'])) {
 
-  // print_r($_FILES);
-  // $catId    = $_POST['cat-id'];
-  $name    = $_POST['catName'];
-  $dsc     = $_POST['catDsc'];
-  $content = $_POST['content'];
-  $slug    = $_POST['slug'];
+  $name         = $_POST['catName'];
+  $dsc          = $_POST['catDsc'];
+  $content      = $_POST['content'];
+  $slug         = $_POST['slug'];
+  $metaTitle    = $_POST['meta-title'];
+  $metaDsc      = $_POST['meta-dsc'];
+
   
   if (empty($slug)) {
     $slug    = $Utility->slugGenerator($name);
@@ -45,7 +48,7 @@ if (isset($_POST['updateBtn'])) {
     $check = getimagesize($_FILES["service-icon"]["tmp_name"]);
     if($check !== false) {
       if(move_uploaded_file($tempname, $target_image)){
-        $catId  = $Services->addService($name, $dsc, $content, $slug, $image_name);
+        $catId  = $Services->addService($name, $dsc, $content, $slug, $metaTitle, $metaDsc, $image_name);
         
         $result = $Utility->isNumericId($catId);
 
@@ -88,7 +91,7 @@ if (!empty($catId)) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Add New Service</title>
     <!-- Favicons -->
     <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="icon">
     <link href="<?= IMGURL.'logo/'.$FAVICON;?>" rel="apple-touch-icon">
@@ -121,30 +124,20 @@ if (!empty($catId)) {
         <!-- Row Start  -->
         <div class="row px-4">
             <!-- main section start -->
-            <section class="row col-9 p-4 m-0">
-                <div class="mb-2">
-                    <div class="form-group">
-                        <label for="service-name">Service Name</label>
-                        <input value="<?php echo $name; ?>" type="text"
-                            class="form-control shadow-none border-top-0 border-end-0" name="catName" id="service-name"
-                            placeholder="Service Name" required>
-                    </div>
+            <section class="col-12 col-lg-9 p-0 p-lg-4 m-0 mb-3 mb-lg-0">
+
+                <input value="<?= $name; ?>" type="text" class="form-control shadow-none border-0 fw-bolder fs-3 mb-2"
+                    name="catName" id="service-name" placeholder="Service Name" required>
+
+                <div class="form-group">
+                    <textarea id="service-desc" class="form-control shadow-none border-0 fs-5" name="catDsc"
+                        placeholder="Service Description" style="min-height: 100px;"
+                        maxlength="300"><?= $dsc; ?></textarea>
                 </div>
 
-                <div class="">
-                    <div class="form-group">
-                        <label for="service-desc">Service Name</label>
-                        <textarea id="service-desc" class="form-control shadow-none border-top-0 border-end-0"
-                            name="catDsc" placeholder="Service Description" style="min-height: 100px;"
-                            maxlength="300"><?= $dsc; ?></textarea>
-                    </div>
-                </div>
-
-                <div class="mt-4">
-                    <div class="form-group">
-                        <textarea class="form-control editor" name="content"
-                            style="min-height: 500px;"><?= $content; ?></textarea>
-                    </div>
+                <div class="form-group">
+                    <textarea class="form-control editor" name="content"
+                        style="min-height: 500px;"><?= $content; ?></textarea>
                 </div>
             </section>
             <!-- main section start -->
@@ -153,15 +146,63 @@ if (!empty($catId)) {
             <!-- sidebar section start -->
             <section class="col-3 card px-3 p-2">
 
-                <div class="d-flex mb-4">
-                    <label for="slug" class="text-secondary fw-semibold mb-0">Slug: </label>
-                    <input type="text" id="slug"
-                        class="form-control text-primary shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0"
-                        name="slug" value="<?= $slug ?>" style="height: 20px;">
-                </div>
                 <div class="mb-4">
                     <input type="file" class="dropify" name="service-icon" <?= $icon; ?>
                         accept="image/x-png,image/gif, image/jpeg, image/jpg">
+                </div>
+
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="slug-heading">
+                            <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#slug-collapse" aria-expanded="true" aria-controls="slug-collapse">
+                                Slug
+                            </button>
+                        </h2>
+                        <div id="slug-collapse" class="accordion-collapse collapse show" aria-labelledby="slug-heading"
+                            data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <input type="text" id="slug"
+                                    class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0"
+                                    name="slug" style="height: 20px;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="meta-title-heading">
+                            <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#meta-title-collapse" aria-expanded="true"
+                                aria-controls="meta-title-collapse">
+                                Meta Title
+                            </button>
+                        </h2>
+                        <div id="meta-title-collapse" class="accordion-collapse collapse show"
+                            aria-labelledby="meta-title-heading" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <input type="text"
+                                    class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0"
+                                    maxlength="155" name="meta-title">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="meta-dsc-heading">
+                            <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#meta-dsc-collapse" aria-expanded="true"
+                                aria-controls="meta-dsc-collapse">
+                                Meta Description
+                            </button>
+                        </h2>
+                        <div id="meta-dsc-collapse" class="accordion-collapse collapse show"
+                            aria-labelledby="meta-dsc-heading" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <textarea
+                                    class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0"
+                                    name="meta-dsc" rows="15" maxlength="355"
+                                    style="height: 12rem !important"></textarea>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </section>
