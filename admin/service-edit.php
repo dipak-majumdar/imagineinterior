@@ -3,11 +3,14 @@ session_start();
 require_once dirname(__DIR__) . "/inc/constants.inc.php";
 require_once ABSPATH . "/_config/dbconnect.php";
 require_once ABSPATH . "classes/services.class.php";
+require_once ABSPATH . "classes/faq.class.php";
 require_once ABSPATH . "classes/status.class.php";
 require_once ABSPATH . "classes/utility.class.php";
 require_once ABSPATH . "classes/date-utility.class.php";
 require_once ADMPATH . 'partials/common-admin-files.inc.php';
+
 $Services   = new Services();
+$Faq        = new Faq;
 $Status     = new Status();
 $Utility    = new Utility;
 $DateUtil   = new DateUtility();
@@ -58,11 +61,17 @@ if (isset($_POST['updateBtn'])) {
     $check = getimagesize($_FILES["service-icon"]["tmp_name"]);
     if ($check !== false) {
       if (move_uploaded_file($tempname, $target_image)) {
-
+        $Faq->deleteFaqsByServiceId($catId);
         $update  = $Services->updateService($catId, $image_name, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, TIME);
-
+        var_dump($update);
         if ($update == true) {
-          $errMsg   = "Service Update!";
+            $added = $Faq->updateServiceFaqs($serviceId, $_POST['question'], $_POST['answer']);
+            if ($added) {
+                $errMsg   = "Service Update!";
+            }else {
+                $errMsg   = "Service Update But Failed to Update FAQs!";
+            }
+
         } else {
           $errMsg   = "Updation Failed!";
         }
@@ -76,7 +85,13 @@ if (isset($_POST['updateBtn'])) {
     $update  = $Services->updateServiceText($catId, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, TIME);
     // $Services->updateServiceContent($catId, $content);
     if ($update == true) {
-      $errMsg   = "Service Update!";
+        $Faq->deleteFaqsByServiceId($catId);
+        $added = $Faq->updateServiceFaqs($catId, $_POST['question'], $_POST['answer']);
+        if ($added) {
+            $errMsg   = "Service Update!";
+        }else {
+            $errMsg   = "Service Update But Failed to Update FAQs!";
+        }
     } else {
       $errMsg   = "Updation Failed!";
     }
@@ -103,6 +118,10 @@ $edited      = $show['edited'];
 $created  = $DateUtil->numDate($created);
 $edited  = $DateUtil->numDate($edited);
 $status   = $Status->getStatusName($status);
+
+
+$faqs = $Faq->getFaqsByServiceId($catId);
+// print_r($faqs);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -165,6 +184,38 @@ $status   = $Status->getStatusName($status);
                             style="min-height: 500px;"><?= $content; ?></textarea>
                     </div>
                 </div>
+
+                <div class="faq_sqction border mt-2">
+
+                    <?php 
+                    if (count($faqs) > 0):
+                        foreach ($faqs as $faq) {
+                    ?>
+                    <div>
+                        <input type="text" class="form-control shadow-none border-0 fs-5 fw-semibold" id=""
+                            name="question[]" placeholder="Question" value="<?= $faq['question']?>">
+                        <textarea class="form-control shadow-none border-0" id="" rows="3" name="answer[]"
+                            placeholder="Answer"><?= $faq['answer']?></textarea>
+                    </div>
+                    <?php 
+                        }
+                    else:
+                    ?>
+                    <div>
+                        <input type="text" class="form-control shadow-none border-0 fs-5 fw-semibold" id=""
+                            name="question[]" placeholder="Question">
+                        <textarea class="form-control shadow-none border-0" id="" rows="3" name="answer[]"
+                            placeholder="Answer"></textarea>
+                    </div>
+                    <?php
+                    endif;
+                    ?>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-2 pe-md-1" id="buttonContainer">
+                        <button class="btn btn-sm btn-outline-primary" type="button" onclick="addNewFaq()">Add
+                            More</button>
+                    </div>
+                </div>
+
             </section>
             <!-- main section start -->
 
@@ -211,37 +262,44 @@ $status   = $Status->getStatusName($status);
                         <div id="slug-collapse" class="accordion-collapse collapse show" aria-labelledby="slug-heading"
                             data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                            <input type="text" id="slug" class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0" 
-                            name="slug" value="<?= $slug ?>" style="height: 20px;">
+                                <input type="text" id="slug"
+                                    class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0"
+                                    name="slug" value="<?= $slug ?>" style="height: 20px;">
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="meta-title-heading">
                             <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#meta-title-collapse" aria-expanded="true" aria-controls="meta-title-collapse">
+                                data-bs-target="#meta-title-collapse" aria-expanded="true"
+                                aria-controls="meta-title-collapse">
                                 Meta Title
                             </button>
                         </h2>
-                        <div id="meta-title-collapse" class="accordion-collapse collapse show" aria-labelledby="meta-title-heading"
-                            data-bs-parent="#accordionExample">
+                        <div id="meta-title-collapse" class="accordion-collapse collapse show"
+                            aria-labelledby="meta-title-heading" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <input type="text" class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0" 
-                                maxlength="155" name="meta-title" value="<?= $metaTitle; ?>">
+                                <input type="text"
+                                    class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0"
+                                    maxlength="155" name="meta-title" value="<?= $metaTitle; ?>">
                             </div>
                         </div>
                     </div>
                     <div class="accordion-item">
                         <h2 class="accordion-header" id="meta-dsc-heading">
                             <button class="accordion-button shadow-none" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#meta-dsc-collapse" aria-expanded="true" aria-controls="meta-dsc-collapse">
+                                data-bs-target="#meta-dsc-collapse" aria-expanded="true"
+                                aria-controls="meta-dsc-collapse">
                                 Meta Description
                             </button>
                         </h2>
-                        <div id="meta-dsc-collapse" class="accordion-collapse collapse show" aria-labelledby="meta-dsc-heading"
-                            data-bs-parent="#accordionExample">
+                        <div id="meta-dsc-collapse" class="accordion-collapse collapse show"
+                            aria-labelledby="meta-dsc-heading" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <textarea class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0" name="meta-dsc"rows="15" maxlength="355" style="height: 12rem !important"><?= $metaDsc; ?></textarea>
+                                <textarea
+                                    class="form-control shadow-none border-start-0 border-top-0 border-end-0 ms-1 ps-0"
+                                    name="meta-dsc" rows="15" maxlength="355"
+                                    style="height: 12rem !important"><?= $metaDsc; ?></textarea>
                             </div>
                         </div>
                     </div>
@@ -306,6 +364,21 @@ $status   = $Status->getStatusName($status);
 
         console.error(message);
         console.error(error);
+    }
+
+    function addNewFaq() {
+
+        // Create a new div element
+        var newDiv = document.createElement('div');
+        newDiv.innerHTML = `
+        <input type="text" class="form-control shadow-none border-0 fs-5 fw-semibold" id="" name="question[]" placeholder="Question">
+        <textarea class="form-control shadow-none border-0" id="" rows="3" name="answer[]" placeholder="Answer"></textarea>
+        `;
+
+        // Insert the new div above the existing button container
+        var buttonContainer = document.querySelector('#buttonContainer');
+        buttonContainer.parentNode.insertBefore(newDiv, buttonContainer);
+
     }
     </script>
 </body>
