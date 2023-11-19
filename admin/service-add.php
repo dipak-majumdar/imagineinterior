@@ -4,12 +4,14 @@ require_once dirname(__DIR__) . "/inc/constants.inc.php";
 require_once ADMPATH . 'partials/common-admin-files.inc.php';
 
 require_once ABSPATH . "classes/services.class.php";
+require_once ABSPATH . "classes/faq.class.php";
 require_once ABSPATH . "classes/status.class.php";
 require_once ABSPATH . "classes/utility.class.php";
 require_once ABSPATH . "classes/date-utility.class.php";
 
 
 $Services   = new Services();
+$Faq        = new Faq;
 $Status     = new Status();
 $Utility    = new Utility();
 $DateUtil   = new DateUtility();
@@ -34,7 +36,6 @@ if (isset($_POST['updateBtn'])) {
   $metaTitle    = $_POST['meta-title'];
   $metaDsc      = $_POST['meta-dsc'];
 
-
   if (!empty($slug)) {
     $slug    = $Utility->slugGenerator($slug);
   }elseif (!empty($metaTitle)){
@@ -53,12 +54,22 @@ if (isset($_POST['updateBtn'])) {
     $check = getimagesize($_FILES["service-icon"]["tmp_name"]);
     if($check !== false) {
       if(move_uploaded_file($tempname, $target_image)){
-        $catId  = $Services->addService($name, $dsc, $content, $slug, $metaTitle, $metaDsc, $image_name);
+        $serviceId  = $Services->addService($name, $dsc, $content, $slug, $metaTitle, $metaDsc, $image_name);
         
-        $result = $Utility->isNumericId($catId);
+        $result = $Utility->isNumericId($serviceId);
 
         if ($result) {
-          $errMsg   = "Category Added!";
+            if (isset($_POST['question']) && isset($_POST['answer'])) {
+    
+                $added = $Faq->getServiceFaqs($serviceId, $_POST['question'], $_POST['answer']);
+                if ($added) {
+                    $errMsg   = "Service Added!";
+                }else {
+                    $errMsg   = "Service Added But Failed to Add Faqs!";
+                }
+            }else {
+                $errMsg   = "Service Added But Faqs Not Found!";
+            }
         }else {
           $errMsg   = "Insertion Failed!";
         }
@@ -72,10 +83,10 @@ if (isset($_POST['updateBtn'])) {
   }
 }
 
-if (!empty($catId)) {
+if (!empty($serviceId)) {
   
   //view data after updation
-  $show = $Services->showServiceById($catId);
+  $show = $Services->showServiceById($serviceId);
   // print_r($show);
   $icon        = $show['icon'];
   if (!empty($icon)) {
@@ -144,6 +155,20 @@ if (!empty($catId)) {
                     <textarea class="form-control editor" name="content"
                         style="min-height: 500px;"><?= $content; ?></textarea>
                 </div>
+
+                <div class="faq_sqction border mt-2">
+                    <div>
+                        <input type="text" class="form-control shadow-none border-0 fs-5 fw-semibold" id=""
+                            name="question[]" placeholder="Question">
+                        <textarea class="form-control shadow-none border-0" id="" rows="3" name="answer[]"
+                            placeholder="Answer"></textarea>
+                    </div>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end pb-2 pe-md-1" id="buttonContainer">
+                        <button class="btn btn-sm btn-outline-primary" type="button" onclick="addNewFaq()">Add
+                            More</button>
+                    </div>
+                </div>
+
             </section>
             <!-- main section start -->
 
@@ -249,6 +274,22 @@ if (!empty($catId)) {
 
         console.error(message);
         console.error(error);
+    }
+
+
+    function addNewFaq() {
+
+        // Create a new div element
+        var newDiv = document.createElement('div');
+        newDiv.innerHTML = `
+            <input type="text" class="form-control shadow-none border-0 fs-5 fw-semibold" id="" name="question[]" placeholder="Question">
+            <textarea class="form-control shadow-none border-0" id="" rows="3" name="answer[]" placeholder="Answer"></textarea>
+        `;
+
+        // Insert the new div above the existing button container
+        var buttonContainer = document.querySelector('#buttonContainer');
+        buttonContainer.parentNode.insertBefore(newDiv, buttonContainer);
+
     }
     </script>
 </body>
