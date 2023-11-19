@@ -165,31 +165,30 @@ class Services extends DBConnection{
                     `content`       = ?,
                     `slug`          = ?,
                     `meta_title`    = ?,
-                    `meta_dsc`    = ?,
+                    `meta_dsc`      = ?,
                     `edited`        = ?
                     WHERE
-                    `id`  	        = '$id'";
-                    // echo $sql;
+                    `id`  	        = ?";
+    
             $stmt = $this->conn->prepare($sql);
             if (!$stmt) {
-                throw new Exception("Error Processing Request". $stmt->error);
+                throw new Exception("Error Processing Request". $this->conn->error);
             }
-
-            $stmt->bind("ssssssssi", $icon, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, $time, $id);
+    
+            $stmt->bind_param("ssssssssi", $icon, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, $time, $id);
             
             if ($stmt->execute()) {
                 return true;
-            }else{
+            } else {
                 throw new Exception("Error query execution". $stmt->error);
             }
-
+    
         } catch (Exception $e) {
-            echo "Error=>". $e->getMessage();
+            echo "Error => ". $e->getMessage();
         }
+    }
 
-    }//eof
-
-
+    
 
     function updateServiceText($id, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, $time) {
         try {
