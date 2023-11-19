@@ -2,8 +2,11 @@
 require_once "./inc/reqHeader.php";
 
 require_once "./classes/services.class.php";
+require_once "./classes/faq.class.php";
+
 
 $Services   = new Services();
+$Faq        = new Faq;
 
 // echo '<pre>';
 // print_r($_GET);exit;
@@ -35,6 +38,7 @@ $serviceMetaDsc    = $service['meta_dsc'];
 $childServices  = $Services->activeChildServicesByParent($serviceId);
 // print_r($service);
 
+$faqs = $Faq->getFaqsByServiceId($serviceId);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,7 +97,7 @@ $childServices  = $Services->activeChildServicesByParent($serviceId);
             <div class="container">
 
                 <div class="new_section sub_layout_padding service_content">
-                    <?= $fullContent; ?> 
+                    <?= $fullContent; ?>
                 </div>
                 <?php
                 if (count($childServices) > 0) {
@@ -101,7 +105,8 @@ $childServices  = $Services->activeChildServicesByParent($serviceId);
                 <div class="services_section3 sub_layout_padding">
 
                     <div class="new_section mb-4 pt-0">
-                        <h3 class="fs-3 text-center text-md-start">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+                        <h3 class="fs-3 text-center text-md-start">Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit.</h3>
                         <p class="small_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae
                             odio,
                             esse sunt, nisi impedit
@@ -140,11 +145,15 @@ $childServices  = $Services->activeChildServicesByParent($serviceId);
 
     </div>
 
+    
+    <?php
+    if (count($faqs) > 0 ) {
+    ?>
     <div class="new_section layout_padding px-2 px-md-0">
         <div class="">
             <!-- bg_dark_white -->
             <div class="container">
-                <h2 class="sub_headig fs-2 fw-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
+                <h2 class="sub_headig fs-2 fw-semibold">FAQs</h2>
                 <p class="sec_heading_dsc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
                     incidunt placeat! Quisquam sunt modi soluta aliquam nobis, consectetur iure mollitia doloremque
                     labore distinctio iusto minus?
@@ -154,66 +163,29 @@ $childServices  = $Services->activeChildServicesByParent($serviceId);
             <div class="container-fluid">
                 <div class="row justify-content-center mt-4">
 
+                    <?php
+                    foreach ($faqs as $faq) {
+                    ?>
                     <div class="col-12 col-md-5 m-2 mini_sec">
                         <div class="d-sm-none d-block">
                             <img src="<?= IMGURL?>services/bedroom.png" alt="">
                         </div>
-                        <h4 class="fs-4 text-center text-md-start">Lorem ipsum dolor sit.</h4>
+                        <h4 class="fs-4"><?= $faq['question'] ?></h4>
                         <div class="d-flex align-items-center">
                             <img class="d-none d-sm-inline-flex" src="<?= IMGURL?>services/bedroom.png" alt="">
-                            <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Distinctio est numquam soluta
-                                odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
-                                repellendus labore, doloremque, possimus, ut earum iusto quo.</p>
+                            <p class=""><?= $faq['answer'] ?></p>
                         </div>
                     </div>
-
-                    <div class="col-12 col-md-5 m-2 mini_sec">
-                        <div class="d-sm-none d-block">
-                            <img src="<?= IMGURL?>services/bedroom.png" alt="">
-                        </div>
-                        <h4 class="fs-4">Lorem ipsum dolor sit.</h4>
-                        <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL?>services/bedroom.png" alt="">
-                            <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Distinctio est numquam soluta
-                                odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
-                                repellendus labore, doloremque, possimus, ut earum iusto quo.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-5 m-2 mini_sec">
-                        <div class="d-sm-none d-block">
-                            <img src="<?= IMGURL?>services/bedroom.png" alt="">
-                        </div>
-                        <h4 class="fs-4">Lorem ipsum dolor sit.</h4>
-                        <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL?>services/bedroom.png" alt="">
-                            <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Distinctio est numquam soluta
-                                odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
-                                repellendus labore, doloremque, possimus, ut earum iusto quo.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-5 m-2 mini_sec">
-                        <div class="d-sm-none d-block">
-                            <img src="<?= IMGURL?>services/bedroom.png" alt="">
-                        </div>
-                        <h4 class="fs-4">Lorem ipsum dolor sit.</h4>
-                        <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL?>services/bedroom.png" alt="">
-                            <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Distinctio est numquam soluta
-                                odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
-                                repellendus labore, doloremque, possimus, ut earum iusto quo.</p>
-                        </div>
-                    </div>
-
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
     </div>
+    <?php
+    }
+    ?>
 
     <div class="new_section layout_padding px-2 px-md-0">
         <?php require_once "incs/lets-talk-sec.php"; ?>
