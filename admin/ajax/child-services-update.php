@@ -102,7 +102,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $allServices = $Services->showServices();
 $childService = $Services->childServiceById($childServiceId);
 
-$imgPath = "../../images/services/"; 
+$imgPath = IMGURL."services/"; 
+
+$headers = get_headers($imgPath.$childService['icon'], 1);
+
+if (isset($headers['Content-Length'])) {
+  $iconSize = $headers['Content-Length'];
+} else {
+  $iconSize = '';
+}
 
 ?>
 <!DOCTYPE html>
@@ -143,15 +151,16 @@ $imgPath = "../../images/services/";
             <div class="row  w-100 ms-0 ps-1 py-2" style="border: 1px solid #b8b8ed">
                 <div class="col-2">
                     <input type="file" class="dropify" name="service-icon" id="service-icon"
-                        data-default-file="<?php echo $imgPath.$childService['icon'];?>" data-height="80"
+                        data-default-file="<?= $imgPath.$childService['icon'];?>" data-height="80"
                         onchange="getUplodedData(this)" data-allowed-file-extensions="png jpg jpeg gif">
                 </div>
 
                 <div class="col-9" onclick="clickElement('service-icon')">
                     <label class="opacity-50 ">Sub Service Icon</label>
-                    <p class="mb-0 iconName"><?php echo $childService['icon']; ?></p>
+                    <p class="mb-0 iconName"><?= $childService['icon']; ?></p>
                     <?php
-                      $rawSize =  filesize($imgPath.$childService['icon']);
+                      // $rawSize =  filesize($imgPath.$childService['icon']);
+                      $rawSize = $iconSize;
                       $fSExt = array('Bytes', 'KB', 'MB', 'GB');
                       $i = 0;
                       while ($rawSize > 900) {
