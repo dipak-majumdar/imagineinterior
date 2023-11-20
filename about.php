@@ -7,8 +7,8 @@ require_once "./inc/reqHeader.php";
 <html lang="en">
 
 <head>
-        <!--googleoff: all-->
-        <META NAME="robots" CONTENT="noindex,nofollow">
+    <!--googleoff: all-->
+    <META NAME="robots" CONTENT="noindex,nofollow">
     <!-- basic -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -31,7 +31,7 @@ require_once "./inc/reqHeader.php";
     <link rel="stylesheet" href="css/responsive.css">
     <!-- fevicon -->
     <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
-    
+
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
@@ -78,8 +78,10 @@ require_once "./inc/reqHeader.php";
                         </span>
                         Explore Our Services
                     </h2>
-                    <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed
-                        do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><a href="#"
+                    <p class="font-italic text-muted mb-4">Welcome to the <strong class="fw-semibold">IMAGINE
+                            INTERIOR</strong>, where we transform spaces
+                        into extraordinary living experiences. With a passion for design and a keen eye for detail, we
+                        bring dreams to life within the walls of your home.</p><a href="<?= URL ?>"
                         class="btn btn-light px-5 rounded-pill shadow-sm">Explore Now</a>
                 </div>
                 <div class="col-md-5 px-5 mx-auto order-1 order-md-2"><img src="images/explore-services.png" alt=""
@@ -97,10 +99,10 @@ require_once "./inc/reqHeader.php";
                         Explore Our Completed Projects
                     </h2>
                     <p class="font-italic text-muted mb-4">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua.
+                        Embark on a journey through our completed projects, revealing stories of design mastery and
+                        client satisfaction. Each space is a testament to our commitment to excellence.
                     </p>
-                    <a href="#" class="btn btn-light px-5 rounded-pill shadow-sm">Explore Now</a>
+                    <a href="<?= URL ?>services" class="btn btn-light px-5 rounded-pill shadow-sm">Explore Now</a>
                 </div>
             </div>
         </div>
@@ -195,17 +197,20 @@ require_once "./inc/reqHeader.php";
 
     <div class="bg-light">
         <div class="container mb-5">
-            <h1 class="sec_heading">Lorem ipsum dolor sit amet.</h1>
+            <h1 class="sec_heading">What Makes Us Special ?</h1>
             <p class="sec_heading_dsc mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo vel harum id
                 voluptate accusantium ex?</p>
             <div class="row align-items-center mb-2">
                 <div class="col-md-6 order-2 order-md-1 mt-3 mt-md-0">
-                    <h1>Lorem ipsum dolor sit.</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt et praesentium, tenetur eos
-                        libero consectetur. Similique in asperiores voluptatum aut illo, enim earum praesentium odio
-                        alias! Voluptatem dolorem nulla itaque modi quis possimus beatae aperiam laboriosam laudantium!
-                        Esse ad perferendis dolores, ducimus dolorem error illum mollitia maxime voluptatem ipsum
-                        sapiente?</p>
+                    <h1>Crafting Timeless Spaces with Imagine Interior</h1>
+                    <p>At Imagine Interior, we believe every space has a story. Our team of seasoned designers and
+                        architects work tirelessly to understand your unique vision, integrating functionality with
+                        aesthetics to create everywhere that truly resonates with you.</p>
+
+                    <p>With years of experience in the industry, we&#39;ve honed our skills across various styles, from
+                        modern chic to timeless elegance. Our expertise extends beyond aesthetics; we take pride in
+                        crafting designs that seamlessly integrate with your lifestyle. And it ensures comfort and
+                        practicality are never compromised.</p>
                 </div>
                 <div class="col-md-6 order-1 order-md-2 mt-4 mt-md-0">
                     <div class="about_sec_img">
@@ -222,23 +227,22 @@ require_once "./inc/reqHeader.php";
                     </div>
                 </div>
                 <div class="col-md-6 mt-3 mt-md-0">
-                    <h1>Lorem ipsum dolor sit.</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt et praesentium, tenetur eos
-                        libero consectetur. Similique in asperiores voluptatum aut illo, enim earum praesentium odio
-                        alias! Voluptatem dolorem nulla itaque modi quis possimus beatae aperiam laboriosam laudantium!
-                        Esse ad perferendis dolores, ducimus dolorem error illum mollitia maxime voluptatem ipsum
-                        sapiente?</p>
+                    <h1>Designing Together: Transparent Collaboration</h1>
+                    <p>Transparency and collaboration are at the heart of our work approach. We value your input
+                        of emotions and staying with you in every step of the design journey, from concept to
+                        execution. Thus, this ensures that not only does the final result meet, but we will respect
+                        your expectations.</p>
                 </div>
             </div>
 
             <div class="row align-items-center mb-2">
                 <div class="col-md-6 order-2 order-md-1 mt-3 mt-md-0">
-                    <h1>Lorem ipsum dolor sit.</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt et praesentium, tenetur eos
-                        libero consectetur. Similique in asperiores voluptatum aut illo, enim earum praesentium odio
-                        alias! Voluptatem dolorem nulla itaque modi quis possimus beatae aperiam laboriosam laudantium!
-                        Esse ad perferendis dolores, ducimus dolorem error illum mollitia maxime voluptatem ipsum
-                        sapiente?</p>
+                    <h1>Explore Now: West Bengal to India</h1>
+                    <p>However, we believe that sustainability is more than a craze; it&#39;s a loyalty. We provide our
+                        services in West Bengal, and all over India.
+                        We invite you to explore our portfolio and let our work speak for you. Whether revamping a
+                        single room or transforming an entire home, trust Imagine Interior to turn your vision into a
+                        living reality.</p>
                 </div>
                 <div class="col-md-6 order-1 order-md-2 mt-4 mt-md-0">
                     <div class="about_sec_img">
