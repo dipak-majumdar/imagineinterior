@@ -12,7 +12,7 @@
                                 <img src="images/services/'.$eachSearvice['icon'].'">
                             </div>
                             <h2 class="service_name">'.$eachSearvice['name'].'</h2>
-                            <p class="service_dsc">'.$eachSearvice['descreption'].'</p>
+                            <p class="service_dsc text-center">'.$eachSearvice['descreption'].'</p>
                         </a>
                     </div>';
             }
