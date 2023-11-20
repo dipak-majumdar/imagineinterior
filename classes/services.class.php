@@ -595,13 +595,13 @@ class Services extends DBConnection{
     #############################################################################
 
     function deleteImage($path){
-        $unlinked = unlink($path);
-            
-        if ($unlinked) {
-            return true;
-        }else {
-            return false;
+        if (is_file($path)) {
+            $unlinked = unlink($path);       
+            if ($unlinked) {
+                return true;
+            }
         }
+        return false;
     }
 
 
