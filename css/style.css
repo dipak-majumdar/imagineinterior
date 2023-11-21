@@ -18,14 +18,14 @@ src: url("../fonts/BalooChettan-Regular.ttf");
 
 /*----------------------------------------   import Fonts    ----------------------------------------*/
 
-@import url(animate.min.css);
-@import url(normalize.css);
+/* @import url(animate.min.css); */
+/* @import url(normalize.css); */
 @import url(icomoon.css);
 @import url(css/font-awesome.min.css);
 @import url(meanmenu.css);
 @import url(owl.carousel.min.css);
-@import url(swiper.min.css);
-@import url(slick.css);
+/* @import url(swiper.min.css); */
+/* @import url(slick.css); */
 @import url(jquery.fancybox.min.css);
 @import url(jquery-ui.css);
 @import url(nice-select.css);
@@ -198,10 +198,10 @@ main > .banner_section{
      padding: 0;
 }
 
-.form-control:focus {
+/* .form-control:focus {
      border-color: #ffffff !important;
      box-shadow: 0 0 0 .2rem rgba(255, 255, 255, .25);
-}
+} */
 
 .navbar-form input {
      border: none !important;
@@ -276,7 +276,7 @@ button {
     font-weight: 600;
     color: #090808;
     text-align: center;
-    /* text-transform: uppercase; */
+    text-transform: capitalize;
     padding-bottom: 0;
 }
 .sec_heading_dsc{
@@ -861,20 +861,20 @@ button {
     float: right;
 }
 
-.form-control {
-    display: block;
-    /* width: 100%; */
+/* .form-control { */
+    /* display: block;
     padding: 0px 15px 10px 0px;
     font-size: 18px;
-    /* line-height: 1.5; */
     color: #fff;
     background-color: transparent;
+    border-radius: 0px; */
+    /* width: 100%; */
+    /* line-height: 1.5; */
     /* background-clip: padding-box; */
     /* border-bottom: 1px solid #fff !important; */
-    border-radius: 0px;
     /* transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out; */
-    border: 0px;
-}
+    /* border: 0px; */
+/* } */
 
 .footer_section{
     width: 100%;
