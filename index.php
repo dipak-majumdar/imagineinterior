@@ -154,8 +154,8 @@ $childServices = $Services->showChildServicesByLimit(12);
                     <div class="header_banner">
                         <div class="banner_text">
                             <h2 class="banner_main_text">Luxury in Every Detail</h2>
-                            <p class="banner_dsc">Unlock the potential of your space with our exceptional interior
-                                designs.
+                            <p class="banner_dsc">
+                                Unlock the potential of your space with our exceptional interior designs.
                             </p>
                         </div>
 
@@ -387,28 +387,6 @@ $childServices = $Services->showChildServicesByLimit(12);
 
         <!-- contact section end -->
 
-        <!-- Feedback Button Start -->
-        <style>
-        #mybutton {
-            position: fixed;
-            bottom: 50px;
-            right: -35px;
-            rotate: -90deg;
-        }
-
-        .feedback {
-            background-color: #31B0D5;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 4px;
-            border-color: #46b8da;
-        }
-        </style>
-        <div id="mybutton">
-            <button class="feedback">Feedback</button>
-        </div>
-        <!-- Feedback Button Start -->
-
         <!-- footer section start -->
         <?php require_once "partials/footer.php"; ?>
         <!--  footer section end -->
@@ -532,6 +510,7 @@ $childServices = $Services->showChildServicesByLimit(12);
 
     <!--Bootstrap Css -->
     <script src="js/main-js/bootstrap.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script> -->
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-3.0.0.min.js"></script>
     <script src="vendors/ajax.custom-lib.js"></script>

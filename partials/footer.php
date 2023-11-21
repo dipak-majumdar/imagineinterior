@@ -1,3 +1,69 @@
+<!-- Feedback Button Start -->
+<style>
+#mybutton {
+    position: fixed;
+    bottom: 50px;
+    right: -35px;
+    rotate: -90deg;
+}
+
+.feedback {
+    background-color: #31B0D5;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    border-color: #46b8da;
+}
+</style>
+<div id="mybutton">
+    <button class="feedback" data-bs-toggle="modal" data-bs-target="#feedbackModal">Feedback</button>
+</div>
+<!-- Feedback Button End -->
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="feedbackModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="feedbackModalLabel">Submit Feedback</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="#" method="POST" class="g-3 needs-validation" novalidate>
+                <div class="modal-body">
+
+                    <div class="mb-3">
+                        <input type="text" class="custom_inp form-control shadow-none" id="" placeholder="Name"
+                            required>
+                        <div class="invalid-feedback">
+                            Name can't be blank!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="custom_inp form-control shadow-none" id=""
+                            placeholder="Email Address" required>
+                        <div class="invalid-feedback">
+                            Please enter yiur email here!
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="custom_inp form-control shadow-none" id="" style="height: 150px;"
+                            placeholder="Write feedback here" required></textarea>
+                        <div class="invalid-feedback">
+                            Please write a feedback to us!
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <div class="footer_section layout_padding">
     <div class="container">
         <div class="row">
@@ -23,8 +89,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href=""><img class="footer_cont_icon" src="<?= IMGURL ?>icons/location-icon-white.png" alt="">
-                                <?php
+                        <a href=""><img class="footer_cont_icon" src="<?= IMGURL ?>icons/location-icon-white.png"
+                                alt="">
+                            <?php
                                     $comma = ', ';
                                     if ($site['address1'] == null) {
                                         $comma = '';
@@ -71,11 +138,11 @@
             </div>
         </div>
         <div class="input-group mb-3 subscribe_sec">
-            <input type="text" class="form-control" id="main-subscribe" placeholder="Enter your email" aria-label="Enter your email"
-                aria-describedby="basic-addon2">
+            <input type="text" class="form-control" id="main-subscribe" placeholder="Enter your email"
+                aria-label="Enter your email" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <span class="input-group-text cursor_pointer" id="basic-addon2" onclick="subscribeMail()">
-                Subscribe
+                    Subscribe
                 </span>
             </div>
         </div>
