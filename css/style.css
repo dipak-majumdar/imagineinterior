@@ -883,6 +883,10 @@ button {
     height: auto;
     /* padding-bottom: 90px; */
 }
+
+.footer_section ul li{
+    list-style: none;
+}
 .fooer_logo {
     width: 100%;
     float: left;

@@ -138,7 +138,7 @@
             </div>
         </div>
         <div class="input-group mb-3 subscribe_sec">
-            <input type="text" class="form-control" id="main-subscribe" placeholder="Enter your email"
+            <input type="text" class="form-control shadow-none border-0" id="main-subscribe" placeholder="Enter your email"
                 aria-label="Enter your email" aria-describedby="basic-addon2">
             <div class="input-group-append">
                 <span class="input-group-text cursor_pointer" id="basic-addon2" onclick="subscribeMail()">
