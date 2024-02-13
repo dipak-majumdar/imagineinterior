@@ -15,7 +15,7 @@
 	}
 
 	if (is_localhost())
-		define('LOCAL_DIR',			'imagine-interior/');
+		define('LOCAL_DIR',			'imagineinterior/');
 	else
 		define('LOCAL_DIR',			'');
 
