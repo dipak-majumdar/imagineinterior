@@ -7,14 +7,16 @@ require_once ABSPATH . "classes/services.class.php";
 require_once ABSPATH . "classes/faq.class.php";
 require_once ABSPATH . "classes/status.class.php";
 require_once ABSPATH . "classes/utility.class.php";
+require_once ABSPATH . "classes/utilityImage.class.php";
 require_once ABSPATH . "classes/date-utility.class.php";
 
 
-$Services   = new Services();
-$Faq        = new Faq;
-$Status     = new Status();
-$Utility    = new Utility();
-$DateUtil   = new DateUtility();
+$Services       = new Services();
+$Faq            = new Faq;
+$Status         = new Status();
+$Utility        = new Utility();
+$UtilityImage   = new UtilityImage;
+$DateUtil       = new DateUtility();
 
 
 $errMsg   = '';
@@ -43,24 +45,19 @@ if (isset($_POST['updateBtn'])) {
   }else {
     $slug    = $Utility->slugGenerator($name);
   }
-
   
-  $target_dir   = "../images/services/";
-  $image_name   = $_FILES["service-icon"]["name"];
-  $tempname     = $_FILES["service-icon"]["tmp_name"];
-  $target_image = $target_dir . basename($_FILES["service-icon"]["name"]);
+  $uploadedFile = $UtilityImage->uploadImage($_FILES["service-icon"], IMGPATH."services/");
+  $uploadedFile = json_decode($uploadedFile);
 
-  if (!empty($_FILES["service-icon"]["name"])) {
-    $check = getimagesize($_FILES["service-icon"]["tmp_name"]);
-    if($check !== false) {
-      if(move_uploaded_file($tempname, $target_image)){
-        $serviceId  = $Services->addService($name, $dsc, $content, $slug, $metaTitle, $metaDsc, $image_name);
-        
+    if($uploadedFile->status === true){
+        $fileName = $uploadedFile->filename;
+        $serviceId  = $Services->addService($name, $dsc, $content, $slug, $metaTitle, $metaDsc, $fileName);
+            
         $result = $Utility->isNumericId($serviceId);
 
         if ($result) {
             if (isset($_POST['question']) && isset($_POST['answer'])) {
-    
+        
                 $added = $Faq->getServiceFaqs($serviceId, $_POST['question'], $_POST['answer']);
                 if ($added) {
                     $errMsg   = "Service Added!";
@@ -71,16 +68,12 @@ if (isset($_POST['updateBtn'])) {
                 $errMsg   = "Service Added But Faqs Not Found!";
             }
         }else {
-          $errMsg   = "Insertion Failed!";
+        $errMsg   = "Insertion Failed!";
         }
-      }
-
-    }else{
-      $errMsg = "File is not an image.";
+    }else {
+    $errMsg = $uploadedFile->msg;
     }
-  }else {
-    $errMsg = "Please Upload and Icon.";
-  }
+
 }
 
 if (!empty($serviceId)) {
