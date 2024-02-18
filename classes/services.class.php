@@ -11,7 +11,7 @@ class Services extends DBConnection{
      */
     function addService($name, $dsc, $content, $slug, $metaTitle, $metaDsc, $icon, $childServices = 0, $projectsNos = 0, $time='0000-00-00 00:00:00') {
     
-        $name = ucfirst($name);
+        $name = ucwords(strtolower($name));
 
         try {
             $sql = "INSERT INTO `services` (`name`, `descreption`, `content`, `slug`, `meta_title`, `meta_dsc`, `icon`, `child_services`, `projects_nos`, `created`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -158,6 +158,9 @@ class Services extends DBConnection{
 
     
     function updateService($id, $icon, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, $time){
+
+        $name = ucwords(strtolower($name));
+
         try {
             $sql = "UPDATE `services`
                     SET
@@ -193,6 +196,9 @@ class Services extends DBConnection{
     
 
     function updateServiceText($id, $name, $dsc, $content, $slug, $metaTitle, $metaDsc, $time) {
+
+        $name = ucwords(strtolower($name));
+
         try {
             // Prepare the SQL statement with placeholders
             $sql = "UPDATE `services`
@@ -333,6 +339,8 @@ class Services extends DBConnection{
      */
     function addChildService($parentId, $name, $dsc, $icon, $featureImage, $projectsNos=0){
         
+        $name = ucwords(strtolower($name));
+        
         $sql = "INSERT INTO `child_services` 
                             (`parent_id`, `name`, `dsc`, `icon`, `feature_image`, `projects_nos`, `added_on`)
                     VALUES ('$parentId', '$name', '$dsc', '$icon', '$featureImage', '$projectsNos', now())";
@@ -469,6 +477,9 @@ class Services extends DBConnection{
 
 
     function updateChildService($id, $parentId, $name, $dsc, $icon, $feature_image){
+
+        $name = ucwords(strtolower($name));
+
         $deleteable = $this->childServiceById($id);
         if ($deleteable['icon'] != $icon) {
             if ($icon != null) {
