@@ -198,5 +198,54 @@ class UtilityImage{
         return $result;
     }
 
+
+    function uploadImage($file, $targetDirectory) {
+        // Check if file was uploaded without errors
+        if ($file['error'] !== UPLOAD_ERR_OK) {
+            switch ($file['error']) {
+                case UPLOAD_ERR_INI_SIZE:
+                    return json_encode(['status'=> false, 'msg'=> "The uploaded file exceeds the upload_max_filesize directive in php.ini."]);
+                case UPLOAD_ERR_FORM_SIZE:
+                    return json_encode(['status'=> false, 'msg'=> "The uploaded file exceeds the MAX_FILE_SIZE directive that was specified in the HTML form."]);
+                case UPLOAD_ERR_PARTIAL:
+                    return json_encode(['status'=> false, 'msg'=> "The uploaded file was only partially uploaded."]);
+                case UPLOAD_ERR_NO_FILE:
+                    return json_encode(['status'=> false, 'msg'=> "No file was uploaded."]);
+                case UPLOAD_ERR_NO_TMP_DIR:
+                    return json_encode(['status'=> false, 'msg'=> "Missing a temporary folder."]);
+                case UPLOAD_ERR_CANT_WRITE:
+                    return json_encode(['status'=> false, 'msg'=> "Failed to write file to disk."]);
+                case UPLOAD_ERR_EXTENSION:
+                    return json_encode(['status'=> false, 'msg'=> "A PHP extension stopped the file upload."]);
+                default:
+                    return json_encode(['status'=> false, 'msg'=> "Unknown error occurred."]);
+            }
+        }
+    
+        // Check if the target directory exists, if not, create it
+        if (!is_dir($targetDirectory)) {
+            if (!mkdir($targetDirectory, 777, true)) {
+                return "Failed to create target directory.";
+            }
+        }
+    
+        // Generate a unique file name to avoid overwriting existing files
+        $fileName = uniqid() . '_' . basename($file['name']);
+        $targetFilePath = $targetDirectory . $fileName;
+    
+        // Check if file already exists
+        if (file_exists($targetFilePath)) {
+            return "File already exists.";
+        }
+    
+        // Try to move the uploaded file to the target directory
+        if (!move_uploaded_file($file['tmp_name'], $targetFilePath)) {
+            return "Error occurred while moving the uploaded file.";
+        }
+    
+        // Return true if the upload was successful
+        return json_encode(['status'=> true, 'msg' => 'success', 'filename' => $fileName]);
+    }
+    
 }
 ?>
