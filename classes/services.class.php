@@ -11,6 +11,8 @@ class Services extends DBConnection{
      */
     function addService($name, $dsc, $content, $slug, $metaTitle, $metaDsc, $icon, $childServices = 0, $projectsNos = 0, $time='0000-00-00 00:00:00') {
     
+        $name = ucfirst($name);
+
         try {
             $sql = "INSERT INTO `services` (`name`, `descreption`, `content`, `slug`, `meta_title`, `meta_dsc`, `icon`, `child_services`, `projects_nos`, `created`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     
