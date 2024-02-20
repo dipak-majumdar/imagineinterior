@@ -1,10 +1,22 @@
 <?php
-require_once "../_config/dbconnect.php";
-require_once "../classes/admin.class.php";
+require_once "../inc/constants.inc.php";
+require_once ABSPATH . "_config/dbconnect.php";
+require_once ABSPATH . "classes/admin.class.php";
+require_once ABSPATH . 'classes/site.class.php';
+require_once ABSPATH . 'classes/user.class.php';
+require_once ABSPATH . 'classes/form.class.php';
+require_once ABSPATH . 'classes/encrypt.inc.php';
 
-require_once ADMPATH . 'partials/common-admin-files.inc.php';
 
-$Admin     = new Admin();
+$SiteInfo      = new SiteInfo();
+$User          = new User();
+$Admin         = new Admin();
+
+$Site           = $SiteInfo->showSiteInfo();
+$users          = $User->showUsers();
+
+$FAVICON    = $Site['favicon'];
+$LOGO       = $Site['site_logo'];
 
 
 ?>
@@ -31,58 +43,55 @@ $Admin     = new Admin();
         rel="stylesheet">
 
     <!-- Vendor CSS Files -->
-    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-
-
-    <script src="../plugins/jQuery/jquery-3.6.0.min.js"></script>
-    <script src="../plugins/sweetalert/dist/sweetalert2.all.min.js"></script>
+    <link href="<?= ADM_URL ?>assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= ADM_URL ?>assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Template Main CSS File -->
-    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="<?= ADM_URL ?>assets/css/style.css" rel="stylesheet">
 
     <?php
 
-$msg  = '';
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    
-    if (isset($_POST['register'])) {
-  
-        $fname    = $_POST['fname'];
-        $lname    = $_POST['lname'];
-        $username = $_POST['username'];
-        $email    = $_POST['email'];
-        $pass     = $_POST['password'];
-        $v_pass   = $_POST['v-password'];
+    $msg  = '';
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         
-        if ($pass == $v_pass) {
-            $pass = password_hash($pass, PASSWORD_DEFAULT);
+        if (isset($_POST['register'])) {
     
-            $exist = $Admin->showAdminByEmail($email);
-            if (count($exist) == 0) {
-                $added = $Admin->addAdmin($fname, $lname, $username, $email, $pass);
-                // var_dump($added);
-                if ($added != 0) {
-                    session_start();
-                    $_SESSION['logedin']    = true;
-                    $_SESSION['username']   = $username;
-                    $_SESSION['email']      = $email;
-                    $_SESSION['userid']     = $added;
+            $fname    = $_POST['fname'];
+            $lname    = $_POST['lname'];
+            $username = $_POST['username'];
+            $email    = $_POST['email'];
+            $pass     = $_POST['password'];
+            $v_pass   = $_POST['v-password'];
+            
+            if ($pass == $v_pass) {
+        
+                $exist = $Admin->showAdminByEmail($email);
+                if (count($exist) == 0) {
+                    
+                    $pass       = md5_encrypt($pass, ADMIN_PASS);
+                    
+                    $added = $Admin->addAdmin($fname, $lname, $username, $email, $pass);
 
-				    header("Location: dashboard.php");
-                    exit;
+                    if ($added != 0) {
+                        session_start();
+                        $_SESSION['logedin']    = true;
+                        $_SESSION['username']   = $username;
+                        $_SESSION['email']      = $email;
+                        $_SESSION['userid']     = $added;
+
+                        header("Location: dashboard.php");
+                        exit;
+                    }
+                }else{
+                    $msg = "User With this email is already Exist!";
                 }
+
             }else{
-                $msg = "User With this email is already Exist!";
+                $msg = "Verify Password Does Not matched!";
             }
-
-        }else{
-            $msg = "Verify Password Does Not matched!";
+    
         }
-  
     }
-}
-
 
     ?>
 </head>

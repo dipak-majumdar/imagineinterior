@@ -13,26 +13,18 @@ require_once ABSPATH . '_config/dbconnect.php';
 require_once ABSPATH . 'classes/site.class.php';
 require_once ABSPATH . 'classes/user.class.php';
 require_once ABSPATH . 'classes/admin.class.php';
-require_once ABSPATH . 'classes/form.class.php';
+require_once ABSPATH . 'classes/login.class.php';
 
 
-$SiteInfo      = new SiteInfo();
+$SiteInfo       = new SiteInfo();
+$User           = new User();
+$Login          = new Login();
 
 $Site           = $SiteInfo->showSiteInfo();
 
 $FAVICON    = $Site['favicon'];
 $LOGO       = $Site['site_logo'];
 
-
-require_once '../classes/admin.class.php';
-require_once '../classes/services.class.php';
-require_once '../classes/user.class.php';
-require_once '../classes/site.class.php';
-
-
-$Admin      = new Admin();
-$Services   = new Services();
-$User       = new User();
 
 $errMsg = '';
 
@@ -43,30 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $user = $_POST['username'];
     $pass = $_POST['password'];
 
-    if (!filter_var($user, FILTER_VALIDATE_EMAIL)) {
-      $userData  = $Admin->showAdminByuser($user);
-      // var_dump($userData);
-    }else{
-      $userData = $Admin->showAdminByEmail($user);
-      // var_dump($userData);
-    }
-    if ((count($userData) == 1 && count($userData) != 0)) {
-      if (password_verify($pass, $userData[0]['password'])) {
-        
-        session_start();
-        $_SESSION['logedin']    = true;
-        $_SESSION['username']   = $userData[0]['username'];
-        $_SESSION['email']      = $userData[0]['email'];
-        $_SESSION['userid']     = $userData[0]['id'];
-
-        header("Location: dashboard.php");
-        exit;
-      }else {
-        $errMsg = "Incorrect Password";
-      }
-    }else {
-      $errMsg = "Invalid username or email";
-    }
+    $errMsg = $Login->adminLogin($user, $pass);
     
   }
   

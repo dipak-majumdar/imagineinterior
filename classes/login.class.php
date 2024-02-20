@@ -1,8 +1,38 @@
 <?php
 
+require_once 'encrypt.inc.php';
+
 class Login extends DBConnection{
 
 
+    function adminLogin($user, $pass){
+
+        $sql = "SELECT * FROM `admin` WHERE `username` = '$user' OR `email` = '$pass'";
+        $res = $this->conn->query($sql);
+        $row = $res->num_rows;
+        if ($row > 0 ) {
+            $result = $res->fetch_assoc();
+            
+            $decryptedPasss = md5_decrypt($result['password'], ADMIN_PASS);
+
+            if ($decryptedPasss == $pass) {
+                
+                session_start();
+                $_SESSION['logedin']    = true;
+                $_SESSION['username']   = $result['username'];
+                $_SESSION['email']      = $result['email'];
+                $_SESSION['userid']     = $result['id'];
+                
+                header("Location: dashboard.php");
+                exit;
+            }else {
+                return "Incorrect Password";
+            }
+        }else {
+            return "Invalid username or email";
+        }
+
+    }
 
     /**
      * retriving userdata for all user from `user` table
