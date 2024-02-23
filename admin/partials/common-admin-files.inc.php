@@ -18,6 +18,17 @@ $Site           = $SiteInfo->showSiteInfo();
 $users          = $User->showUsers();
 $logedAdmin     = $Admin->showAdminByEmail($_SESSION['email']);
 
+// $logedAdmin[0]['id'];
+// $my = $logedAdmin[0]['fname'];
+// $my = $logedAdmin[0]['lname'];
+$username = $logedAdmin[0]['username'];
+// $my = $logedAdmin[0]['email'];
+// $my = $logedAdmin[0]['mob_no'];
+// $myPass = $logedAdmin[0]['password'];
+// $my = $logedAdmin[0]['modified_on'];
+// $my = $logedAdmin[0]['added_on'];
+
+
 $FAVICON    = $Site['favicon'];
 $LOGO       = $Site['site_logo'];
 

@@ -7,7 +7,7 @@ class Login extends DBConnection{
 
     function adminLogin($user, $pass){
 
-        $sql = "SELECT * FROM `admin` WHERE `username` = '$user' OR `email` = '$pass'";
+        $sql = "SELECT * FROM `admin` WHERE `username` = '$user' OR `email` = '$user'";
         $res = $this->conn->query($sql);
         $row = $res->num_rows;
         if ($row > 0 ) {
@@ -33,6 +33,40 @@ class Login extends DBConnection{
         }
 
     }
+
+
+    function adminPassReset($username, $newPass, $reEnterNewPass){
+        if ($newPass === $reEnterNewPass) {
+            // Encrypt the new password
+            $enc_newPass = md5_encrypt($newPass, ADMIN_PASS);
+    
+            try {
+                // Prepare the SQL statement
+                $stmt = $this->conn->prepare("UPDATE `admin` SET `password` = ? WHERE `username` = ?");
+    
+                // Bind parameters to the prepared statement
+                $stmt->bind_param("ss", $enc_newPass, $username);
+    
+                // Execute the prepared statement
+                $stmt->execute();
+    
+                // Check if the password was updated successfully
+                if ($stmt->affected_rows > 0) {
+                    return "Password updated successfully!";
+                } else {
+                    return "No rows affected. Possibly username not found.";
+                }
+            } catch (Exception $e) {
+                return "Error updating password: " . $e->getMessage();
+            } finally {
+                // Close the prepared statement
+                $stmt->close();
+            }
+        } else {
+            return "New password and re-entered password do not match.";
+        }
+    }
+    
 
     /**
      * retriving userdata for all user from `user` table

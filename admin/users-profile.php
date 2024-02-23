@@ -1,11 +1,33 @@
 <?php
 session_start();
+$page = "profiile";
 
 require_once dirname(__DIR__) . '/inc/constants.inc.php';
 require_once ADMPATH . 'partials/common-admin-files.inc.php';
 
-$page = "profiile";
+require_once ABSPATH . 'classes/login.class.php';
 
+$Login  = new Login;
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // Check if all required fields are set
+    if (isset($_POST['newpassword']) && isset($_POST['renewpassword'])) {
+      if (!empty($_POST['newpassword']) && !empty($_POST['renewpassword'])) {
+
+        $newPassword    = $_POST['newpassword'];
+        $reNewPassword  = $_POST['renewpassword'];
+
+        $errMsg = $Login->adminPassReset($username, $newPassword, $reNewPassword);
+        
+      }else {
+        $errMsg = "All fields are required.";
+      }
+    } else {
+      $errMsg = "All fields are required.";
+    }
+}
 
 ?>
 
@@ -89,6 +111,12 @@ $page = "profiile";
         </div>
 
         <div class="col-xl-8">
+
+        <?php if (isset($errMsg)) { ?>
+          <div class="alert alert-danger" role="alert">
+            <?= $errMsg; ?>
+          </div>
+        <?php } ?>
 
           <div class="card">
             <div class="card-body pt-3">
@@ -301,20 +329,14 @@ $page = "profiile";
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
-                  </form><!-- End settings Form -->
+                  </form>
+                  <!-- End settings Form -->
 
                 </div>
 
                 <div class="tab-pane fade pt-3" id="profile-change-password">
                   <!-- Change Password Form -->
-                  <form>
-
-                    <div class="row mb-3">
-                      <label for="currentPassword" class="col-md-4 col-lg-3 col-form-label">Current Password</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="password" type="password" class="form-control" id="currentPassword">
-                      </div>
-                    </div>
+                  <form action="<?= PAGE ?>" method="POST">
 
                     <div class="row mb-3">
                       <label for="newPassword" class="col-md-4 col-lg-3 col-form-label">New Password</label>
@@ -333,11 +355,13 @@ $page = "profiile";
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Change Password</button>
                     </div>
-                  </form><!-- End Change Password Form -->
+                  </form>
+                  <!-- End Change Password Form -->
 
                 </div>
 
-              </div><!-- End Bordered Tabs -->
+              </div>
+              <!-- End Bordered Tabs -->
 
             </div>
           </div>
