@@ -35,7 +35,7 @@ error_reporting(E_ALL);
     //website related
 	define('URL', 				$protocol.$_SERVER['HTTP_HOST'].'/'.LOCAL_DIR);				
 	define('ADM_URL',  			URL.'admin/');		
-	define('PAGE',				$_SERVER['PHP_SELF'].'/');
+	define('PAGE',				$_SERVER['PHP_SELF']);
 	
 	define('SITE_EMAIL', 		"imagineinterior@gmail.com");	//
 	
