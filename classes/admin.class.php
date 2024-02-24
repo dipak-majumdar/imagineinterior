@@ -73,6 +73,58 @@ class Admin extends DBConnection{
     }//eof
 
 
+    function showAdminDetails($adminId){
+        $data= array();
+        $sql = "SELECT * FROM `admin_details` WHERE `admin_id` = '$adminId'";
+        $res = $this->conn->query($sql);
+        $row = $res->num_rows;
+        if ($row > 0 ) {
+            while ($result = $res->fetch_assoc()) {
+                $data = $result;
+            }
+        }
+        return $data;
+
+    }//eof
+
+
+    
+    public function updateAdminDetails($admin_id, $about, $job, $phone, $email, $twitter, $facebook, $instagram, $linkedin) {
+        try {
+            // Prepare SQL statement with placeholders
+            $sql = "UPDATE admin_details
+                        SET about = ?,
+                            designation = ?,
+                            phone = ?,
+                            email = ?,
+                            x = ?,
+                            fb = ?,
+                            insta = ?,
+                            linkd = ?
+                        WHERE admin_id = ?";
+            
+            // Prepare the statement
+            $stmt = $this->conn->prepare($sql);
+            
+            // Bind parameters
+            $stmt->bind_param("ssssssssi", $about, $job, $phone, $email, $twitter, $facebook, $instagram, $linkedin, $admin_id);
+            
+            // Execute the statement
+            $stmt->execute();
+            
+            // Check for errors
+            if ($stmt->errno !== 0) {
+                throw new Exception("Error: " . $stmt->error);
+            } else {
+                return "Admin details updated successfully.";
+            }
+            
+            // Close the statement
+            $stmt->close();
+        } catch (Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
     
 
 }

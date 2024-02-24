@@ -18,7 +18,7 @@ $Site           = $SiteInfo->showSiteInfo();
 $users          = $User->showUsers();
 $logedAdmin     = $Admin->showAdminByEmail($_SESSION['email']);
 
-// $logedAdmin[0]['id'];
+$adminId  = $logedAdmin[0]['id'];
 // $my = $logedAdmin[0]['fname'];
 // $my = $logedAdmin[0]['lname'];
 $username = $logedAdmin[0]['username'];

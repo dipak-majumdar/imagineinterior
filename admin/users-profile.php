@@ -10,6 +10,20 @@ require_once ABSPATH . 'classes/login.class.php';
 $Login  = new Login;
 
 
+$adminDetails = $Admin->showAdminDetails($adminId);
+
+// $adminAdmin_id      = $adminDetails['admin_id'];
+$adminImage    = $adminDetails['image'];
+$adminDesig    = $adminDetails['designation'];
+$adminAbout    = $adminDetails['about'];
+$adminPhone    = $adminDetails['phone'];
+$adminEmail    = $adminDetails['email'];
+$adminFB       = $adminDetails['fb'];
+$adminX        = $adminDetails['x'];
+$adminInsta    = $adminDetails['insta'];
+$adminLinkd    = $adminDetails['linkd'];
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if all required fields are set
@@ -29,6 +43,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+  $errMsg = $_GET['response'];
+}
 ?>
 
 
@@ -154,11 +171,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                   </div>
 
                   <div class="row">
-                    <div class="col-lg-3 col-md-4 label">Company</div>
-                    <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
-                  </div>
-
-                  <div class="row">
                     <div class="col-lg-3 col-md-4 label">Job</div>
                     <div class="col-lg-9 col-md-8">Web Designer</div>
                   </div>
@@ -188,11 +200,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                   <!-- Profile Edit Form -->
-                  <form>
+                  <form action="<?= ADM_URL ?>ajax/admin-details-update.php" method="POST">
                     <div class="row mb-3">
                       <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                       <div class="col-md-8 col-lg-9">
                         <img src="assets/img/profile-img.jpg" alt="Profile">
+                        <?php // $adminImage?>
                         <div class="pt-2">
                           <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                           <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
@@ -200,94 +213,74 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       </div>
                     </div>
 
-                    <div class="row mb-3">
+                    <!-- <div class="row mb-3">
                       <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                       <div class="col-md-8 col-lg-9">
                         <input name="fullName" type="text" class="form-control" id="fullName" value="Kevin Anderson">
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="row mb-3">
                       <label for="about" class="col-md-4 col-lg-3 col-form-label">About</label>
                       <div class="col-md-8 col-lg-9">
-                        <textarea name="about" class="form-control" id="about" style="height: 100px">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</textarea>
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="company" class="col-md-4 col-lg-3 col-form-label">Company</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="company" type="text" class="form-control" id="company" value="Lueilwitz, Wisoky and Leuschke">
+                        <textarea name="about" class="form-control" id="about" style="height: 100px"><?= $adminAbout ?></textarea>
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Job" class="col-md-4 col-lg-3 col-form-label">Job</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="job" type="text" class="form-control" id="Job" value="Web Designer">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Country" class="col-md-4 col-lg-3 col-form-label">Country</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="country" type="text" class="form-control" id="Country" value="USA">
-                      </div>
-                    </div>
-
-                    <div class="row mb-3">
-                      <label for="Address" class="col-md-4 col-lg-3 col-form-label">Address</label>
-                      <div class="col-md-8 col-lg-9">
-                        <input name="address" type="text" class="form-control" id="Address" value="A108 Adam Street, New York, NY 535022">
+                        <input name="job" type="text" class="form-control" id="Job" value="<?= $adminDesig ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Phone" class="col-md-4 col-lg-3 col-form-label">Phone</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="phone" type="text" class="form-control" id="Phone" value="(436) 486-3538 x29071">
+                        <input name="phone" type="text" class="form-control" id="Phone" value="<?= $adminPhone ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Email" class="col-md-4 col-lg-3 col-form-label">Email</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="email" type="email" class="form-control" id="Email" value="k.anderson@example.com">
+                        <input name="email" type="email" class="form-control" id="Email" value="<?= $adminEmail ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Twitter" class="col-md-4 col-lg-3 col-form-label">Twitter Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="twitter" type="text" class="form-control" id="Twitter" value="https://twitter.com/#">
+                        <input name="twitter" type="text" class="form-control" id="Twitter" value="<?= $adminX ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Facebook" class="col-md-4 col-lg-3 col-form-label">Facebook Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="facebook" type="text" class="form-control" id="Facebook" value="https://facebook.com/#">
+                        <input name="facebook" type="text" class="form-control" id="Facebook" value="<?= $adminFB ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Instagram" class="col-md-4 col-lg-3 col-form-label">Instagram Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="instagram" type="text" class="form-control" id="Instagram" value="https://instagram.com/#">
+                        <input name="instagram" type="text" class="form-control" id="Instagram" value="<?= $adminInsta ?>">
                       </div>
                     </div>
 
                     <div class="row mb-3">
                       <label for="Linkedin" class="col-md-4 col-lg-3 col-form-label">Linkedin Profile</label>
                       <div class="col-md-8 col-lg-9">
-                        <input name="linkedin" type="text" class="form-control" id="Linkedin" value="https://linkedin.com/#">
+                        <input name="linkedin" type="text" class="form-control" id="Linkedin" value="<?= $adminLinkd ?>">
                       </div>
                     </div>
 
                     <div class="text-center">
                       <button type="submit" class="btn btn-primary">Save Changes</button>
                     </div>
-                  </form><!-- End Profile Edit Form -->
+                  </form>
+                  <!-- End Profile Edit Form -->
 
                 </div>
 
