@@ -115,7 +115,7 @@ if (isset($_GET['response'])) {
                         <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
                             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                            <h2><?= $adminLName .' '. $adminLName ?></h2>
+                            <h2><?= $adminFName .' '. $adminLName ?></h2>
                             <h3><?= $adminDesig; ?></h3>
                             <div class="social-links mt-2">
                                 <a href="<?= $adminFB ?>" class="twitter" target="_blank"><i
