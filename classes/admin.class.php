@@ -89,42 +89,97 @@ class Admin extends DBConnection{
 
 
     
-    public function updateAdminDetails($admin_id, $about, $job, $phone, $email, $twitter, $facebook, $instagram, $linkedin) {
+    // public function updateAdminDetails($admin_id, $fname, $lname, $about, $job, $phone, $twitter, $facebook, $instagram, $linkedin) {
+    //     try {
+    //         // Prepare SQL statement with placeholders
+    //         $sql = "UPDATE admin_details
+    //                     SET about = ?,
+    //                         designation = ?,
+    //                         x = ?,
+    //                         fb = ?,
+    //                         insta = ?,
+    //                         linkd = ?
+    //                     WHERE admin_id = ?";
+            
+    //         // Prepare the statement
+    //         $stmt = $this->conn->prepare($sql);
+            
+    //         // Bind parameters
+    //         $stmt->bind_param("ssssssi", $about, $job, $twitter, $facebook, $instagram, $linkedin, $admin_id);
+            
+    //         // Execute the statement
+    //         $stmt->execute();
+            
+    //         // Check for errors
+    //         if ($stmt->errno !== 0) {
+    //             throw new Exception("Error: " . $stmt->error);
+    //         } else {
+    //             return "Admin details updated successfully.";
+    //         }
+            
+    //         // Close the statement
+    //         $stmt->close();
+    //     } catch (Exception $e) {
+    //         return "Error: " . $e->getMessage();
+    //     }
+    // }
+    
+
+    public function updateAdminDetails($admin_id, $fname, $lname, $about, $job, $phone, $twitter, $facebook, $instagram, $linkedin) {
         try {
-            // Prepare SQL statement with placeholders
-            $sql = "UPDATE admin_details
-                        SET about = ?,
-                            designation = ?,
-                            phone = ?,
-                            email = ?,
-                            x = ?,
-                            fb = ?,
-                            insta = ?,
-                            linkd = ?
-                        WHERE admin_id = ?";
-            
-            // Prepare the statement
-            $stmt = $this->conn->prepare($sql);
-            
-            // Bind parameters
-            $stmt->bind_param("ssssssssi", $about, $job, $phone, $email, $twitter, $facebook, $instagram, $linkedin, $admin_id);
-            
-            // Execute the statement
-            $stmt->execute();
+            // Start transaction
+            $this->conn->begin_transaction();
+    
+            // Update admin_details table
+            $sql_details = "UPDATE admin_details
+                            SET about = ?,
+                                designation = ?,
+                                x = ?,
+                                fb = ?,
+                                insta = ?,
+                                linkd = ?
+                            WHERE admin_id = ?";
+            $stmt_details = $this->conn->prepare($sql_details);
+            $stmt_details->bind_param("ssssssi", $about, $job, $twitter, $facebook, $instagram, $linkedin, $admin_id);
+            $stmt_details->execute();
             
             // Check for errors
-            if ($stmt->errno !== 0) {
-                throw new Exception("Error: " . $stmt->error);
-            } else {
-                return "Admin details updated successfully.";
+            if ($stmt_details->errno !== 0) {
+                throw new Exception("Error updating admin_details: " . $stmt_details->error);
             }
-            
-            // Close the statement
-            $stmt->close();
+    
+            // Update admin table
+            $sql_admin = "UPDATE admin
+                          SET fname = ?,
+                              lname = ?,
+                              mob_no = ?
+                          WHERE id = ?";
+            $stmt_admin = $this->conn->prepare($sql_admin);
+            $stmt_admin->bind_param("sssi", $fname, $lname, $phone, $admin_id);
+            $stmt_admin->execute();
+    
+            // Check for errors
+            if ($stmt_admin->errno !== 0) {
+                throw new Exception("Error updating admin: " . $stmt_admin->error);
+            }
+    
+            // Commit transaction
+            $this->conn->commit();
+    
+            // Close statements
+            $stmt_details->close();
+            $stmt_admin->close();
+    
+            return "Admin Details Updated Successfully.";
         } catch (Exception $e) {
+
+            // Rollback transaction on error
+            $this->conn->rollback();
             return "Error: " . $e->getMessage();
+
         }
     }
+
     
 
 }
