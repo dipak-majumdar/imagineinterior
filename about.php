@@ -1,7 +1,19 @@
 <?php
 require_once "./inc/reqHeader.php";
+require_once ABSPATH."classes/admin.class.php";
 
+$Admin = new Admin;
 
+$featuredAdmin = $Admin->selectFeaturedAdmin();
+// print_r($featuredAdmin);
+$FNAME      = $featuredAdmin[0]['fname'];
+$LNAME      = $featuredAdmin[0]['lname'];
+$ROLE       = $featuredAdmin[0]['designation'];
+$ABOUT      = $featuredAdmin[0]['about'];
+$FBLINK     = $featuredAdmin[0]['fb'];
+$XLINK      = $featuredAdmin[0]['x'];
+$INSTALINK  = $featuredAdmin[0]['insta'];
+$LINKDLINK  = $featuredAdmin[0]['linkd'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -113,36 +125,33 @@ require_once "./inc/reqHeader.php";
         <div class="container mb-5">
             <div class="row align-items-center mb-4">
                 <div class="col-md-6 order-2 order-md-1 left_area about_sec_dsc">
-                    <h1 class="font-weight-light">Jhon Done</h1>
-                    <h3 class="text-uppercase">CEO - Founder</h3>
+                    <h1 class="font-weight-light"><?= $FNAME .' '. $LNAME; ?></h1>
+                    <h3 class="text-uppercase"><?= $ROLE ?></h3>
                     <div>
                         <ul class="social list-inline my-3">
                             <li class="list-inline-item">
-                                <a href="#" class="social-link">
+                                <a href="<?= $FBLINK; ?>" class="social-link">
                                     <i class="fa-brands fa-facebook-f fs-4"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#" class="social-link">
+                                <a href="<?= $XLINK; ?>" class="social-link">
                                     <i class="fa-brands fa-twitter fs-4"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#" class="social-link">
+                                <a href="<?= $INSTALINK; ?>" class="social-link">
                                     <i class="fa-brands fa-instagram fs-4"></i>
                                 </a>
                             </li>
                             <li class="list-inline-item">
-                                <a href="#" class="social-link">
+                                <a href="<?= $LINKDLINK; ?>" class="social-link">
                                     <i class="fa-brands fa-linkedin-in fs-4"></i>
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit, amet consectetur
-                        adipisicing elit. Reprehenderit ea eaque, ipsum hic repellat rem aspernatur,
-                        similique molestiae quidem voluptas itaque quia quaerat nesciunt est necessitatibus
-                        odit, doloribus magni tenetur!</p>
+                    <p class="font-italic text-muted mb-4"><?= $ABOUT; ?></p>
                 </div>
                 <div class="col-md-5 px-5 mx-auto order-1 order-md-2 right_area">
                     <div class="bg-white rounded-sm py-5 px-4">
@@ -151,46 +160,6 @@ require_once "./inc/reqHeader.php";
                 </div>
             </div>
 
-            <div class="row align-items-center">
-                <div class="col-md-5 px-5 mx-auto left_area">
-                    <div class="bg-white rounded-sm py-5 px-4">
-                        <img src="images/dummy-men.jpg" alt="" class="person_img">
-                    </div>
-                </div>
-                <div class="col-md-6 right_area about_sec_dsc">
-                    <!-- <i class="fa fa-leaf fa-2x mb-3 text-primary"></i> -->
-                    <h1 class="font-weight-light">Jhon Done</h1>
-                    <h3 class="text-uppercase">CEO - Founder</h3>
-                    <div>
-                        <ul class="social list-inline my-3">
-                            <li class="list-inline-item">
-                                <a href="#" class="social-link">
-                                    <i class="fa-brands fa-facebook-f fs-4"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" class="social-link">
-                                    <i class="fa-brands fa-twitter fs-4"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" class="social-link">
-                                    <i class="fa-brands fa-instagram fs-4"></i>
-                                </a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#" class="social-link">
-                                    <i class="fa-brands fa-linkedin-in fs-4"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <p class="font-italic text-muted mb-4">Lorem ipsum dolor sit, amet consectetur
-                        adipisicing elit. Reprehenderit ea eaque, ipsum hic repellat rem aspernatur,
-                        similique molestiae quidem voluptas itaque quia quaerat nesciunt est necessitatibus
-                        odit, doloribus magni tenetur!</p>
-                </div>
-            </div>
         </div>
     </div>
     <!-- CEO and Founders section End  -->
@@ -201,7 +170,7 @@ require_once "./inc/reqHeader.php";
             <p class="sec_heading_dsc mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo vel harum id
                 voluptate accusantium ex?</p>
             <div class="row align-items-center mb-2">
-                <div class="col-md-6 order-2 order-md-1 mt-3 mt-md-0">
+                <div class="col-md-6 order-2 mt-3 mt-md-0">
                     <h1>Crafting Timeless Spaces with Imagine Interior</h1>
                     <p>At Imagine Interior, we believe every space has a story. Our team of seasoned designers and
                         architects work tirelessly to understand your unique vision, integrating functionality with
@@ -212,7 +181,7 @@ require_once "./inc/reqHeader.php";
                         crafting designs that seamlessly integrate with your lifestyle. And it ensures comfort and
                         practicality are never compromised.</p>
                 </div>
-                <div class="col-md-6 order-1 order-md-2 mt-4 mt-md-0">
+                <div class="col-md-6 order-1 mt-4 mt-md-0">
                     <div class="about_sec_img">
                         <img src="images/about-us-main-bg.jpg" alt="">
                     </div>
@@ -221,12 +190,12 @@ require_once "./inc/reqHeader.php";
 
 
             <div class="row align-items-center mb-2">
-                <div class="col-md-6 mt-4 mt-md-0">
+                <div class="col-md-6 order-md-2 mt-4 mt-md-0">
                     <div class="about_sec_img">
                         <img src="images/about-us-main-bg.jpg" alt="">
                     </div>
                 </div>
-                <div class="col-md-6 mt-3 mt-md-0">
+                <div class="col-md-6 order-md-1 mt-3 mt-md-0">
                     <h1>Designing Together: Transparent Collaboration</h1>
                     <p>Transparency and collaboration are at the heart of our work approach. We value your input
                         of emotions and staying with you in every step of the design journey, from concept to
@@ -236,7 +205,7 @@ require_once "./inc/reqHeader.php";
             </div>
 
             <div class="row align-items-center mb-2">
-                <div class="col-md-6 order-2 order-md-1 mt-3 mt-md-0">
+                <div class="col-md-6 order-2 mt-3 mt-md-0">
                     <h1>Explore Now: West Bengal to India</h1>
                     <p>However, we believe that sustainability is more than a craze; it&#39;s a loyalty. We provide our
                         services in West Bengal, and all over India.
@@ -244,7 +213,7 @@ require_once "./inc/reqHeader.php";
                         single room or transforming an entire home, trust Imagine Interior to turn your vision into a
                         living reality.</p>
                 </div>
-                <div class="col-md-6 order-1 order-md-2 mt-4 mt-md-0">
+                <div class="col-md-6 order-1 mt-4 mt-md-0">
                     <div class="about_sec_img">
                         <img src="images/about-us-main-bg.jpg" alt="">
                     </div>

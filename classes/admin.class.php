@@ -180,6 +180,61 @@ class Admin extends DBConnection{
         }
     }
 
+    // function selectFeaturedAdmin() {
+    //     try {
+    //         // Prepare SQL statement
+    //         $sql = "SELECT * FROM admin_details WHERE featured = 1";
+    
+    //         // Execute the query
+    //         $result = $this->conn->query($sql);
+    
+    //         // Check if there are any results
+    //         if ($result->num_rows > 0) {
+    //             // Fetch associative array
+    //             $featuredAdmins = array();
+    //             while ($row = $result->fetch_assoc()) {
+    //                 $featuredAdmins[] = $row;
+    //             }
+    //             // Free result set
+    //             $result->free_result();
+    //             return $featuredAdmins;
+    //         } else {
+    //             return "No featured admin found.";
+    //         }
+    //     } catch (Exception $e) {
+    //         return "Error: " . $e->getMessage();
+    //     }
+    // }
+    
+    function selectFeaturedAdmin() {
+        try {
+            // Prepare SQL statement
+            $sql = "SELECT ad.*, a.fname, a.lname, a.mob_no, a.email 
+                    FROM admin_details ad 
+                    JOIN admin a ON ad.admin_id = a.id 
+                    WHERE ad.featured = 1";
+    
+            // Execute the query
+            $result = $this->conn->query($sql);
+    
+            // Check if there are any results
+            if ($result->num_rows > 0) {
+                // Fetch associative array
+                $featuredAdmins = array();
+                while ($row = $result->fetch_assoc()) {
+                    $featuredAdmins[] = $row;
+                }
+                // Free result set
+                $result->free_result();
+                return $featuredAdmins;
+            } else {
+                return "No featured admin found.";
+            }
+        } catch (Exception $e) {
+            return "Error: " . $e->getMessage();
+        }
+    }
+    
     
 
 }
