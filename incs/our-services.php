@@ -2,11 +2,11 @@
     <div class="container">
         <h1 class="sec_heading">our services</h1>
         <p class="sec_heading_dsc">Elevate spaces with our comprehensive interior design services, combining style and functionality seamlessly.</p>
-        <div class="new_section sub_layout_padding">
+        <div class="new_section sub_layout_padding pt-0">
             <div class="row justify-content-evenly">
                 <?php
             foreach ($allServices as $eachSearvice) {
-                echo '<div class="col-lg-3 col-sm-6">
+                echo '<div class="col-lg-3 col-sm-6 py-4">
                         <a href="'.URL.'service/'.$eachSearvice['slug'].'">
                             <div class="service_icon_bx">
                                 <img src="images/services/'.$eachSearvice['icon'].'">
