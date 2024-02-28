@@ -48,7 +48,6 @@ $images         = $Projects->showRandomImages();
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
-    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"> -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/sharp-solid.css">
     <!-- owl stylesheets -->
@@ -77,17 +76,17 @@ $images         = $Projects->showRandomImages();
                     <h3 class="text-center text-md-start fs-3">Elevate Your Space: Interior Designing and Decoration Services in Kolkata</h3>
                     <p class="small_para">Welcome to our Interior Designing and Decoration Services in Kolkata! Transform your living or working space into a personalized sanctuary that reflects your style and enhances functionality. Our team of expert designers is here to guide you through every step of the process, from conceptualization to execution, ensuring a seamless experience and stunning results..</p>
                 </div>
-                <div class="new_section sub_layout_padding">
+                <div class="new_section sub_layout_padding p-0">
                     <div class="row justify-content-evenly">
                         <?php
                             foreach ($allServices as $eachSearvice) {
-                                echo '<div class="col-lg-3 col-sm-6">
+                                echo '<div class="col-lg-3 col-sm-6 py-4">
                                         <a href="'.URL.'service/'.$eachSearvice['slug'],'">
                                             <div class="service_icon_bx">
                                                 <img src="'.IMGURL.'services/'.$eachSearvice['icon'].'">
                                             </div>
                                             <h2 class="service_name">'.$eachSearvice['name'].'</h2>
-                                            <p class="service_dsc">'.$eachSearvice['descreption'].'</p>
+                                            <p class="service_dsc text-center">'.$eachSearvice['descreption'].'</p>
                                         </a>
                                     </div>';
                             }
