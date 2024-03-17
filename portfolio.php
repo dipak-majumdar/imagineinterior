@@ -40,12 +40,9 @@ $childServices = $Services->showChildServices();
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
-    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"> -->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/sharp-solid.css">
     <!-- owl stylesheets -->
-    <!-- <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
         media="screen">
 
@@ -141,83 +138,6 @@ $childServices = $Services->showChildServices();
     </div>
     <!-- portfolio section end  -->
 
-
-    <div class="new_section layout_padding px-2 px-md-0">
-        <div class="">
-            <!-- bg_dark_white -->
-            <div class="container">
-                <h2 class="sub_headig fs-2 fw-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h2>
-                <p class="sec_heading_dsc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint,
-                    incidunt placeat! Quisquam sunt modi soluta aliquam nobis, consectetur iure mollitia doloremque
-                    labore distinctio iusto minus?
-                </p>
-            </div>
-
-            <div class="container-fluid">
-                <div class="row justify-content-center mt-4">
-
-                    <div class="col-12 col-md-5 m-2 mini_sec">
-                        <div class="d-sm-none d-block">
-                            <img src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
-                        </div>
-                        <h4 class="fs-4 text-center text-md-start">Lorem ipsum dolor sit.</h4>
-                        <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
-                            <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Distinctio est numquam soluta
-                                odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
-                                repellendus labore, doloremque, possimus, ut earum iusto quo.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-5 m-2 mini_sec">
-                        <div class="d-sm-none d-block">
-                            <img src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
-                        </div>
-                        <h4 class="fs-4 text-center text-md-start">Lorem ipsum dolor sit.</h4>
-                        <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
-                            <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Distinctio est numquam soluta
-                                odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
-                                repellendus labore, doloremque, possimus, ut earum iusto quo.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-5 m-2 mini_sec">
-                        <div class="d-sm-none d-block">
-                            <img src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
-                        </div>
-                        <h4 class="fs-4 text-center text-md-start">Lorem ipsum dolor sit.</h4>
-                        <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
-                            <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Distinctio est numquam soluta
-                                odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
-                                repellendus labore, doloremque, possimus, ut earum iusto quo.</p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-5 m-2 mini_sec">
-                        <div class="d-sm-none d-block">
-                            <img src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
-                        </div>
-                        <h4 class="fs-4 text-center text-md-start">Lorem ipsum dolor sit.</h4>
-                        <div class="d-flex align-items-center">
-                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
-                            <p class="">Lorem ipsum dolor sit amet consectetur adipisicing
-                                elit. Distinctio est numquam soluta
-                                odit necessitatibus aliquid animi quibusdam optio perspiciatis id quia tempora
-                                repellendus labore, doloremque, possimus, ut earum iusto quo.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-
     <!-- Lets Talk Section Start  -->
     <div class="new_section layout_padding px-2 px-md-0">
         <?php require_once "incs/lets-talk-sec.php"; ?>
@@ -228,23 +148,10 @@ $childServices = $Services->showChildServices();
     <?php require_once "partials/footer.php"; ?>
     <!--  footer section end -->
 
-    <!-- copyright section end -->
-    <!-- Javascript files-->
-    <!-- <script src="js/jquery-3.0.0.min.js"></script> -->
-
     <!--Bootstrap Css -->
     <script src="js/main-js/bootstrap.js"></script>
 
     <script src="js/jquery.min.js"></script>
-    <!-- <script src="js/popper.min.js"></script> -->
-    <!-- <script src="js/jquery-3.0.0.min.js"></script> -->
-    <!-- <script src="js/plugin.js"></script> -->
-    <!-- sidebar -->
-    <!-- <script src="js/jquery.mCustomScrollbar.concat.min.js"></script> -->
-    <!-- <script src="js/custom.js"></script> -->
-    <!-- javascript -->
-    <!-- <script src="js/owl.carousel.js"></script>
-    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script> -->
 
     <!-- btnsDiv -->
 
