@@ -254,7 +254,18 @@ $images         = $Projects->showRandomImages();
                         <h4 class="fs-4">What happens if I am not satisfied with the final design?</h4>
                         <div class="d-flex align-items-center">
                             <img class="d-none d-sm-inline-flex" src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
-                            <p class="">Customer satisfaction is our top priority. If you are not satisfied with the final design, we will work with you to make revisions until you are happy with the results..</p>
+                            <p class="">Customer satisfaction is our top priority. If you are not satisfied with the final design, we will work with you to make revisions until you are happy with the results.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-5 m-2 mini_sec">
+                        <div class="d-sm-none d-block">
+                            <img src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
+                        </div>
+                        <h4 class="fs-4">How do I get started with your interior design services?</h4>
+                        <div class="d-flex align-items-center">
+                            <img class="d-none d-sm-inline-flex" src="<?= IMGURL ?>icons/question-mark-red-bg.png" alt="">
+                            <p class="">Simply contact us to schedule an initial consultation. During this meeting, we will discuss your design goals, budget, and timeline to kickstart the process.</p>
                         </div>
                     </div>
                 </div>
