@@ -57,12 +57,36 @@ require_once "./inc/reqHeader.php";
             <div class="contact_left">
                 <!-- <img src="images/img-01.png" alt="IMG"> -->
                 <h1>Visit Us</h1>
-                <p><a href=""><img class="" src="images/icons/call-icon-dark.png" alt=""> 76997753019</a></p>
-                <p><a href=""><img class="" src="images/icons/mail-icon-black.png" alt="">imagineinterior@gmail.com</a>
+                <p><a href="tel:<?= $site['contact1']; ?>"><img class="" src="images/icons/call-icon-dark.png" alt=""><?= $site['contact1']; ?></a></p>
+                <p><a href="mailto:<?= $site['email']; ?>"><img class="" src="images/icons/mail-icon-black.png" alt=""><?= $site['email']; ?></a>
                 </p>
-                <p><a href=""><img class="" src="images/icons/location-icon-black.png" alt="">Chapadali, Barasat
-                        <br> Kolkata, 700124
-                        <br> West Bengal, India</a>
+                <p>
+                    <a href="">
+                        <img class="" src="images/icons/location-icon-black.png" alt=""/>
+                            <?php
+                                $comma = ', ';
+                                if ($site['address1'] == null) {
+                                    $comma = '';
+                                }
+                                echo $site['address1'].$comma.$site['address2'];
+                            ?>
+                            <br>
+                            <?php
+                                $comma = ', ';
+                                if ($site['city'] == null) {
+                                    $comma = '';
+                                }
+                                echo $site['city'].$comma.$site['state'];
+                            ?>
+                            <br>
+                            <?php
+                                $comma = ', ';
+                                if ($site['pin'] == null) {
+                                    $comma = '';
+                                }
+                                echo $site['pin'].$comma.$site['country'];
+                            ?>
+                        </a>
                 </p>
             </div>
             <!-- Address Section End -->
