@@ -888,9 +888,9 @@ button {
     list-style: none;
 }
 .fooer_logo {
-    width: 100%;
+    width: 80%;
     float: left;
-    padding-bottom: 40px;
+    padding-bottom: 15px;
 }
 .customer_text{
     width: 100%;
@@ -902,7 +902,7 @@ button {
 }
 
 .footer_dsc{
-    width: 80%;
+    width: 100%;
     float: left;
     font-size: 16px;
     color: #fefefe;

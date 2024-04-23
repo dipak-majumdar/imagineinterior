@@ -69,8 +69,7 @@
         <div class="row">
             <div class="col-lg-5 col-sm-12">
                 <div class="fooer_logo"><img src="<?= IMGURL ?>logo/imagine-Interior-footer-logo-2.png"></div>
-                <p class="footer_dsc">There are many variations of passages of L
-                    orem Ipsum available, but the majority have suffered alteration in some form, by
+                <p class="footer_dsc">As an interior designer, we bring spaces to life with creativity and functionality.We blend colors, textures, and furniture to craft harmonious environments. By understanding clients' needs, Imagine Interior creates personalized designs that reflect their style and enhance their lifestyle. Each project is a unique journey, transforming dreams into reality.
                 </p>
             </div>
             <div class="col-lg-4 col-sm-6">

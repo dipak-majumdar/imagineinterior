@@ -167,8 +167,7 @@ $LINKDLINK  = $featuredAdmin[0]['linkd'];
     <div class="bg-light">
         <div class="container mb-5">
             <h1 class="sec_heading">What Makes Us Special ?</h1>
-            <p class="sec_heading_dsc mb-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo vel harum id
-                voluptate accusantium ex?</p>
+            <p class="sec_heading_dsc mb-5">Our Planning, effort, dedications makes us little different from others.First sit back make some serious plans and then jump into it to implement what you have done so far in the table</p>
             <div class="row align-items-center mb-2">
                 <div class="col-md-6 order-2 mt-3 mt-md-0">
                     <h1>Crafting Timeless Spaces with Imagine Interior</h1>

@@ -261,8 +261,7 @@ $childServices = $Services->showChildServicesByLimit(12);
         <div class="new_section layout_padding">
             <div class="container">
                 <h1 class="sec_heading">Our Numbers</h1>
-                <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
-                    similique ullam.</p>
+                <p class="sec_heading_dsc mb-0">Total number of clients received interior design services from our famous interior designers kolkata</p>
 
                 <div class="row justify-content-center sub_layout_padding counter_sec">
 
@@ -320,9 +319,8 @@ $childServices = $Services->showChildServicesByLimit(12);
         <!-- client section start -->
         <div class="new_section layout_padding">
             <div class="container">
-                <h1 class="sec_heading">Our Claient Says</h1>
-                <p class="sec_heading_dsc mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum error
-                    similique ullam.</p>
+                <h1 class="sec_heading">Our Client Says</h1>
+                <p class="sec_heading_dsc mb-0">Number of interior design services in kolkata,we completed so far</p>
 
                 <div class="row sub_layout_padding counter_sec">
 
@@ -330,29 +328,37 @@ $childServices = $Services->showChildServicesByLimit(12);
                         <div class="carousel-inner testimonial_sec">
                             <div class="carousel-item active">
                                 <img class="testimonial_img" src="images/img-8.png" alt="">
-                                <h2 class="testimonial_heading">Rahul Majumdar</h2>
+                                <h2 class="testimonial_heading">Siddharth Gupta</h2>
                                 <blockquote class="testimonial_quote">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem odit consectetur
-                                    aperiam eius ullam molestiae quis, quidem, animi reprehenderit tenetur iste
-                                    distinctio autem. Ea unde consectetur, corrupti quas vel natus?
+                                Absolutely thrilled with the stunning transformation of our home! The attention to detail and seamless integration of our vision exceeded our expectations. Highly recommend this talented team for top-notch design services.
                                 </blockquote>
                             </div>
                             <div class="carousel-item">
                                 <img class="testimonial_img" src="images/img-8.png" alt="">
-                                <h2 class="testimonial_heading">Rahul Majumdar</h2>
+                                <h2 class="testimonial_heading">Ayaan Siddiqui</h2>
                                 <blockquote class="testimonial_quote">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem odit consectetur
-                                    aperiam eius ullam molestiae quis, quidem, animi reprehenderit tenetur iste
-                                    distinctio autem. Ea unde consectetur, corrupti quas vel natus?
+                                Working with this interior design team was a dream! From the initial consultation to the final reveal, they were professional, communicative, and delivered exceptional results. Our space feels both luxurious and livable.
                                 </blockquote>
                             </div>
                             <div class="carousel-item">
                                 <img class="testimonial_img" src="images/img-8.png" alt="">
-                                <h2 class="testimonial_heading">Rahul Majumdar</h2>
+                                <h2 class="testimonial_heading">Rohan Sharma</h2>
                                 <blockquote class="testimonial_quote">
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorem odit consectetur
-                                    aperiam eius ullam molestiae quis, quidem, animi reprehenderit tenetur iste
-                                    distinctio autem. Ea unde consectetur, corrupti quas vel natus?
+                                Incredible design expertise! Our outdated space is now a modern oasis thanks to their impeccable taste and innovative solutions. They listened to our needs and brought our vision to life beyond imagination.
+                                </blockquote>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="testimonial_img" src="images/img-8.png" alt="">
+                                <h2 class="testimonial_heading">Yusuf Ahmed</h2>
+                                <blockquote class="testimonial_quote">
+                                Exceeded all expectations! From concept to execution, the process was smooth and stress-free. Their keen eye for detail and commitment to quality resulted in a breathtaking transformation of our space. Highly recommend!
+                                </blockquote>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="testimonial_img" src="images/img-8.png" alt="">
+                                <h2 class="testimonial_heading">Swapan Chatterjee</h2>
+                                <blockquote class="testimonial_quote">
+                                Absolutely thrilled with the outcome! Our home now feels like a reflection of our personality and style.The team's passion for design, combined with their professionalism, made the entire experience enjoyable and rewarding.
                                 </blockquote>
                             </div>
                         </div>
