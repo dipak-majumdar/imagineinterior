@@ -1,0 +1,79 @@
+/* CSS */
+.call-icon {
+  position: relative;
+  display: inline-block;
+  width: 40px; /* Adjust size as needed */
+  height: 40px; /* Adjust size as needed */
+  background-color: #007bff; /* Icon color */
+  border-radius: 50%; /* Makes it a circle */
+}
+
+.call-icon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px; /* Adjust size as needed */
+  height: 20px; /* Adjust size as needed */
+  border-left: 3px solid #fff; /* Horizontal line */
+  border-bottom: 3px solid #fff; /* Vertical line */
+  transform: rotate(45deg); /* Rotates the lines to create an X shape */
+}
+
+/* Telephone icon start */
+.telephone-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #007bff;
+    position: relative;
+  }
+  
+  .telephone-icon::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+  }
+  
+  .telephone-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+/* Telephone icon end */
+
+.envelope-icon {
+    display: inline-block;
+    width: 40px;
+    height: 30px;
+    position: relative;
+    background-color: #f0f0f0;
+    border: 1px solid #999;
+    border-radius: 4px;
+  }
+  
+  .envelope-icon::before {
+    content: '';
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 10px;
+    background-color: #fff;
+    border-top: 1px solid #999;
+  }
