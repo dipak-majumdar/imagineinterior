@@ -32,7 +32,7 @@ const subscribeMail = () => {
                         //     showConfirmButton: false,
                         //     timer: 1500
                         // })
-                        alert("Thanks for subscribe us");
+                        alert("Thanks for subscribing us.");
                     }
                 }
             });
