@@ -33,6 +33,7 @@ class Services extends DBConnection{
             }
         } catch (Exception $e) {
             echo "Error: " . $e->getMessage();
+            return false;
         }
     }
     
@@ -325,6 +326,64 @@ class Services extends DBConnection{
             return true;
         }
     }//eof
+
+    #############################################################################################
+    #                                                                                           #
+    #                                       Services Gallery                                    #
+    #                                                                                           #
+    #############################################################################################
+
+    function addToGallery(int $serviceId, string $image, string $addedOn): bool {
+        try {
+            $query = "INSERT INTO `service_gallery` (`service_id`, `img`, `added_on`)
+                        VALUES (?, ?, ?)";
+            $stmt = $this->conn->prepare($query);
+            
+            if (!$stmt) {
+                throw new Exception("Error preparing statement: " . $this->conn->error);
+            }
+    
+            $stmt->bind_param("iss", $serviceId, $image, $addedOn);
+        
+            if ($stmt->execute()) {
+                $stmt->close();
+                return true;
+            } else {
+                throw new Exception("Error in query execution: " . $stmt->error);
+            }
+        } catch (Exception $e) {
+            echo 'Caught exception: ', $e->getMessage(), "\n";
+            return false;
+        }
+    }
+    
+
+    function showServiceGallery(int $serviceId) {
+        try {
+            $query = "SELECT `img` FROM `service_gallery` WHERE `service_id` = ?";
+            $stmt = $this->conn->prepare($query);
+            
+            if (!$stmt) {
+                throw new Exception("Error preparing statement: " . $this->conn->error);
+            }
+    
+            $stmt->bind_param("i", $serviceId);
+        
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                $images = array();
+                while ($row = $result->fetch_assoc()) {
+                    $images[] = $row['img'];
+                }
+                $stmt->close();
+                return array('status'=> true, 'result' => $images);
+            } else {
+                throw new Exception("Error in query execution: " . $stmt->error);
+            }
+        } catch (Exception $e) {
+            return array('status'=> false, 'error' => $e->getMessage());
+        }
+    }
 
     
     #############################################################################################

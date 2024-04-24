@@ -118,7 +118,7 @@ $service   = $Services->showServices();
                                 echo "bg-danger text-light";
                             }?>">
                                   <td class="align-middle">
-                                      <img src="../images/services/<?php echo $each['icon'];?>" alt=""
+                                      <img src="<?= IMGURL ?>services/<?php echo $each['icon'];?>" alt=""
                                           class="td_thumnail">
                                   </td>
                                   <td class="align-middle"><?php echo $each['name'];?></td>
@@ -126,7 +126,10 @@ $service   = $Services->showServices();
                                   <td class="align-middle"><?php echo count($childs);?></td>
                                   <td class="align-middle"><?php echo count($projectsCount);?></td>
                                   <td class="align-middle"><?php echo $DateUtility->numDate($each['created']);?></td>
-                                  <td class="align-middle">
+                                  <td class="align-middle text-center">
+                                      <a href="service-gallery.php?id=<?= base64_encode($each['id']);?>" class="btn btn-sm badge bg-success me-2" >
+                                      <i class="bi bi-images"></i>
+                                      </a>
                                       <a href="service-edit.php?id=<?= $each['id'];?>" class="btn btn-sm badge bg-success me-2" >
                                       <i class="bi bi-eye"></i>
                                       </a>
