@@ -1,19 +1,15 @@
 .blog_construction{
-    background-image: url(../images/constructing-bg.jpg);
-    min-height: 80vh;
-    background-position: right;
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-top: 1rem;
-    padding: 4rem 3rem 0;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding: 0 3rem;
 }
 .coming_soon{
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
 }
-.coming_soon_dsc{
+/* .coming_soon_dsc{
     color: #000;
-}
+} */
 
 
 .mail_req{
@@ -22,7 +18,7 @@
     width: 80%;
 }
 .mail_req h3{
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 500;
 }
 .mail_req input{
@@ -36,9 +32,9 @@
 
 .mail_req button{
     margin: 1rem auto 1rem;
-    font-size: large;
+    font-size: medium;
     border-radius: 0.8rem;
-    padding: 0.4rem 0.9rem 0.4rem;
+    padding: 0.2rem 0.9rem 0.2rem;
     font-weight: 500;
     border: 2px solid #e96565;
     background-color: #e96565;

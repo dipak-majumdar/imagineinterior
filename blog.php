@@ -31,18 +31,6 @@ require_once "./inc/reqHeader.php";
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/blog.css">
-
-    <!-- fevicon -->
-    <!-- <link rel="icon" href="images/fevicon.png" type="image/gif" /> -->
-    <!-- Scrollbar Custom CSS -->
-    <!-- <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css"> -->
-    <!-- Tweaks for older IEs-->
-    <!-- <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css"> -->
-    <!-- owl stylesheets -->
-    <!-- <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
-        media="screen"> -->
 </head>
 
 <body>
@@ -54,73 +42,38 @@ require_once "./inc/reqHeader.php";
     <div class="new_section mt-5">
         <div class="blog_construction">
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-5 d-flex align-items-center | justify-content-lg-start justify-content-center | order-2 order-lg-1">
                     <div class="d-flex flex-column">
                         <div>
-
-                            <h1 class="coming_soon">Coming Soon...</h1>
-                            <p class="coming_soon_dsc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quod
-                                deleniti modi hic commodi cupiditate quo.</p>
+                            <h1 class="coming_soon"><?= SITE_NAME ?> Blog <br> Coming Soon...</h1>
+                            <!-- <p class="coming_soon_dsc">"Exciting news! Our Imagine Interior website blog is currently in the works and will be launching soon. Stay tuned as we prepare to bring you a wealth of inspiration and insights into the world of interior design. Thank you for your patience as we put the finishing touches on our upcoming blog!"</p> -->
                         </div>
 
                         <div class="mail_req">
                             <h3>Request For Notification</h3>
-                            <form action="" class="d-flex flex-column">
-                                <input type="text" placeholder="Enter Your Mail">
-                                <button type="submit">Get Notified</button>
-                            </form>
+                            <div class="d-flex flex-column">
+                                <input type="text" placeholder="Enter Your Mail" id="main-subscribe">
+                                <button type="button" onclick="subscribeMail()">Get Notified</button>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-7 order-1 order-lg-2">
+                    <img src="<?= IMGURL ?>constructing-bg.jpg" alt="">
                 </div>
             </div>
 
         </div>
     </div>
-    <!-- <div class="furnitures_section layout_padding">
-        <div class="container">
-            <h1 class="our_text">OUR furnitures</h1>
-            <p class="ipsum_text">There are many variations of passages of Lorem Ipsum </p>
-            <div class="furnitures_section2 layout_padding">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="container_main">
-                            <img src="images/img-2.png" alt="Avatar" class="image">
-                            <div class="overlay">
-                                <a href="#" class="icon" title="User Profile">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <h3 class="temper_text">Tempor incididunt ut labore et dolore</h3>
-                        <p class="dololr_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi </p>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="container_main">
-                            <img src="images/img-3.png" alt="Avatar" class="image">
-                            <div class="overlay">
-                                <a href="#" class="icon" title="User Profile">
-                                    <i class="fa fa-search"></i>
-                                </a>
-                            </div>
-                        </div>
-                        <h3 class="temper_text">Tempor incididunt ut labore et dolore</h3>
-                        <p class="dololr_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                            exercitation ullamco laboris nisi </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <!-- furnitures section end -->
-
     <!-- footer section start -->
     <?php require_once "partials/footer.php"; ?>
     <!--  footer section end -->
     <!--Bootstrap Css -->
     <script src="js/main-js/bootstrap.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="vendors/ajax.custom-lib.js"></script>
+    <script src="js/script.js"></script>
+
 </body>
 
 </html>
