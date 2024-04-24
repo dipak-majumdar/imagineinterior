@@ -29,7 +29,7 @@ error_reporting(E_ALL);
 
 
 	//company
-	define('SITE_NAME', 		'imagine Interior');							//company short name
+	define('SITE_NAME', 		'Imagine Interior');							//company short name
 	// define('COMPANY_H', 		"Website ".HOME);								//company home
     
     //website related
