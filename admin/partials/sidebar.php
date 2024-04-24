@@ -36,12 +36,12 @@
         <!-- ============================================================= -->
 
         <li class="nav-item">
-            <a class="nav-link <?php if (!str_contains($_SERVER['PHP_SELF'], 'services')) { echo 'collapsed'; }?>" data-bs-target="#services-nav" data-bs-toggle="collapse" href="#" <?php if (str_contains($_SERVER['PHP_SELF'], 'services')) { echo 'class="active"'; }?>>
+            <a class="nav-link <?php if (!str_contains($_SERVER['PHP_SELF'], 'services') || !str_contains($_SERVER['PHP_SELF'], 'service-gallery')) { echo 'collapsed'; }?>" data-bs-target="#services-nav" data-bs-toggle="collapse" href="#" <?php if (str_contains($_SERVER['PHP_SELF'], 'services') || str_contains($_SERVER['PHP_SELF'], 'service-gallery')) { echo 'class="active"'; }?>>
             <i class="bi bi-bookmark-heart"></i><span>Services</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="services-nav" class="nav-content collapse <?php if (str_contains($_SERVER['PHP_SELF'], 'services')) { echo 'show'; }?>" data-bs-parent="#sidebar-nav">
+            <ul id="services-nav" class="nav-content collapse <?php if (str_contains($_SERVER['PHP_SELF'], 'services') || str_contains($_SERVER['PHP_SELF'], 'service-gallery')) { echo 'show'; }?>" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="services.php" <?php if (str_contains($_SERVER['PHP_SELF'], 'services')) { echo 'class="active"'; }?>>
+                    <a href="services.php" <?php if (str_contains($_SERVER['PHP_SELF'], 'services') || str_contains($_SERVER['PHP_SELF'], 'service-gallery')) { echo 'class="active"'; }?>>
                         <i class="bi bi-circle"></i><span>Services</span>
                     </a>
                 </li>
