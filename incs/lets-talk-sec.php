@@ -6,7 +6,7 @@
             <i class="fa-regular fa-phone fs-6 mx-1"></i>
             Call Us
         </a>
-        <a class="talk_btn wp_us_lets_talk" href="https://wa.me/<?= $site['contact1']; ?>">
+        <a class="talk_btn wp_us_lets_talk" target="_blank" href="https://wa.me/<?= $site['contact1']; ?>">
             <i class="fa-brands fa-whatsapp fs-5 mx-1"></i>
             Whatsapp Us
         </a>
