@@ -36,16 +36,20 @@ $childServices = $Services->showChildServices();
     <link rel="stylesheet" href="css/responsive.css">
     <!-- fevicon -->
     <link rel="icon" href="images/logo/<?= $favcon ?>" type="image/gif" />
-    
+
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <!-- Tweaks for older IEs-->
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/all.css">
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.1/css/sharp-solid.css">
     <!-- owl stylesheets -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
-        media="screen">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 
+    <style>
+        button:active {
+            background-color: blueviolet;
+        }
+    </style>
 </head>
 
 <body>
@@ -64,40 +68,22 @@ $childServices = $Services->showChildServices();
     <div class="portfolio_section px-2 px-md-0 pb-4 pt-0">
         <div class="container">
 
-            <!-- <div class="new_section sub_layout_padding">
-                <h3 class="text-center text-md-start fs-3">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
-                <p class="small_para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae odio,
-                    esse sunt, nisi impedit
-                    fugit veritatis dolorem totam dicta saepe autem repudiandae? Nobis eveniet sunt velit sit
-                    asperiores. Ab ex molestiae labore pariatur optio, tenetur quae doloribus eos odit vitae
-                    libero ipsum nostrum iste. Praesentium, sequi eveniet? Facilis nostrum, quaerat autem
-                    tempora sint necessitatibus, cupiditate, obcaecati expedita at ipsam rem laborum praesentium
-                    nulla iusto! Eaque culpa odit assumenda perferendis accusantium, maxime perspiciatis
-                    repellendus tempore eius modi magnam nisi vero ducimus cumque ad ratione officiis excepturi
-                    soluta velit nam vel quae. Ratione quisquam quidem dicta ea laudantium, totam eius sint
-                    voluptates assumenda soluta, ipsa officia, recusandae quas earum. Adipisci autem iste, fugit
-                    ipsum voluptates ut iure odio nihil molestias! Soluta quae ullam ipsa aut voluptatibus
-                    molestias, maiores illo magni provident aspernatur, sit minus ducimus recusandae! Ex,
-                    laboriosam quisquam.</p>
-            </div> -->
-
             <!-- row start -->
             <div class="row">
                 <!-- Category column start -->
                 <div class="col-md-12 text-center mb-5" id="btnsDiv">
                     <?php
-                if (count($showServices) > 0) {
-                ?>
-                    <button type="button" class="btn btn-outline-primary rounded-0 mt-2 filter mx_sm_gp"
-                        data-rel="all">All</button>
+                    if (count($showServices) > 0) {
+                    ?>
+                        <button type="button" class="btn btn-outline-primary rounded-0 mt-2 filter mx_sm_gp" data-rel="all">All</button>
                     <?php
                         foreach ($showServices as $eachService) {
-                            // print_r($eachChild['name']);
+
                             echo '
-                            <button type="button" class="btn btn-outline-primary rounded-0 mt-2 filter mx_sm_gp" data-rel="'.$eachService['id'].'">'.$eachService['name'].'</button>
+                            <button type="button" class="btn btn-outline-primary rounded-0 mt-2 filter mx_sm_gp" data-rel="' . $eachService['id'] . '">' . $eachService['name'] . '</button>
                             ';
                         }
-                }
+                    }
                     ?>
                 </div>
                 <!-- Category column start -->
@@ -109,28 +95,46 @@ $childServices = $Services->showChildServices();
             <div class="gallery" id="gallery">
 
                 <?php
-                    foreach ($childServices as $eachChild) {
-                        // print_r($eachChild);
-                        $img = $eachChild['feature_image'];
-                        if ($img == null) {
-                            $img = $eachChild['icon'];
-                        }
-                        echo '
-                        <div class="mb-3 pics animation all '.$eachChild['parent_id'].'">
-                    <a href="projects/'.$eachChild['slug'].'">
-                        <img class="img-fluid"
-                            src="images/services/'.$img.'"
-                            alt="Card image cap">
-
-                        <section class="img_text">
-                            <h3 class="text-light mt-auto">'.$eachChild['name'].'</h3>
-                            <small class="text-light ">12 Aug, 2022</small>
-                        </section>
-                    </a>
-                </div>
-                        ';
+                foreach ($childServices as $eachChild) {
+                    // print_r($eachChild);
+                    $img = $eachChild['feature_image'];
+                    if ($img == null) {
+                        $img = $eachChild['icon'];
                     }
-            ?>
+
+                    echo '
+                        <div class="mb-3 pics animation all ' . $eachChild['parent_id'] . '">
+                            <a href="projects/' . $eachChild['slug'] . '">
+                                <img class="img-fluid"
+                                    src="' . IMGURL . 'services/' . $img . '"
+                                    alt="Card image cap">
+
+                                <section class="img_text">
+                                    <h3 class="text-light mt-auto">' . $eachChild['name'] . '</h3>
+                                    <small class="text-light ">12 Aug, 2022</small>
+                                </section>
+                            </a>
+                        </div>
+                        ';
+                }
+
+                foreach ($showServices as $eachService) {
+                    $imageResponse = $Services->showServiceGallery($eachService['id']);
+                    if ($imageResponse['status'] == 1 && !empty($imageResponse['result'])) {
+                        foreach ($imageResponse['result'] as $eachImage) {
+
+                            echo '
+                                <div class="mb-3 pics animation all ' . $eachService['id'] . '">
+                                    <a href="' . URL . 'service/' . $eachService['slug'] . '">
+                                        <img class="img-fluid"
+                                            src="' . IMGURL . 'services/' . $eachImage . '"
+                                            alt="Card image cap">
+                                    </a>
+                                </div>';
+                        }
+                    }
+                }
+                ?>
 
             </div>
             <!-- Gallery end -->
@@ -156,30 +160,58 @@ $childServices = $Services->showChildServices();
     <!-- btnsDiv -->
 
     <script>
-    $(function() {
-        var selectedClass = "";
-        $(".filter").click(function() {
-            selectedClass = $(this).attr("data-rel");
-            $("#gallery").fadeTo(100, 0.1);
-            $("#gallery div").not("." + selectedClass).fadeOut().removeClass('animation');
-            setTimeout(function() {
-                $("." + selectedClass).fadeIn().addClass('animation');
-                $("#gallery").fadeTo(300, 1);
-            }, 300);
+        document.addEventListener("DOMContentLoaded", function() {
+            var selectedClass = "";
+            var filterButtons = document.querySelectorAll(".filter");
+            var gallery = document.getElementById("gallery");
+            var galleryItems = gallery.querySelectorAll("div");
+
+            filterButtons.forEach(function(button) {
+                button.addEventListener("click", function() {
+                    // Remove btn-primary class from all buttons
+                    filterButtons.forEach(function(btn) {
+                        btn.classList.remove("btn-primary");
+                        btn.classList.add("btn-outline-primary");
+                    });
+
+                    // Add btn-primary class to the clicked button
+                    this.classList.add("btn-primary");
+                    this.classList.remove("btn-outline-primary");
+
+                    selectedClass = this.getAttribute("data-rel");
+                    gallery.style.opacity = 0.1;
+
+                    galleryItems.forEach(function(item) {
+                        if (!item.classList.contains(selectedClass)) {
+                            item.style.display = "none";
+                            item.classList.remove('animation');
+                        }
+                    });
+
+                    setTimeout(function() {
+                        galleryItems.forEach(function(item) {
+                            if (item.classList.contains(selectedClass)) {
+                                item.style.display = "block";
+                                item.classList.add('animation');
+                            }
+                        });
+                        gallery.style.opacity = 1;
+                    }, 300);
+                });
+            });
         });
-    });
     </script>
 
     </script>
 
     <script>
-    const greenIcon = (t) => {
-        t.firstChild.src = "images/icons/call-icon-green.png";
-    }
+        const greenIcon = (t) => {
+            t.firstChild.src = "images/icons/call-icon-green.png";
+        }
 
-    const whiteIcon = (t) => {
-        t.firstChild.src = "images/icons/call-icon-white.png";
-    }
+        const whiteIcon = (t) => {
+            t.firstChild.src = "images/icons/call-icon-white.png";
+        }
     </script>
 
 </body>
