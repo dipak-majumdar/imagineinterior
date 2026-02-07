@@ -25,7 +25,7 @@
     "@ckeditor/ckeditor5-paragraph": "39.0.0",
     "@ckeditor/ckeditor5-paste-from-office": "39.0.0",
     "@ckeditor/ckeditor5-table": "39.0.0",
-    "@ckeditor/ckeditor5-typing": "39.0.0"
+    "@ckeditor/ckeditor5-typing": "39.0.2"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-dev-translations": "^32.1.2",
